@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="e988a674-28fe-49d2-a6ce-c5c1e0141f4c">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_KneeBreaker_C1" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="KneeBreaker" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Rupture Tendons [COMBO_1]" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_KneeBreaker_C2" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="KneeBreaker" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Rupture Tendons [COMBO_2]" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_KneeBreaker_C3" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="KneeBreaker" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Rupture Tendons [COMBO_3]" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

@@ -1,0 +1,135 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// OBSCO_Init_DBs();
+
+KBSECTION
+// PROC
+// OBSCO_Init_DBs()
+// THEN
+// DB_OBSCO_ComboSkills("Projectile_ThrowingKnife", 1);
+// DB_OBSCO_ComboSkills("Projectile_OdinSCO_ThrowingKnife_C1", 1);
+// DB_OBSCO_ComboSkills("Projectile_OdinSCO_ThrowingKnife_C2", 1);
+// DB_OBSCO_ComboSkills("Projectile_OdinSCO_ThrowingKnife_C3", 1);
+
+IF
+NRD_OnHit(_Target, _Character, _, _HitHandle)
+AND
+HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 0)
+AND
+NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
+AND
+OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
+// AND
+// DB_OBSCO_ComboSkills(_SkillId, _PointsToAdd)
+THEN
+OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _SkillId);
+
+IF
+NRD_OnHit(_Target, _Character, _, _HitHandle)
+AND
+HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
+AND
+NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
+AND
+OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
+// AND
+// DB_OBSCO_ComboSkills(_SkillId, _PointsToAdd)
+THEN
+// NRD_HitStatusClearAllDamage(_Target, _HitHandle);
+NRD_DebugLog("Leprochaun On-Hit");
+OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _SkillId);
+
+IF
+NRD_OnPrepareHit(_Target, _Character, _, _HitHandle)
+AND
+HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
+AND
+NRD_HitGetString(_HitHandle, "SkillId", _ProtoId)
+AND
+OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
+// AND
+// DB_OBSCO_ComboSkills(_SkillId, _PointsToAdd)
+THEN
+// NRD_HitStatusClearAllDamage(_Target, _HitHandle);
+NRD_DebugLog("Leprochaun Prepare");
+OBSCO_LUA_Skill_OnPrepareHit(_Character, _Target, _HitHandle, _SkillId);
+
+// IF
+// NRD_OnHit(_Target, _Character, _, _HitHandle)
+// AND
+// HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
+// // AND
+// // NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
+// // AND
+// // OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
+// // AND
+// // _SkillId == "Projectile_ThrowingKnife"
+// THEN
+// NRD_HitStatusClearAllDamage(_Target, _HitHandle);
+
+// IF
+// NRD_OnPrepareHit(_Target, _Character, _, _HitHandle)
+// AND
+// HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
+// THEN
+// NRD_HitStatusClearAllDamage(_Target, _HitHandle);
+
+IF
+CharacterUsedSkill(_Character, "Shout_OdinSCO_Debug_AddCombo", _, _)
+THEN
+OBSCO_LUA_IncrementComboPoints(_Character, 1);
+
+IF
+CharacterUsedSkill(_Character, "Projectile_ThrowingKnife", _, _)
+THEN
+ProcObjectTimer(_Character, "OdinSCO_INCREMENT_COMBO", 1750);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_INCREMENT_COMBO")
+THEN
+NRD_DebugLog("Incremented combo");
+OBSCO_LUA_IncrementComboPoints(_Character, 1);
+
+// IF
+// SkillAdded(_Character, _SkillId, 0)
+// THEN
+// OBSCO_LUA_CheckAddedSkill((CHARACTERGUID)_Character, _SkillId);
+
+// IF
+// SkillActivated(_Character, _SkillId)
+// THEN
+// OBSCO_LUA_CheckAddedSkill((CHARACTERGUID)_Character, _SkillId);
+
+// IF
+// ItemEquipped(_Item, _Character)
+// AND
+// NRD_ItemGetString(_Item, "Skills", _SkillId)
+// AND
+// NRD_ItemGetString(_Item, "WeaponType", _StatsId)
+// THEN
+// NRD_DebugLog(_SkillId);
+// NRD_DebugLog(_StatsId);
+// OBSCO_LUA_CheckAddedSkill((CHARACTERGUID)_Character, _SkillId);
+
+// IF
+// CharacterUsedSkill(_Character, _Skill, _, _)
+// AND
+// DB_OBSCO_ComboSkills(_Skill, _PointsToAdd)
+// AND
+// _PointsToAdd > 0
+// THEN
+// OBSCO_LUA_IncrementComboPoints(_Character, _PointsToAdd);
+
+// IF
+// NRD_OnActionStateEnter(_Character, "UseSkill")
+// THEN
+// CharacterStatusText(_Character, "UseSkill");
+
+// IF
+// NRD_OnActionStateEnter(_Character, "PrepareSkill")
+// THEN
+// CharacterStatusText(_Character, "PrepareSkill");
+EXITSECTION
+
+ENDEXITSECTION

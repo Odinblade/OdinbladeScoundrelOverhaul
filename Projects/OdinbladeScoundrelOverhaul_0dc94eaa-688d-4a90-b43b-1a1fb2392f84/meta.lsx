@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<save>
+    <header version="2" />
+    <version major="3" minor="6" revision="6" build="0" />
+    <region id="MetaData">
+        <node id="root">
+            <attribute id="Module" value="0dc94eaa-688d-4a90-b43b-1a1fb2392f84" type="23" />
+            <attribute id="Name" value="OdinbladeScoundrelOverhaul" type="23" />
+            <attribute id="Type" value="Add-on" type="23" />
+            <attribute id="UUID" value="3fc33e96-e863-4235-8aac-9671bbfc8059" type="23" />
+        </node>
+    </region>
+</save>

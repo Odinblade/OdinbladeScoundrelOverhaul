@@ -1,0 +1,8 @@
+{
+    "RequiredExtensionVersion": 43,
+    "ModTable": "OdinSCO",
+    "FeatureFlags": [
+        "OsirisExtensions",
+        "Lua"
+    ]
+}
