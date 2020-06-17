@@ -1,0 +1,42 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedSkillAtPosition(_Character, _X, _Y, _Z, "Projectile_OdinSCO_Firecracker", _, _)
+THEN
+DB_OBSCO_Firecracker_Init(_Character, _X, _Y, _Z);
+ProcObjectTimer(_Character, "OdinSCO_FIRECRACKER_SPAWN", 1150);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Caster, "OdinSCO_FIRECRACKER_SPAWN")
+AND
+DB_OBSCO_Firecracker_Init(_Caster, _X, _Y, _Z)
+AND
+CreateItemTemplateAtPosition("b7a8d024-c493-4023-939d-ae07f0cc8661", _X, _Y, _Z, _Firecracker)
+THEN
+DB_OBSCO_Firecracker(_Caster, _Firecracker);
+ProcObjectTimer(_Firecracker, "OdinSCO_FIRECRACKER_CLEANUP", 2000);
+NOT DB_OBSCO_Firecracker_Init(_Caster, _X, _Y, _Z);
+NRD_DebugLog("Lemon zest1");
+
+IF
+CharacterStatusApplied(_Enemy, "OdinSCO_APPLY_FIRECRACKER", _Owner)
+AND
+DB_OBSCO_Firecracker((CHARACTERGUID)_Owner, (ITEMGUID)_Firecracker)
+THEN
+NRD_DebugLog("Lemon zest2");
+CharacterLookAt(_Enemy, _Firecracker);
+RemoveStatus(_Enemy, "OdinSCO_APPLY_FIRECRACKER");
+
+PROC
+ProcObjectTimerFinished((ITEMGUID)_Firecracker, "OdinSCO_FIRECRACKER_CLEANUP")
+AND
+DB_OBSCO_Firecracker(_Caster, _Firecracker)
+THEN
+NOT DB_OBSCO_Firecracker(_Caster, _Firecracker);
+SetOnStage(_Firecracker, 0);
+EXITSECTION
+
+ENDEXITSECTION

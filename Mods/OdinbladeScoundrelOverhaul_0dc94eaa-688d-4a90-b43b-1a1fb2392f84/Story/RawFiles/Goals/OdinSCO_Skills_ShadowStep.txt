@@ -1,0 +1,53 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedSkill(_Character, "MultiStrike_OdinSCO_ShadowStep", _, _)
+AND
+GetPosition(_Character, _X, _Y, _Z)
+THEN
+DB_OBSCO_ShadowStep(_Character, _X, _Y, _Z);
+
+IF
+CharacterUsedSkill(_Character, "MultiStrike_OdinSCO_ShadowStep", _, _)
+AND
+HasActiveStatus(_Character, "INVISIBLE", 1)
+AND
+HasActiveStatus(_Character, "OdinSCO_APPLY_SHADOWSTEP_BONUS", 0)
+THEN
+ApplyStatus(_Character, "OdinSCO_APPLY_SHADOWSTEP_BONUS", 6.0);
+ProcObjectTimer(_Character, "OdinSCO_SHADOWSTEP_STEALTH", 1000);
+NRD_DebugLog("ShadowStep Timer started - INVISIBLE");
+
+IF
+CharacterUsedSkill(_Character, "MultiStrike_OdinSCO_ShadowStep", _, _)
+AND
+HasActiveStatus(_Character, "SNEAKING", 1)
+AND
+HasActiveStatus(_Character, "OdinSCO_APPLY_SHADOWSTEP_BONUS", 0)
+THEN
+ApplyStatus(_Character, "OdinSCO_APPLY_SHADOWSTEP_BONUS", 6.0);
+ProcObjectTimer(_Character, "OdinSCO_SHADOWSTEP_STEALTH", 1000);
+NRD_DebugLog("ShadowStep Timer started - SNEAKING");
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_SHADOWSTEP_STEALTH")
+AND
+HasActiveStatus(_Character, "OdinSCO_APPLY_SHADOWSTEP_BONUS", 1)
+THEN
+RemoveStatus(_Character, "OdinSCO_APPLY_SHADOWSTEP_BONUS");
+NRD_DebugLog("ShadowStep Bonus removed");
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_SHADOWSTEP_RETURN")
+AND
+DB_OBSCO_ShadowStep(_Character, _X, _Y, _Z)
+THEN
+NOT DB_OBSCO_ShadowStep(_Character, _X, _Y, _Z);
+TeleportToPosition(_Character, _X, _Y, _Z, "", 0);
+NRD_DebugLog("ShadowStep portation complete");
+EXITSECTION
+
+ENDEXITSECTION

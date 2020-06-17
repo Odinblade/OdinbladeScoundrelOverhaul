@@ -1,0 +1,37 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterStatusApplied(_Character, "OdinSCO_APPLY_TEMP_INVISIBILITY", _)
+THEN
+ApplyStatus(_Character, "INVISIBLE", 6.0, 0, _Character);
+ProcObjectTimer(_Character, "ODINSCO_APPLY_TEMP_INVISIBILITY", 100);
+
+PROC
+ProcObjectTimerFinished(_Character, "ODINSCO_APPLY_TEMP_INVISIBILITY")
+THEN
+SetTag(_Character, "ODINSCO_TEMP_INVISIBILITY");
+
+IF
+CharacterStatusApplied(_Character, "INVISIBLE", _)
+AND
+IsTagged(_Character, "ODINSCO_TEMP_INVISIBILITY", 1)
+THEN
+ClearTag(_Character, "ODINSCO_TEMP_INVISIBILITY");
+
+IF
+ObjectTurnEnded(_Character)
+AND
+IsTagged(_Character, "ODINSCO_TEMP_INVISIBILITY", 1)
+THEN
+RemoveStatus(_Character, "INVISIBLE");
+
+IF
+CharacterStatusRemoved(_Character, "INVISIBLE", _)
+THEN
+ClearTag(_Character, "ODINSCO_TEMP_INVISIBILITY");
+EXITSECTION
+
+ENDEXITSECTION

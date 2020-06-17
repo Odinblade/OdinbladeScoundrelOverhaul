@@ -1,0 +1,214 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+OBSCO_Init_DBs();
+
+KBSECTION
+PROC
+OBSCO_Init_DBs()
+THEN
+DB_OBSCO_ComboSkill("AAAAA", "1");
+// DB_OBSCO_ComboSkill("Projectile_ThrowingKnife", "1");
+// DB_OBSCO_ComboSkill("Target_OdinSCO_SinisterStrike", "1");
+// DB_OBSCO_ComboSkill("Target_SerratedEdge", "1");
+
+//REGION Debug
+IF
+CharacterUsedSkill(_Character, "Shout_OdinSCO_Debug_AddCombo", _, _)
+THEN
+OBSCO_LUA_IncrementComboPoints(_Character, 1);
+//END_REGION
+
+//REGION Statuses and tags
+IF
+ObjectLeftCombat(_Character, _)
+THEN
+OBSCO_CleanupCombo(_Character);
+
+PROC
+OBSCO_CleanupCombo((GUIDSTRING)_Character)
+AND
+CharacterHasSkill((CHARACTERGUID)_Character, "Shout_OdinSCO_DeadlyFlourish", 1)
+THEN
+OBSCO_LUA_ConsumeComboPoints((CHARACTERGUID)_Character);
+
+IF
+CharacterUsedSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", _, _)
+THEN
+OBSCO_LUA_ActivateComboPoints(_Character);
+
+// // Failsafe
+// IF
+// CharacterStatusApplied(_Character, "OdinSCO_USE_COMBO_3", _)
+// AND
+// IsTagged(_Character, "ODINSCO_COMBO_READY", 0)
+// AND
+// NRD_SkillBarFindSkill(_Character,  "Shout_OdinSCO_DeadlyFlourish", _Slot)
+// THEN
+// NRD_SkillBarClear(_Character, _Slot);
+// NRD_SkillSetCooldown(_Character, "Shout_OdinSCO_DeadlyFlourish", 0.0);
+// SetTag(_Character, "ODINSCO_COMBO_READY");
+// ProcObjectTimer(_Character, "ODINSCO_FLICKER_DEADLYFLOURISH", 250);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "ODINSCO_FLICKER_DEADLYFLOURISH")
+AND
+DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot)
+THEN
+NRD_SkillBarSetSkill(_Character, _Slot, "Shout_OdinSCO_DeadlyFlourish");
+NRD_SkillSetCooldown(_Character, "Shout_OdinSCO_DeadlyFlourish", 0.0);
+NOT DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot);
+//END_REGION
+
+//REGION Apply activated combo bonuses
+
+
+
+// IF
+// NRD_OnHit(_Target, _Character, _, _HitHandle)
+// AND
+// IsTagged(_Character, "ODINSCO_COMBO_READY", 0)
+// AND
+// NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
+// AND
+// OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
+// AND
+// _SkillId == "Target_OdinSCO_SinisterStrike"
+// THEN
+// NRD_DebugLog("Non-Combo Sinister Strike OSIRIS");
+// OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _SkillId);
+
+
+
+
+IF
+NRD_OnHit(_Target, _Character, _, _HitHandle)
+// AND
+// IsTagged(_Character, "ODINSCO_COMBO_READY", 1)
+AND
+NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
+AND
+OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
+THEN
+NRD_DebugLog("DebugFrog");
+OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _SkillId);
+
+// If the skill does not have a target, process via position
+IF
+CharacterUsedSkillAtPosition(_Character, _X, _Y, _Z, _SkillId, _, _)
+// AND
+// IsTagged(_Character, "ODINSCO_COMBO_READY", 1)
+THEN
+DB_OBSCO_AtPos_Launch(_Character, _X, _Y, _Z, _SkillId);
+ProcObjectTimer(_Character, "OdinSCO_AtPos_Launch", 1200);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_AtPos_Launch")
+AND
+DB_OBSCO_AtPos_Launch(_Character, _X, _Y, _Z, _SkillId)
+THEN
+NOT DB_OBSCO_AtPos_Launch(_Character, _X, _Y, _Z, _SkillId);
+OBSCO_LUA_Skill_AtPos(_Character, _X, _Y, _Z, _SkillId);
+//END_REGION
+
+//REGION Increment combo points
+IF
+CharacterUsedSkill(_Character, _ComboSkill, _, _)
+AND
+DB_OBSCO_ComboSkill(_ComboSkill, _ComboToGenerate)
+AND
+StringConcatenate("OdinSCO_INCREMENT_COMBO_", _ComboToGenerate, _TimerName)
+THEN
+ProcObjectTimer(_Character, _TimerName, 750);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_INCREMENT_COMBO_1")
+THEN
+NRD_DebugLog("Incremented 1 combo");
+OBSCO_LUA_IncrementComboPoints(_Character, 1);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_INCREMENT_COMBO_2")
+THEN
+NRD_DebugLog("Incremented 2 combo");
+OBSCO_LUA_IncrementComboPoints(_Character, 2);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_INCREMENT_COMBO_3")
+THEN
+NRD_DebugLog("Incremented 3 combo");
+OBSCO_LUA_IncrementComboPoints(_Character, 3);
+
+PROC
+OBSCO_QueueStatusApply((CHARACTERGUID)_Target, (STRING)_Status, (GUIDSTRING)_Source, (REAL)_Duration, (INTEGER)_Force, (INTEGER)_Delay)
+AND
+String(_Target, _TargetString)
+AND
+StringConcatenate(_TargetString, _Status, _Timer)
+THEN
+// NRD_DebugLog(_Timer);
+DB_OBSCO_QueueStatusApply(_Target, _Status, _Source, _Duration, _Force, _Timer);
+ProcObjectTimer(_Target, _Timer, _Delay);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Target, _Timer)
+AND
+DB_OBSCO_QueueStatusApply(_Target, _Status, _Source, _Duration, _Force, _Timer)
+THEN
+// NRD_DebugLog(_Timer);
+NOT DB_OBSCO_QueueStatusApply(_Target, _Status, _Source, _Duration, _Force, _Timer);
+ApplyStatus(_Target, _Status, _Duration, _Force, _Source);
+
+PROC
+OBSCO_QueueDamageOnMoveApply((CHARACTERGUID)_Target, (STRING)_Status, (GUIDSTRING)_Source, (REAL)_Duration, (REAL)_DistancePerDamage)
+AND
+String(_Target, _TargetString)
+AND
+StringConcatenate(_TargetString, _Status, _Timer)
+THEN
+NRD_DebugLog(_Timer);
+DB_OBSCO_QueueDamageOnMoveApply(_Target, _Status, _Source, _Duration, _DistancePerDamage, _Timer);
+ProcObjectTimer(_Target, _Timer, 100);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Target, _Timer)
+AND
+DB_OBSCO_QueueDamageOnMoveApply(_Target, _Status, _Source, _Duration, _DistancePerDamage, _Timer)
+AND
+NRD_ApplyDamageOnMove(_Target, _Status, (CHARACTERGUID)_Source, _Duration, _DistancePerDamage, _HitHandle)
+THEN
+NRD_DebugLog(_Timer);
+NOT DB_OBSCO_QueueDamageOnMoveApply(_Target, _Status, (GUIDSTRING)_Source, _Duration, _DistancePerDamage, _Timer);
+NRD_DebugLog("OBSCO_QueueDamageOnMoveApply FINISHED!");
+
+PROC
+OBSCO_QueueCooldownOverride((CHARACTERGUID)_Character, (STRING)_SkillId, (REAL)_NewCD)
+AND
+CharacterHasSkill(_Character, _SkillId, 1)
+AND
+String(_Character, _CharacterString)
+AND
+StringConcatenate(_CharacterString, _SkillId, _Timer)
+THEN
+DB_OBSCO_QueueCooldownOverride(_Character, _SkillId, _NewCD, _Timer);
+NRD_SkillSetCooldown(_Character, _SkillId, 0.0);
+ProcObjectTimer(_Character, _Timer, 10);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, _Timer)
+AND
+DB_OBSCO_QueueCooldownOverride(_Character, _SkillId, _NewCD, _Timer)
+THEN
+NRD_DebugLog(_Timer);
+NOT DB_OBSCO_QueueCooldownOverride(_Character, _SkillId, _NewCD, _Timer);
+NRD_SkillSetCooldown(_Character, _SkillId, _NewCD);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_INCREMENT_COMBO_DELAYED")
+THEN
+NRD_DebugLog("Incremented 1 combo");
+OBSCO_LUA_IncrementComboPoints(_Character, 1);
+//END_REGION
+EXITSECTION
+
+ENDEXITSECTION

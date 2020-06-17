@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="e078e210-b9ba-48e5-afe3-c5eb91ba8545">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_SinisterStrike" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="8605ffca-0719-441e-b791-9ce28985c23e" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="120" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RangerLore 1" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRangerStarter" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_Firecracker" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="b4279530-40b6-4509-bb80-72ffe9ea907b" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="120" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RangerLore 1" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRangerStarter" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_SmokeGrenade" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="68984f13-9e02-43eb-a95f-8cd339dfcebc" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="250" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 2" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueEarly" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="4" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="46448ed9-8c4a-43a6-9eb9-b97ff5e0a27c" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="250" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 2" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueEarly" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="4" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_PlayOfTheGame" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="e358dc12-bde1-4c76-b02a-056804c194ef" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="250" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 2" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueEarly" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="4" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_Misdirection" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="825fb2d1-2891-4818-b8dd-3c36bb935ce6" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="500" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 3" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueMid" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="9" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_CorruptedBlade" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="2bec77f2-bea2-4465-8ac3-81a6a6992f7a" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="500" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 3" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueMid" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="9" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_GagOrder" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="dae871c3-fcfc-4e24-9302-359f0505fb0d" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="500" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 3" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueMid" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="9" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_SleepingArms" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="5240dd04-e97c-464e-b150-4455876cd6bb" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="500" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 3" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueMid" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="9" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_FanOfKnives" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="89d0e9c5-d538-4300-8504-2a5c93c7c90c" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="800" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueSource" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 3" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueMid" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="9" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_LaunchBomber" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="3a291754-71e6-496b-8038-69f0d0b2adca" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="9" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="500" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 2; Summoning 1" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueMid" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="9" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_FindersKeepers" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="13" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="1400" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RangerLore 4" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueLate" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="13" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="8c0b203e-bc70-41a7-b338-360f0d1cf1ea" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_DaggersDrawn" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="58e7824d-0d4f-4331-86f1-d36976577315" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="13" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="1900" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueSource" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 4" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueLate" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="13" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_ShadowStep" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="13" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="1400" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 4" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueLate" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="13" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="b1cdcdb3-2601-45e4-bf4f-b551b5018505" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_Misfire" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="13" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="1400" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 4" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueLate" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="13" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="0cf5df4f-772a-47b6-8cca-97447de7942a" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_TerrifyingCruelty" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="5da557fe-1823-438f-9140-6a59f104ca61" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="16" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="1600" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 5" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueLate" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="16" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_CrawlingInfestation" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="f287501d-fded-4ae0-8c79-2973fc62424b" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="16" enumeration_type_name="ActPart" />
+        <field name="Value" type="IntegerStatObjectFieldDefinition" value="1600" />
+        <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 5" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueLate" />
+        <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="16" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

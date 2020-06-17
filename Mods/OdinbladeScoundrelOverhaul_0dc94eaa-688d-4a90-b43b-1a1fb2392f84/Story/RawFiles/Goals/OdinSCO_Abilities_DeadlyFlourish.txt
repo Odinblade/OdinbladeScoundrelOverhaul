@@ -1,0 +1,55 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+//If a character has a Scoundrel skill, give them the Deadly Flourish skill on start
+IF
+GameStarted(_, _)
+THEN
+OBSCO_HandleDeadlyFlourish();
+
+//If a savegame character has a Scoundrel skill, ensure they have the Deadly Flourish skill on load
+IF
+SavegameLoaded(_, _, _, _)
+THEN
+OBSCO_HandleDeadlyFlourish();
+
+PROC
+OBSCO_HandleDeadlyFlourish()
+AND
+DB_IsPlayer(_Character)
+AND
+CharacterHasSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 0)
+AND
+OBSCO_LUA_HasScoundrelSkills(_Character, _Result)
+AND
+_Result == 1
+THEN
+CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
+
+IF
+SkillActivated(_Character, _SkillId)
+AND
+CharacterHasSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 0)
+AND
+OBSCO_LUA_HasScoundrelSkills(_Character, _Result)
+AND
+_Result == 1
+THEN
+CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
+
+IF
+SkillDeactivated(_Character, _SkillId)
+AND
+CharacterHasSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1)
+AND
+OBSCO_LUA_HasScoundrelSkills(_Character, _Result)
+AND
+_Result == 0
+THEN
+// CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
+CharacterRemoveSkill(_Character, "Shout_OdinSCO_DeadlyFlourish");
+EXITSECTION
+
+ENDEXITSECTION

@@ -1,0 +1,91 @@
+treasure itemtypes "Common","Uncommon","Rare","Epic","Legendary","Divine","Unique"
+new treasuretable "ST_OdinSCO_NewSpells"
+new subtable "1,1"
+StartLevel "1"
+object category "I_SKILLBOOK_Rogue_OdinSCO_SinisterStrike",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "1"
+object category "I_SKILLBOOK_Rogue_OdinSCO_Firecracker",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "4"
+object category "I_SKILLBOOK_Rogue_OdinSCO_SmokeGrenade",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "4"
+object category "I_SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "4"
+object category "I_SKILLBOOK_Rogue_OdinSCO_PlayOfTheGame",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "9"
+object category "I_SKILLBOOK_Rogue_OdinSCO_Misdirection",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "13"
+object category "I_SKILLBOOK_Rogue_OdinSCO_FindersKeepers",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "13"
+object category "I_SKILLBOOK_Rogue_OdinSCO_ShadowStep",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "13"
+object category "I_SKILLBOOK_Rogue_OdinSCO_Misfire",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "16"
+object category "I_SKILLBOOK_Rogue_OdinSCO_CrawlingInfestation",1,0,0,0,0,0,0,0
+new treasuretable "ST_OdinSCO_Trader"
+new subtable "1,1"
+StartLevel "1"
+object category "T_ST_OdinSCO_NewSpells",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "1"
+object category "I_SKILLBOOK_Rogue_Adrenaline",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "1"
+object category "I_SKILLBOOK_Rogue_Choloroform",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "1"
+object category "I_SKILLBOOK_Rogue_ThrowingKnife",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "1"
+object category "I_SKILLBOOK_Rogue_Vault",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "4"
+object category "I_SKILLBOOK_Rogue_CloakAndDagger",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "4"
+object category "I_SKILLBOOK_Rogue_KneeBreaker",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "4"
+object category "I_SKILLBOOK_Rogue_SerratedEdge",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "9"
+object category "I_SKILLBOOK_Rogue_SleepingArms",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "9"
+object category "I_SKILLBOOK_Rogue_CorruptedBlade",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "9"
+object category "I_SKILLBOOK_Rogue_GagOrder",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "9"
+object category "I_SKILLBOOK_Rogue_LaunchBomber",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "13"
+object category "I_SKILLBOOK_Rogue_DaggersDrawn",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "16"
+object category "I_SKILLBOOK_Rogue_TerrifyingCruelty",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "9"
+object category "I_SKILLBOOK_Rogue_FanOfKnives",1,0,0,0,0,0,0,0
+new subtable "1,1"
+StartLevel "16"
+object category "I_SKILLBOOK_Rogue_Fatality",1,0,0,0,0,0,0,0
+new treasuretable "ST_Skillbook_RogueTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_ST_OdinSCO_NewSpells",1,0,0,0,0,0,0,0
+new treasuretable "FTJ_Skillbook_RogueTrainer"
+CanMerge 1
+new subtable "1,1"
+StartLevel "1"
+object category "T_ST_OdinSCO_NewSpells",1,0,0,0,0,0,0,0

@@ -1,0 +1,14 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedSkill(_Character, "Target_Fatality", _, _)
+AND
+HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
+THEN
+ApplyStatus(_Character, "INVISIBLE", 6.0, 0, _Character);
+EXITSECTION
+
+ENDEXITSECTION

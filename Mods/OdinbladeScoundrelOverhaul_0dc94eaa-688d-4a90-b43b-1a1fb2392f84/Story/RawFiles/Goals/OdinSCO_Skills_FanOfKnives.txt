@@ -1,0 +1,22 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_FANOFKNIVES_ANIM")
+THEN
+// CharacterPurgeQueue(_Character);
+CharacterSetAnimationOverride(_Character, "");
+ProcObjectTimer(_Character, "OdinSCO_FANOFKNIVES_CAST", 100);
+// CharacterUseSkill(_Character, "Projectile_OdinSCO_FanOfKnives_Combo", _Character, 1, 1, 1);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_FANOFKNIVES_CAST")
+THEN
+// CharacterPurgeQueue(_Character);
+CharacterUseSkill(_Character, "Projectile_OdinSCO_FanOfKnives_Combo", _Character, 1, 1, 1);
+// PlayAnimation(_Character, "skill_attack_round_01_cast");
+EXITSECTION
+
+ENDEXITSECTION

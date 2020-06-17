@@ -10,16 +10,29 @@ OdinScoundrelOverhaul.ActivatedComboPoints = {
     OdinSCO_USE_COMBO_3 = 3
 }
 
+local function refreshDeadlyFlourish(character)
+    local slot = NRD_SkillBarFindSkill(character, "Shout_OdinSCO_DeadlyFlourish")
+    NRD_SkillBarClear(character, slot)
+    Osi.DB_OBSCO_Flicker_DeadlyFlourish(character, slot)
+    NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 0.0)
+    Osi.ProcObjectTimer(character, "ODINSCO_FLICKER_DEADLYFLOURISH", 1)
+end
+
 function incrementComboPoints(character, points)
-    local newAmount = getComboPoints(character) + points
-    if newAmount == 1 then
-        ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
-    elseif newAmount == 2 then
-        ApplyStatus(character, "OdinSCO_COMBO_2", -1.0, 1, character)
-    elseif newAmount >= 3 then
-        newAmount = 3
-        if HasActiveStatus(character, "OdinSCO_COMBO_3") == 0 then
-            ApplyStatus(character, "OdinSCO_COMBO_3", -1.0, 1, character)
+    Ext.Print("incrementComboPoints")
+    if IsSkillActive(character, "Shout_OdinSCO_DeadlyFlourish") then
+        local newAmount = getComboPoints(character) + points
+        if newAmount == 1 then
+            ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
+        elseif newAmount == 2 then
+            ApplyStatus(character, "OdinSCO_COMBO_2", -1.0, 1, character)
+        elseif newAmount >= 3 then
+            newAmount = 3
+            if HasActiveStatus(character, "OdinSCO_COMBO_3") == 0 then
+                ApplyStatus(character, "OdinSCO_COMBO_3", -1.0, 1, character)
+                SetTag(character, "ODINSCO_COMBO_READY")
+                refreshDeadlyFlourish(character)
+            end
         end
     end
 end
@@ -56,33 +69,14 @@ end
 
 local function activateComboPoints(character)
     local comboPointsCount = getComboPoints(character)
-    if comboPointsCount ~= 0 then
-        local activatedComboPointsCount = getActivatedComboPoints(character)
-
-        if comboPointsCount > 0 and activatedComboPointsCount == 0 then
-            ApplyStatus(character, "OdinSCO_USE_COMBO_1", -1.0, 1, character)
-            CharacterStatusText(character, "Activated: <font color='#C9AA58'>Combo I</font>")
-
-            -- setComboTierSkills(character, 1, activatedComboPointsCount)
-        elseif comboPointsCount > 1 and activatedComboPointsCount == 1 then
-            ApplyStatus(character, "OdinSCO_USE_COMBO_2", -1.0, 1, character)
-            CharacterStatusText(character, "Activated: <font color='#C9AA58'>Combo II</font>")
-
-            -- setComboTierSkills(character, 2, activatedComboPointsCount)
-        elseif comboPointsCount > 2 and activatedComboPointsCount == 2 then
-            ApplyStatus(character, "OdinSCO_USE_COMBO_3", -1.0, 1, character)
-            CharacterStatusText(character, "Activated: <font color='#C9AA58'>Combo III</font>")
-
-            -- setComboTierSkills(character, 3, activatedComboPointsCount)
-        else
-            RemoveStatus(character, "OdinSCO_USE_COMBO_3")
-            RemoveStatus(character, "OdinSCO_USE_COMBO_2")
-            RemoveStatus(character, "OdinSCO_USE_COMBO_1")
-
-            -- setComboTierSkills(character, 0, activatedComboPointsCount)
-        end
+    local isComboActivated = HasActiveStatus(character, "OdinSCO_USE_COMBO_3")
+    if comboPointsCount == 3 and isComboActivated == 0  then
+        ApplyStatus(character, "OdinSCO_USE_COMBO_3", -1.0, 1, character)
+        CharacterStatusText(character, "<font color='#C9AA58'>Combo</font> Activated</font>")
+    elseif comboPointsCount == 3 then
+        RemoveStatus(character, "OdinSCO_USE_COMBO_3")
+        CharacterStatusText(character, "<font color='#C9AA58'>Combo</font> Deactivated</font>")
     end
-    -- setComboTierSkills(character, comboPointsCount) -- check this is the right place to call
 end
 
 function getComboPoints(character)
@@ -105,44 +99,57 @@ function getActivatedComboPoints(character)
     return activatedComboPointsCount
 end
 
-function consumeComboPoints(character, activatedComboPoints, comboToAdd)
-    local activatedComboPointsCount = getActivatedComboPoints(character)
-    local comboPointsStatus = nil
-    for status, value in pairs(OdinScoundrelOverhaul.ComboPoints) do
-        if HasActiveStatus(character, status) == 1 then
-            comboPointsStatus = status
-        end
-    end
-    local activatedCombo = nil
-    for status, value in pairs(OdinScoundrelOverhaul.ActivatedComboPoints) do
-        if value == activatedComboPoints then
-            activatedCombo = status
-        end
-    end
-    if comboPointsStatus ~= nil and activatedCombo ~= nil then
-        local comboPointsToRemove = OdinScoundrelOverhaul.ActivatedComboPoints[activatedCombo]
-        local comboPointsCount = OdinScoundrelOverhaul.ComboPoints[comboPointsStatus]
-        local newComboPointsCount = comboPointsCount - comboPointsToRemove
+function consumeComboPoints(character)
+    RemoveStatus(character, "OdinSCO_COMBO_3")
+    RemoveStatus(character, "OdinSCO_COMBO_2")
+    RemoveStatus(character, "OdinSCO_COMBO_1")
 
-        RemoveStatus(character, "OdinSCO_COMBO_3")
-        RemoveStatus(character, "OdinSCO_COMBO_2")
-        RemoveStatus(character, "OdinSCO_COMBO_1")
+    RemoveStatus(character, "OdinSCO_USE_COMBO_3")
+    RemoveStatus(character, "OdinSCO_USE_COMBO_2")
+    RemoveStatus(character, "OdinSCO_USE_COMBO_1")
 
-        RemoveStatus(character, "OdinSCO_USE_COMBO_3")
-        RemoveStatus(character, "OdinSCO_USE_COMBO_2")
-        RemoveStatus(character, "OdinSCO_USE_COMBO_1")
-
-        if comboToAdd > 0 then
-            newComboPointsCount = newComboPointsCount + comboToAdd
-        end
-
-        incrementComboPoints(character, newComboPointsCount)
-        -- Ext.Print("Setting comboTier to: "..newComboPointsCount.." with "..activatedComboPointsCount)
-        -- setComboTierSkills(character, newComboPointsCount, activatedComboPointsCount)
-    else
-        -- setComboTierSkills(character, 0, 0)
-    end
+    ClearTag(character, "ODINSCO_COMBO_READY")
+    refreshDeadlyFlourish(character)
 end
+
+-- function consumeComboPoints(character, activatedComboPoints, comboToAdd)
+--     local activatedComboPointsCount = getActivatedComboPoints(character)
+--     local comboPointsStatus = nil
+--     for status, value in pairs(OdinScoundrelOverhaul.ComboPoints) do
+--         if HasActiveStatus(character, status) == 1 then
+--             comboPointsStatus = status
+--         end
+--     end
+--     local activatedCombo = nil
+--     for status, value in pairs(OdinScoundrelOverhaul.ActivatedComboPoints) do
+--         if value == activatedComboPoints then
+--             activatedCombo = status
+--         end
+--     end
+--     if comboPointsStatus ~= nil and activatedCombo ~= nil then
+--         local comboPointsToRemove = OdinScoundrelOverhaul.ActivatedComboPoints[activatedCombo]
+--         local comboPointsCount = OdinScoundrelOverhaul.ComboPoints[comboPointsStatus]
+--         local newComboPointsCount = comboPointsCount - comboPointsToRemove
+
+--         RemoveStatus(character, "OdinSCO_COMBO_3")
+--         RemoveStatus(character, "OdinSCO_COMBO_2")
+--         RemoveStatus(character, "OdinSCO_COMBO_1")
+
+--         RemoveStatus(character, "OdinSCO_USE_COMBO_3")
+--         RemoveStatus(character, "OdinSCO_USE_COMBO_2")
+--         RemoveStatus(character, "OdinSCO_USE_COMBO_1")
+
+--         if comboToAdd > 0 then
+--             newComboPointsCount = newComboPointsCount + comboToAdd
+--         end
+
+--         incrementComboPoints(character, newComboPointsCount)
+--         -- Ext.Print("Setting comboTier to: "..newComboPointsCount.." with "..activatedComboPointsCount)
+--         -- setComboTierSkills(character, newComboPointsCount, activatedComboPointsCount)
+--     else
+--         -- setComboTierSkills(character, 0, 0)
+--     end
+-- end
 
 function checkAddedSkill(character, skillId)
     Ext.Print("Check added skill entered")
@@ -173,4 +180,5 @@ end
 
 Ext.NewCall(incrementComboPoints, "OBSCO_LUA_IncrementComboPoints", "(CHARACTERGUID)_Character, (INTEGER)_PointsToAdd");
 Ext.NewCall(activateComboPoints, "OBSCO_LUA_ActivateComboPoints", "(CHARACTERGUID)_Character");
+Ext.NewCall(consumeComboPoints, "OBSCO_LUA_ConsumeComboPoints", "(CHARACTERGUID)_Character");
 Ext.NewCall(checkAddedSkill, "OBSCO_LUA_CheckAddedSkill", "(CHARACTERGUID)_Character, (STRING)_SkillId");

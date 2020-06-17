@@ -1,0 +1,53 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedItem(_Character, b4ad7427-a854-4329-a8ff-b6126c93a3bc)
+AND
+IsGameLevel("OdinSCO_Test", 1)
+THEN
+//CharacterAddSkill(_Character, "");
+CharacterAddSkill(_Character, "Shout_OdinSCO_Debug_AddCombo");
+CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish");
+
+CharacterAddSkill(_Character, "Jump_CloakAndDagger");
+
+CharacterAddSkill(_Character, "MultiStrike_OdinSCO_ShadowStep");
+CharacterAddSkill(_Character, "MultiStrike_Vault");
+
+CharacterAddSkill(_Character, "Projectile_Chloroform");
+CharacterAddSkill(_Character, "Projectile_FanOfKnives");
+CharacterAddSkill(_Character, "Projectile_LaunchBomber");
+CharacterAddSkill(_Character, "Projectile_OdinSCO_Firecracker");
+CharacterAddSkill(_Character, "Projectile_ThrowingKnife");
+
+CharacterAddSkill(_Character, "Shout_Adrenaline");
+CharacterAddSkill(_Character, "Shout_OdinSCO_PlayOfTheGame");
+CharacterAddSkill(_Character, "Shout_OdinSCO_SlipIntoShadows");
+
+CharacterAddSkill(_Character, "Target_CorruptedBlade");
+CharacterAddSkill(_Character, "Target_DaggersDrawn");
+CharacterAddSkill(_Character, "Target_Fatality");
+CharacterAddSkill(_Character, "Target_GagOrder");
+CharacterAddSkill(_Character, "Target_KneeBreaker");
+CharacterAddSkill(_Character, "Target_OdinSCO_CrawlingInfestation");
+CharacterAddSkill(_Character, "Target_OdinSCO_FindersKeepers");
+CharacterAddSkill(_Character, "Target_OdinSCO_SinisterStrike");
+CharacterAddSkill(_Character, "Target_SerratedEdge");
+CharacterAddSkill(_Character, "Target_SleepingArms");
+CharacterAddSkill(_Character, "Target_TerrifyingCruelty");
+
+IF
+ObjectTurnStarted(_Character)
+AND
+NRD_CharacterGetStatInt((CHARACTERGUID)_Character, "CurrentAP", _AP)
+AND
+NRD_IntegerToString(_AP, _APString)
+THEN
+NRD_DebugLog(_APString);
+
+EXITSECTION
+
+ENDEXITSECTION

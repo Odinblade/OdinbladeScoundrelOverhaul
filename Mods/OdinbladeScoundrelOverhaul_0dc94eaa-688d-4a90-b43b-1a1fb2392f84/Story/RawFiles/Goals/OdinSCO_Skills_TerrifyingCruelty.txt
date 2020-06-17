@@ -1,0 +1,19 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedSkill(_Character, "Target_TerrifyingCruelty", _, _)
+THEN
+ApplyStatus(_Character, "OdinSCO_PREPHIT_TERRIFYINGCRUELTY", 6.0, 1, _Character);
+
+IF
+NRD_OnPrepareHit(_Target, _Character, _Damage, _HitHandle)
+AND
+HasActiveStatus(_Character, "OdinSCO_PREPHIT_TERRIFYINGCRUELTY", 1)
+THEN
+OBSCO_LUA_Skill_OnPrepareHit(_Character, _Target, _Damage, _HitHandle, "Target_TerrifyingCruelty");
+EXITSECTION
+
+ENDEXITSECTION

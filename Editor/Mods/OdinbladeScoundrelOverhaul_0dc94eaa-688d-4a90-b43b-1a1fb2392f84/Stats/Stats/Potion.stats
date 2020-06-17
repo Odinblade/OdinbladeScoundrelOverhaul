@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="48e63fff-81e0-42bb-ac51-39f5904b97be">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Stats_OdinSCO_Cruelty" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Duration" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="FireResistance" type="IntegerStatObjectFieldDefinition" value="-20" />
+        <field name="EarthResistance" type="IntegerStatObjectFieldDefinition" value="-20" />
+        <field name="WaterResistance" type="IntegerStatObjectFieldDefinition" value="-20" />
+        <field name="AirResistance" type="IntegerStatObjectFieldDefinition" value="-20" />
+        <field name="PoisonResistance" type="IntegerStatObjectFieldDefinition" value="-20" />
+        <field name="PiercingResistance" type="IntegerStatObjectFieldDefinition" value="-20" />
+        <field name="PhysicalResistance" type="IntegerStatObjectFieldDefinition" value="-20" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Stats_OdinSCO_Adrenaline_Combo" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Duration" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="APRecovery" type="IntegerStatObjectFieldDefinition" value="2" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Stats_OdinSCO_Struggle" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="APCostBoost" type="IntegerStatObjectFieldDefinition" value="1" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Stats_OdinSCO_FindersKeepers" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Duration" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="APStart" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Stats_OdinSCO_FindersKeepers_Enemy" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="Duration" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="APStart" type="IntegerStatObjectFieldDefinition" value="-2" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Stats_OdinSCO_PlayOfTheGame" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" value="10" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Stats_OdinSCO_PlayOfTheGame_Combo" />
+        <field name="DamageBoost" type="IntegerStatObjectFieldDefinition" value="25" />
+        <field name="Act" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="Act" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="ActPart" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

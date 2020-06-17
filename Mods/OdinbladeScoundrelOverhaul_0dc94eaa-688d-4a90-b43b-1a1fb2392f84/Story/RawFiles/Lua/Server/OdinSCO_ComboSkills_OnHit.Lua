@@ -1,93 +1,367 @@
 Ext.Require("Shared/OdinSCO_SharedData.lua")
 Ext.Require("Shared/OdinSCO_ComboPoints.lua")
 
--- SOME RULES
--- Each skill MUST call consumeComboPoints in one way or another.
-
 local function multiplyDamage(target, hithandle, multiplier)
     for k,type in pairs(OdinScoundrelOverhaul.DamageTypes) do
         local damage = NRD_HitStatusGetDamage(target, hithandle, type)
-        -- local damage2 = NRD_HitGetDamage(hithandle, "Physical")
-        Ext.Print("Starting damage: "..damage)
-        -- Ext.Print("Starting damage2: "..damage2)
-        damage = damage * multiplier
-        NRD_HitStatusClearDamage(target, hithandle, type)
-        NRD_HitStatusAddDamage(target, hithandle, type, damage)
-        Ext.Print("Ending damage: "..damage)
+        if damage ~= 0 then
+            damage = damage * multiplier
+            NRD_HitStatusClearDamage(target, hithandle, type)
+            NRD_HitStatusAddDamage(target, hithandle, type, damage)
+        end
+    end
+end
+
+local function convertHitToElementalDamage(target, damage, hithandle)
+    local newType = OdinScoundrelOverhaul.ElementalDamageTypes[math.random(#OdinScoundrelOverhaul.ElementalDamageTypes)]
+    -- for k,type in pairs(OdinScoundrelOverhaul.DamageTypes) do
+        -- local damage = NRD_HitStatusGetDamage(target, hithandle, type)
+        if damage ~= 0 then
+            -- NRD_HitStatusClearDamage(target, hithandle, type)
+            NRD_HitClearAllDamage(hithandle)
+            NRD_HitAddDamage(hithandle, newType, damage)
+        end
+        -- hithandle.DamageList:ConvertDamageType(newType)
+    -- end
+    return newType
+end
+
+-- SOME RULES
+-- Each skill MUST call consumeComboPoints in one way or another.
+
+local function skillShadowStep(character, target, hithandle)
+    Ext.Print("skillShadowStep started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    -- local rows = Osi.DB_OBSCO_ShadowStep_Stealth:Get(character)
+    -- if rows ~= nil then
+    if HasActiveStatus(character, "OdinSCO_APPLY_SHADOWSTEP_BONUS") == 1 then
+        NRD_DebugLog("skillShadowStep stealth multiplier applied")
+        multiplyDamage(target, hithandle, 1.2)
+    end
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then 
+        consumeComboPoints(character)
+        Osi.OBSCO_QueueStatusApply(character, "INVISIBLE", character, 6.0, 0, 500)
+    end
+    if didHit == 1 then
+        -- incrementComboPoints(character, 1)
+        Osi.ProcObjectTimerCancel(character, "OdinSCO_INCREMENT_COMBO_DELAYED")
+        Osi.ProcObjectTimer(character, "OdinSCO_INCREMENT_COMBO_DELAYED", 1250)
+    end
+    Osi.ProcObjectTimerCancel(character, "OdinSCO_SHADOWSTEP_RETURN")
+    Osi.ProcObjectTimer(character, "OdinSCO_SHADOWSTEP_RETURN", 1000)
+end
+
+local function skillVault(character,  target, hithandle)
+    Ext.Print("skillVault started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then 
+        consumeComboPoints(character)
+        multiplyDamage(target, hithandle, 1.3)
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+local function skillChloroform(character, target, hithandle)
+    Ext.Print("skillChloroform started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
+        consumeComboPoints(character)
+        
+        NRD_HitStatusClearAllDamage(target, hithandle)
+
+        local x, y, z = GetPosition(target)
+        NRD_ProjectilePrepareLaunch();
+        NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_Chloroform_Combo");
+        NRD_ProjectileSetVector3("SourcePosition", x, y+1, z);
+        NRD_ProjectileSetVector3("TargetPosition", x, y, z);
+        NRD_ProjectileSetGuidString("Caster", character);
+        NRD_ProjectileSetGuidString("Target", target);
+        NRD_ProjectileLaunch();
+    end
+end
+
+local function skillFanOfKnives(character, target, hithandle)
+    Ext.Print("skillFanOfKnives started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then    
+        consumeComboPoints(character)
+        Osi.ProcObjectTimerCancel(character, "OdinSCO_FANOFKNIVES_ANIM")
+        Osi.ProcObjectTimer(character, "OdinSCO_FANOFKNIVES_ANIM", 1000)
+    end
+    if didHit == 1 then
+        Osi.ProcObjectTimerCancel(character, "OdinSCO_INCREMENT_COMBO_DELAYED")
+        Osi.ProcObjectTimer(character, "OdinSCO_INCREMENT_COMBO_DELAYED", 1250)
     end
 end
 
 local function skillThrowingKnife(character, target, hithandle)
-    if HasActiveStatus(character, "INVISIBLE") then
-        Ext.Print("Char is INVISIBLE")
+    Ext.Print("skillThrowingKnife started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then    
+        consumeComboPoints(character)
+        NRD_HitStatusClearAllDamage(target, hithandle)
+
+        local x, y, z = GetPosition(target)
+        NRD_ProjectilePrepareLaunch();
+        NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_ThrowingKnife_Combo");
+        NRD_ProjectileSetVector3("SourcePosition", x, y+1, z);
+        NRD_ProjectileSetVector3("TargetPosition", x, y, z);
+        NRD_ProjectileSetGuidString("Caster", character);
+        NRD_ProjectileSetGuidString("Target", target);
+        NRD_ProjectileLaunch();
     end
-    Ext.Print("SkillThrowingKnife started")
-    local activatedComboPoints = getActivatedComboPoints(character)
-    Ext.Print(activatedComboPoints)
-    if activatedComboPoints ~= 0 then    
-        consumeComboPoints(character, activatedComboPoints, 0)
-        
-        if activatedComboPoints >= 2 then
-            ApplyStatus(target, "BLEEDING", 6.0, 0, character)
-            -- local damage = NRD_HitStatusGetDamage(target, hithandle, "Physical")
-            -- damage = damage*1.125
-            -- NRD_HitStatusClearDamage(target, hithandle, "Physical")
-            -- NRD_HitStatusAddDamage(target, hithandle, "Physical", damage)
-            -- Ext.Print("DAMAGE BUMP")
-        end
-        if activatedComboPoints == 3 then
-            NRD_HitStatusClearAllDamage(target, hithandle)
-            -- NRD_SkillSetCooldown(character, "Projectile_ThrowingKnife", 0.0)
-            local x, y, z = GetPosition(target)
-            NRD_ProjectilePrepareLaunch();
-            NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_ThrowingKnife_C3");
-            NRD_ProjectileSetVector3("SourcePosition", x, y+1, z);
-            NRD_ProjectileSetVector3("TargetPosition", x, y, z);
-            NRD_ProjectileSetGuidString("Caster", character);
-            NRD_ProjectileSetGuidString("Target", target);
-            NRD_ProjectileLaunch();
-        end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
     end
 end
 
-local function skillVault(character, target, hithandle)
-    Ext.Print("SkillVault started")
-    local activatedComboPoints = getActivatedComboPoints(character)
-    Ext.Print(activatedComboPoints)
-    if activatedComboPoints ~= 0 then
-        consumeComboPoints(character, activatedComboPoints, 0)
-        -- if activatedComboPoints >= 2 then
-        --     ApplyStatus(target, "REGENERATION", 6.0, 0, character)
-        -- end
-        if activatedComboPoints == 3 then
-            -- hithandle.DamageList:Multiply(1.5)
+local function skillSinisterStrike(character, target, hithandle)
+    Ext.Print("skillSinisterStrike started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        local damageType = NRD_StatusGetString(target, hithandle, "DamageType")
+        Ext.Print("skillSinisterStrike: damageType - "..damageType)
+
+        for k,type in pairs(OdinScoundrelOverhaul.ElementalDamageBonus) do
+            if k == damageType then
+                Osi.OBSCO_QueueStatusApply(target, type, character, 6.0, 0, 10)
+            end
+        end
+
+        local newCD = NRD_SkillGetCooldown(character, "Target_OdinSCO_SinisterStrike") - 6.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_SinisterStrike", newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_SinisterStrike", 0.0)
+        end
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+local function skillSinisterStrike_Prep(character, target, damage, hithandle)
+    Ext.Print("skillSinisterStrike_Prep started")
+    convertHitToElementalDamage(target, damage, hithandle)
+    RemoveStatus(character, "OdinSCO_PREPHIT_SINISTERSTRIKE")
+end
+
+local function skillCorruptedBlade(character, target, hithandle)
+    Ext.Print("skillCorruptedBlade started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        Osi.OBSCO_QueueStatusApply(target, "DISEASED", character, 12.0, 0, 10)
+        Osi.OBSCO_QueueStatusApply(target, "POISONED", character, 12.0, 0, 10)
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+local function skillFatality(character, target, hithandle)
+    Ext.Print("skillFatality started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then  
+        consumeComboPoints(character)
+        multiplyDamage(target, hithandle, 2.0)
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+-- local function skillFatality_Prep(character, target, damage, hithandle)
+--     Ext.Print("skillFatality_Prep started")
+--     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+--         consumeComboPoints(character)
+--         Osi.OBSCO_QueueStatusApply(character, "INVISIBLE", character, 6.0, 0)
+--     end
+--     RemoveStatus(character, "OdinSCO_PREPHIT_FATALITY")
+-- end
+
+local function skillGagOrder(character, target, hithandle)
+    Ext.Print("skillGagOrder started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        if didHit == 1 then
+            Osi.OBSCO_QueueStatusApply(target, "MUTED", character, 12.0, 0, 10)
+        end
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+local function skillGagOrder_Prep(character, target, damage, hithandle)
+    Ext.Print("skillGagOrder_Prep started")
+    convertHitToElementalDamage(target, damage, hithandle)
+    RemoveStatus(character, "OdinSCO_PREPHIT_GAGORDER")
+end
+
+
+local function skillKneeBreaker(character, target, hithandle)
+    Ext.Print("skillKneeBreaker started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        if didHit == 1 then
+            Osi.OBSCO_QueueDamageOnMoveApply(target, "DAMAGE_ON_MOVE", character, 12.0, 0.375)
+        end
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+local function skillSerratedEdge(character, target, hithandle)
+    Ext.Print("skillSerratedEdge started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        if GetStatusTurns(target, "BLEEDING") ~= nil then
+            Ext.Print("skillSerratedEdge: BLEEDING boost")
             multiplyDamage(target, hithandle, 1.25)
-            -- for k,type in pairs(OdinScoundrelOverhaul.DamageTypes) do
-            --     local damage = NRD_HitStatusGetDamage(target, hithandle, type)
-            --     -- local damage2 = NRD_HitGetDamage(hithandle, "Physical")
-            --     Ext.Print("Starting damage: "..damage)
-            --     -- Ext.Print("Starting damage2: "..damage2)
-            --     damage = damage * 1.25
-            --     NRD_HitStatusClearDamage(target, hithandle, type)
-            --     NRD_HitStatusAddDamage(target, hithandle, type, damage)
-            --     Ext.Print("Ending damage: "..damage)
-            -- end
+        end
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+local function skillSleepingArms(character, target, hithandle)
+    Ext.Print("skillSleepingArms started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        if didHit == 1 then
+            Osi.OBSCO_QueueStatusApply(target, "OdinSCO_STRUGGLE", character, 12.0, 0, 10)
+        end
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+
+local function skillTerrifyingCruelty(character, target, hithandle)
+    Ext.Print("skillTerrifyingCruelty started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        if didHit == 1 then
+            Osi.OBSCO_QueueStatusApply(target, "OdinSCO_CRUELTY", character, 12.0, 0, 10)
+        end
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
+local function skillTerrifyingCruelty_Prep(character, target, damage, hithandle)
+    Ext.Print("skillTerrifyingCruelty_Prep started")
+    convertHitToElementalDamage(target, damage, hithandle)
+    RemoveStatus(character, "OdinSCO_PREPHIT_TERRIFYINGCRUELTY")
+end
+
+local function skillCloakAndDagger(character, x, y, z)
+    Ext.Print("skillCloakAndDagger started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
+        consumeComboPoints(character)
+        ApplyStatus(character, "INVISIBLE", 6.0, 0, character)
+
+        local newCD = NRD_SkillGetCooldown(character, "Jump_CloakAndDagger") - 6.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, "Jump_CloakAndDagger", newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, "Jump_CloakAndDagger", 0.0)
         end
     end
 end
 
-local function skillPrepareVault(character, target, hithandle)
-    Ext.Print("SkillPrepareVault started")
-    local activatedComboPoints = getActivatedComboPoints(character)
-    Ext.Print(activatedComboPoints)
-    if activatedComboPoints ~= 0 then
-        if activatedComboPoints == 3 then
-            local invis = HasActiveStatus(character, "INVISIBLE")
-            Ext.Print(invis)
+local function skillLaunchBomber(character, x, y, z)
+    Ext.Print("skillLaunchBomber started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
+        consumeComboPoints(character)
+
+        local newCD = NRD_SkillGetCooldown(character, "Projectile_LaunchBomber") - 18.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, "Projectile_LaunchBomber", newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, "Projectile_LaunchBomber", 0.0)
         end
     end
 end
 
+local function skillFirecracker(character, x, y, z)
+    Ext.Print("skillFirecracker started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
+        consumeComboPoints(character)
+
+        local ox, oy, oz = GetPosition(character)
+        NRD_ProjectilePrepareLaunch();
+        NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_Firecracker_Combo");
+        NRD_ProjectileSetVector3("SourcePosition", ox, oy+1, oz);
+        NRD_ProjectileSetVector3("TargetPosition", x, y, z);
+        NRD_ProjectileSetGuidString("Caster", character);
+        NRD_ProjectileLaunch();
+    end
+end
+
+local function skillFindersKeepers(character, x, y, z)
+    Ext.Print("skillFindersKeepers started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+
+        local newCD = NRD_SkillGetCooldown(character, "Target_OdinSCO_FindersKeepers") - 30.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_FindersKeepers", newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_FindersKeepers", 0.0)
+        end
+    end
+end
+
+local function skillAdrenaline(character, x, y, z)
+    Ext.Print("skillAdrenaline started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        ApplyStatus(character, "OdinSCO_ADRENALINE_COMBO", 6.0, 0, character)
+
+        local newCD = NRD_SkillGetCooldown(character, "Shout_Adrenaline") - 6.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, "Shout_Adrenaline", newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, "Shout_Adrenaline", 0.0)
+        end
+    end
+    incrementComboPoints(character, 1)
+end
+
+local function skillPlayOfTheGame(character, x, y, z)
+    Ext.Print("skillPlayOfTheGame started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        ApplyStatus(character, "OdinSCO_PLAYOFTHEGAME_COMBO", 6.0, 0, character)
+    else
+        ApplyStatus(character, "OdinSCO_PLAYOFTHEGAME", 6.0, 0, character)
+        incrementComboPoints(character, 2)
+    end
+end
+
+local function skillSlipIntoShadows(character, x, y, z)
+    Ext.Print("skillSlipIntoShadows started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        ApplyStatus(character, "HASTED", 6.0, 0, character)
+    end
+    incrementComboPoints(character, 1)
+end
+
+-- Initiate region
 local function skillOnHit(character, target, hithandle, skillId)
     Ext.Print(skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnHit[skillId]
@@ -96,26 +370,62 @@ local function skillOnHit(character, target, hithandle, skillId)
     end
 end
 
-local function skillOnPrepareHit(character, target, hithandle, skillId)
+local function skillOnPrepareHit(character, target, damage, hithandle, skillId)
     Ext.Print(skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnPrepareHit[skillId]
     if func~= nil then
-        func(character, target, hithandle)
+        func(character, target, damage, hithandle)
     end
 end
 
+local function skillAtPos(character, x, y, z, skillId)
+    Ext.Print(skillId)
+    local func = OdinScoundrelOverhaul.ComboSkills.AtPos[skillId]
+    if func~= nil then
+        func(character, x, y, z)
+    end
+end
+
+
 OdinScoundrelOverhaul.ComboSkills.OnHit = {
+    MultiStrike_OdinSCO_ShadowStep = skillShadowStep,
+    MultiStrike_Vault = skillVault,
+    Projectile_Chloroform = skillChloroform,
+    Projectile_FanOfKnives = skillFanOfKnives,
     Projectile_ThrowingKnife = skillThrowingKnife,
-    MultiStrike_Vault = skillVault
+    Target_CorruptedBlade = skillCorruptedBlade,
+    Target_Fatality = skillFatality,
+    Target_GagOrder = skillGagOrder,
+    Target_KneeBreaker = skillKneeBreaker,
+    Target_SerratedEdge = skillSerratedEdge,
+    Target_SleepingArms = skillSleepingArms,
+    Target_OdinSCO_SinisterStrike = skillSinisterStrike,
+    Target_TerrifyingCruelty = skillTerrifyingCruelty
+    -- Target_OdinSCO_SinisterStrike = skillSinisterStrike
 }
 
 OdinScoundrelOverhaul.ComboSkills.OnPrepareHit = {
-    -- Projectile_ThrowingKnife = skillThrowingKnife,
-    MultiStrike_Vault = skillPrepareVault
+    -- Target_Fatality = skillFatality_Prep,
+    Target_GagOrder = skillGagOrder_Prep,
+    Target_OdinSCO_SinisterStrike = skillSinisterStrike_Prep,
+    Target_TerrifyingCruelty = skillTerrifyingCruelty_Prep
 }
 
--- OBSCO_LUA_Skill_OnPrepareHit
--- Ext.NewCall(skillThrowingKnife, "OBSCO_LUA_Skill_ThrowingKnife", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle");
--- Ext.NewCall(setComboTierSkills, "OBSCO_LUA_SetComboTierSkills", "(GUIDSTRING)_Character, (INTEGER)_Tier")
+OdinScoundrelOverhaul.ComboSkills.AtPos = {
+    Jump_CloakAndDagger = skillCloakAndDagger,
+    Projectile_LaunchBomber = skillLaunchBomber,
+    Projectile_OdinSCO_Firecracker = skillFirecracker,
+    Target_OdinSCO_FindersKeepers = skillFindersKeepers,
+    Shout_Adrenaline = skillAdrenaline,
+    Shout_OdinSCO_PlayOfTheGame = skillPlayOfTheGame,
+    Shout_OdinSCO_SlipIntoShadows = skillSlipIntoShadows
+}
+
+-- Ext.RegisterListener("BeforeCharacterApplyDamage", BeforeCharacterApplyDamage)
+
 Ext.NewCall(skillOnHit, "OBSCO_LUA_Skill_OnHit", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle, (STRING)_SkillId")
-Ext.NewCall(skillOnPrepareHit, "OBSCO_LUA_Skill_OnPrepareHit", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle, (STRING)_SkillId")
+Ext.NewCall(skillOnPrepareHit, "OBSCO_LUA_Skill_OnPrepareHit", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER)_Damage, (INTEGER64)_HitHandle, (STRING)_SkillId")
+Ext.NewCall(skillAtPos, "OBSCO_LUA_Skill_AtPos", "(GUIDSTRING)_Character, (REAL)_X, (REAL)_Y, (REAL)_Z, (STRING)_SkillId")
+
+-- SPECIAL PROCESSING
+Ext.NewCall(skillSinisterStrike, "OBSCO_Lua_Skill_SinisterStrike", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle")

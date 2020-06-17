@@ -42,5 +42,48 @@
         <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_ShadowStep" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="3" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="5" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="90" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="8" />
+        <field name="AreaRadius" type="IntegerStatObjectFieldDefinition" value="10" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="Death Type" />
+        <field name="MaxAttacks" type="IntegerStatObjectFieldDefinition" value="3" />
+        <field name="NextAttackChance" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="NextAttackChanceDivider" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="EndPosRadius" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="JumpDelay" type="IntegerStatObjectFieldDefinition" value="300" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 4" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf;Enemy;!Tagged:BLOCK_FORK" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="CHANGEME" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Shadow Step" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Backstab up to [1] targets, dealing [2] before blinking back to your original position. Deals &lt;font color='#40b606'&gt;+25% damage&lt;/font&gt; if used from &lt;font color='#639594'&gt;Invisibility&lt;/font&gt; or whilst &lt;font color='#639594'&gt;Sneaking&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color='#C9AA58'&gt;Combo&lt;/font&gt;: Become &lt;font color='#639594'&gt;Invisible&lt;/font&gt; for 1 turn after using this skill." />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="MaxAttacks;Damage;" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Warrior_BlinkStrike_Prepare_01" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_flurry_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Warrior_BlinkStrike_Cast_01:root:cast" />
+        <field name="MaleImpactEffects" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Warrior_BlinkStrike_Impact_01" />
+        <field name="FemaleImpactEffects" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Warrior_BlinkStrike_Impact_01" />
+        <field name="ReappearEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Warrior_BlinkStrike_Reappear_01" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="OverrideMinAP" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="AlwaysBackstab" />
+        <field name="Stealth" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>

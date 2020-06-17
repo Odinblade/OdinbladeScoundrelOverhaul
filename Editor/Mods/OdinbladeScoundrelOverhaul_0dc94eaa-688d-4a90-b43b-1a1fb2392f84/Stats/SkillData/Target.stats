@@ -3,26 +3,369 @@
   <stat_objects>
     <stat_object is_substat="false">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_KneeBreaker_C1" />
-        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="KneeBreaker" />
-        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Rupture Tendons [COMBO_1]" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_SinisterStrike" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Death Type" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 1" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="CHANGEME" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Sinister Strike" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Strike the target, dealing [1] converted into damage of a random &lt;font color='#c80030'&gt;element&lt;/font&gt;. Deals &lt;font color='#40b606'&gt;+25% damage&lt;/font&gt; if used from &lt;font color='#639594'&gt;Invisibility&lt;/font&gt; or whilst &lt;font color='#639594'&gt;Sneaking&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color='#C9AA58'&gt;Combo&lt;/font&gt;: Reduces this skill's cooldown by 1 and sets either &lt;font color='#7D71D9'&gt;Shocked&lt;/font&gt;, &lt;font color='#c7a758'&gt;Slowed&lt;/font&gt;, &lt;font color='#FE6E27'&gt;Burning&lt;/font&gt;, &lt;font color='#65C900'&gt;Poisoned&lt;/font&gt;, or &lt;font color='#cfecff'&gt;Chilled&lt;/font&gt; for 1 turn based on the skill's damage type." />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
+        <field name="FXScale" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Weapon_Blood_DummyFX_01:Dummy_FX_01,Dummy_FX_01;RS3_FX_Skills_Voodoo_Prepare_Weapon_Blood_Root_01,KeepRot:Dummy_Root" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Attack_Precision_Blood_Hand_01:Dummy_FX_01,Dummy_FX_01" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_SawtoothKnife_TargetEffect_01:Dummy_BodyFX:cast" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+        <field name="Stealth Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="120" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="nil" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_KneeBreaker_C2" />
-        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="KneeBreaker" />
-        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Rupture Tendons [COMBO_2]" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="CorruptedBlade" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="4" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="90" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="DECAYING_TOUCH,100,2;" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Death Type" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 3" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_CorruptedBlade" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="|Corrupted Blade|" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Dagger attack that deals [1] and sets Decay and Diseased.|" />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
+        <field name="FXScale" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Weapon_Decay_Hand_01:Dummy_FX_01,Dummy_FX_01;RS3_FX_Skills_Voodoo_Prepare_Weapon_Decay_Root_01,KeepRot:Dummy_Root" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Attack_Precision_Decay_Hand_01:Dummy_FX_01,Dummy_FX_01" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_CorruptedBlade_TargetEffect_01:Dummy_BodyFX:cast" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+        <field name="Stealth Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="120" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_KneeBreaker_C3" />
-        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="KneeBreaker" />
-        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Rupture Tendons [COMBO_3]" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="TerrifyingCruelty" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="3" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="4" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="125" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="BLEEDING,100,2;FEAR,100,1" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Death Type" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 5" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_TerrifyingCruelty" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="|Terrifying Cruelty|" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Dagger attack that deals [1] damage and sets Bleeding and Fear on all enemies in a small radius.|" />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
+        <field name="FXScale" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Weapon_Curse_DummyFX_01:Dummy_FX_01,Dummy_FX_01;RS3_FX_Skills_Voodoo_Prepare_Weapon_Curse_Root_01,KeepRot:Dummy_Root" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Attack_Precision_Curse_DummyFX_01:Dummy_FX_01,Dummy_FX_01;RS3_FX_Skills_Voodoo_TerrifyingCruelty_TargetEffect_Root_01:Dummy_Root:cast" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_TerrifyingCruelty_TargetEffect_01:Dummy_OverheadFX:cast" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+        <field name="Stealth Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="120" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="KneeBreaker" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="5" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="90" />
+        <field name="Damage Range" type="IntegerStatObjectFieldDefinition" value="10" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="DAMAGE_ON_MOVE,100,2,,75;" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 2" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_KneeBreaker" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="|Knee Breaker|" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Deal [1] to target character. Set a status that deals them piercing damage when they try to walk.|" />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Weapon_Purple_Hand_01:Dummy_R_HandFX,Dummy_L_HandFX;RS3_FX_Skills_Voodoo_Prepare_Weapon_Purple_Root_01,KeepRot:Dummy_Root" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Attack_Precision_Purple_Hand_02:Dummy_R_HandFX;RS3_FX_Skills_Voodoo_Attack_Precision_Purple_Hand_01:Dummy_CastFX:cast" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_KneeBreaker_TargetEffect_01:Dummy_BodyFX:cast" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="GagOrder" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="4" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="MUTED,100,1" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Death Type" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 3" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_GagOrder" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="|Gag Order|" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Reduce target's Magic Armour by [1]. Silence target|" />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
+        <field name="FXScale" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Weapon_Curse_GagOrder_DummyFX_01:Dummy_FX_01,Dummy_FX_01;RS3_FX_Skills_Voodoo_Prepare_Weapon_Curse_Root_01,KeepRot:Dummy_Root" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Attack_Precision_Curse_GagOrder_DummyFX_01:Dummy_FX_01,Dummy_FX_01" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_GagOrder_TargetEffect_NeckFX_01:Dummy_NeckFX:cast" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Fatality" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="-1" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="125" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="TryKill,100,1,,20;" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="10" enumeration_type_name="Death Type" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 5" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="3" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="3" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_MortalBlow" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Mortal Blow" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Deal [1] damage. Damage is doubled if you are sneaking or invisible. Target is killed instantly if it is below 10% Vitality.|" />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
+        <field name="FXScale" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Void_Prepare_Weapon_Hand_03:Dummy_R_HandFX,Dummy_L_HandFX;RS3_FX_Skills_Void_Prepare_Weapon_Root_01,Detach" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_power_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_power_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Void_Cast_Power Attack_Root_01;RS3_FX_Skills_Void_Cast_Power Attack_Cast_Root_01:root:cast;RS3_FX_Skills_Void_Cast_Power Attack_Dummy_01:Dummy_FX_01,Dummy_FX_01" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Void_Power_Attack_Impact_01,FaceSource:Dummy_BodyFX:cast" />
+        <field name="TargetGroundEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Void_Power_Attack_Impact_01,FaceSource:Dummy_BodyFX:cast" />
+        <field name="Stealth Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="200" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+        <field name="DamageType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Damage Type" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SerratedEdge" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="SkillTier" />
+        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="3" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="95" />
+        <field name="DamageType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Damage Type" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="BLEEDING,100,3" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Death Type" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 2" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_SerratedEdge" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Sawtooth Knife" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Pierce enemy physical armor and deal [1] damage. Set Bleeding if enemy has no Physical Armor.|" />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
+        <field name="FXScale" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Weapon_Blood_DummyFX_01:Dummy_FX_01,Dummy_FX_01;RS3_FX_Skills_Voodoo_Prepare_Weapon_Blood_Root_01,KeepRot:Dummy_Root" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Attack_Precision_Blood_Hand_01:Dummy_FX_01,Dummy_FX_01" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_SawtoothKnife_TargetEffect_01:Dummy_BodyFX:cast" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_FindersKeepers" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillTier" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="8" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="SELF:IF(Ally):OdinSCO_FINDERSKEEPERS,100,1;IF(Enemy):OdinSCO_FINDERSKEEPERS_ENEMY,100,1" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="AddWeaponRange" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="IsMelee" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 4" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="CHANGEME" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Finders Keepers" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Steal &lt;font color='#40b606'&gt;[1] AP&lt;/font&gt; from the target, causing them to begin their next turn with &lt;font color='#C80030'&gt;[2] AP&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color='#C9AA58'&gt;Combo&lt;/font&gt;: Reduces this skill's cooldown by 5." />
+        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Potion:Stats_OdinSCO_FindersKeepers:APStart;Potion:Stats_OdinSCO_FindersKeepers_Enemy:APStart;" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Weapon_Purple_Hand_01:Dummy_R_HandFX,Dummy_L_HandFX;RS3_FX_Skills_Voodoo_Prepare_Weapon_Purple_Root_01,KeepRot:Dummy_Root" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastSelfAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_precision_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Attack_Precision_Purple_Hand_02:Dummy_R_HandFX;RS3_FX_Skills_Voodoo_Attack_Precision_Purple_Hand_01:Dummy_CastFX:cast" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_KneeBreaker_TargetEffect_01:Dummy_BodyFX:cast" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="Combat" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_CrawlingInfestation" />
+        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
+        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillTier" />
+        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="5" />
+        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="INFESTED,100,2" />
+        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="13" />
+        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="2" enumeration_type_name="Death Type" />
+        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
+        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
+        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character;NonSelf;!Tagged:INFESTED;!Ally" />
+        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
+        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_CrawlingInfestation" />
+        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Crawling Infestation" />
+        <field name="FXScale" type="IntegerStatObjectFieldDefinition" value="100" />
+        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_voodoo_01_start" />
+        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_voodoo_01_loop" />
+        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Prepare_Voodoo_Poison_Root_01,KeepRot;RS3_FX_Skills_Voodoo_Prepare_Voodoo_Poison_Hand_01:Dummy_L_HandFX,Dummy_R_HandFX" />
+        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_cast_target_voodoo_01_cast" />
+        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
+        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Cast_Target_Voodoo_Poison_Root_01,KeepRot:root" />
+        <field name="TargetEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Voodoo_Impact_Target_Voodoo_Root_01:root:cast" />
+        <field name="AiCalculationSkillOverride" type="StringStatObjectFieldDefinition" value="Target_DummyTargetSkill" />
+        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 3; Summoning 2" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="ABC" />
+        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
       </fields>
     </stat_object>
   </stat_objects>
