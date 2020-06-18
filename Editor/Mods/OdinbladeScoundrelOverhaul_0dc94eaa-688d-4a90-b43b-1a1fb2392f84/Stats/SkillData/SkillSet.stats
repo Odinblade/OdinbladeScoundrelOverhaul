@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="68e50044-f0bd-499d-94ad-7aa52f7abe18">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="Summon_OdinSCO_SkitteringCrawler" />
+        <field name="Skills" type="StatReferenceStatObjectFieldDefinition" stat_name="Jump_BonePileBurrow" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

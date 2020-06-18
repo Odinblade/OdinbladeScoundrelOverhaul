@@ -1,0 +1,2 @@
+new skillset "Summon_OdinSCO_SkitteringCrawler"
+add skill "Jump_BonePileBurrow"

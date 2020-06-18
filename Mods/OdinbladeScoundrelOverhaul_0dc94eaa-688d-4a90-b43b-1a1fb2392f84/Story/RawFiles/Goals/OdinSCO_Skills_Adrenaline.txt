@@ -1,0 +1,25 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedSkill(_Character, "Shout_Adrenaline", _, _)
+AND
+HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 0)
+THEN
+NRD_DebugLog("Applied APPLY_ADRENALINE status");
+ApplyStatus(_Character, "OdinSCO_APPLY_ADRENALINE", 6.0);
+
+IF
+ObjectTurnEnded(_Character)
+AND
+HasActiveStatus(_Character, "OdinSCO_APPLY_ADRENALINE", 1)
+AND
+CharacterIsInCombat((CHARACTERGUID)_Character, 1)
+THEN
+ApplyStatus(_Character, "SLOWED", 6.0, 1, _Character);
+RemoveStatus(_Character, "OdinSCO_APPLY_ADRENALINE");
+EXITSECTION
+
+ENDEXITSECTION

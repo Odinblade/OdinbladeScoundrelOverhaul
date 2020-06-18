@@ -7,7 +7,6 @@ Ext.Require("Server/OdinSCO_ComboSkills_OnHit.lua")
 Ext.Require("Server/OdinSCO_CooldownManager.lua")
 
 Ext.Require("Shared/OdinSCO_ComboPoints.lua")
-Ext.Require("Shared/OdinSCO_DeadlyFlourish.lua")
 
 local ModuleLoading = function ()
     Ext.Print("[OdinSCO:BootstrapServer.lua] Module is loading.")

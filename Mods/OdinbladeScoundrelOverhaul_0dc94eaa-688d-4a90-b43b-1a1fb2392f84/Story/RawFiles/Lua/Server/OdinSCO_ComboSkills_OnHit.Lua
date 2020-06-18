@@ -56,7 +56,14 @@ local function skillVault(character,  target, hithandle)
     local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then 
         consumeComboPoints(character)
-        multiplyDamage(target, hithandle, 1.3)
+        multiplyDamage(target, hithandle, 1.25)
+
+        local newCD = NRD_SkillGetCooldown(character, "MultiStrike_Vault") - 6.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, "MultiStrike_Vault", newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, "MultiStrike_Vault", 0.0)
+        end
     end
     if didHit == 1 then
         incrementComboPoints(character, 1)
@@ -246,6 +253,13 @@ local function skillSleepingArms(character, target, hithandle)
     end
 end
 
+local function skillCrawlingInfestation(character, target)
+    Ext.Print("skillCrawlingInfestation started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+        RemoveStatus(target, "OdinSCO_CRAWLINGINFESTATION")
+    end
+end
 
 local function skillTerrifyingCruelty(character, target, hithandle)
     Ext.Print("skillTerrifyingCruelty started")
@@ -273,7 +287,7 @@ local function skillCloakAndDagger(character, x, y, z)
         consumeComboPoints(character)
         ApplyStatus(character, "INVISIBLE", 6.0, 0, character)
 
-        local newCD = NRD_SkillGetCooldown(character, "Jump_CloakAndDagger") - 6.0
+        local newCD = NRD_SkillGetCooldown(character, "Jump_CloakAndDagger") - 12.0
         if newCD > 0.0 then
             Osi.OBSCO_QueueCooldownOverride(character, "Jump_CloakAndDagger", newCD)
         else
@@ -331,12 +345,12 @@ local function skillAdrenaline(character, x, y, z)
         consumeComboPoints(character)
         ApplyStatus(character, "OdinSCO_ADRENALINE_COMBO", 6.0, 0, character)
 
-        local newCD = NRD_SkillGetCooldown(character, "Shout_Adrenaline") - 6.0
-        if newCD > 0.0 then
-            Osi.OBSCO_QueueCooldownOverride(character, "Shout_Adrenaline", newCD)
-        else
-            Osi.OBSCO_QueueCooldownOverride(character, "Shout_Adrenaline", 0.0)
-        end
+        -- local newCD = NRD_SkillGetCooldown(character, "Shout_Adrenaline") - 6.0
+        -- if newCD > 0.0 then
+        --     Osi.OBSCO_QueueCooldownOverride(character, "Shout_Adrenaline", newCD)
+        -- else
+        --     Osi.OBSCO_QueueCooldownOverride(character, "Shout_Adrenaline", 0.0)
+        -- end
     end
     incrementComboPoints(character, 1)
 end
@@ -399,6 +413,7 @@ OdinScoundrelOverhaul.ComboSkills.OnHit = {
     Target_KneeBreaker = skillKneeBreaker,
     Target_SerratedEdge = skillSerratedEdge,
     Target_SleepingArms = skillSleepingArms,
+    -- Target_OdinSCO_CrawlingInfestation = skillCrawlingInfestation,
     Target_OdinSCO_SinisterStrike = skillSinisterStrike,
     Target_TerrifyingCruelty = skillTerrifyingCruelty
     -- Target_OdinSCO_SinisterStrike = skillSinisterStrike
@@ -428,4 +443,5 @@ Ext.NewCall(skillOnPrepareHit, "OBSCO_LUA_Skill_OnPrepareHit", "(GUIDSTRING)_Cha
 Ext.NewCall(skillAtPos, "OBSCO_LUA_Skill_AtPos", "(GUIDSTRING)_Character, (REAL)_X, (REAL)_Y, (REAL)_Z, (STRING)_SkillId")
 
 -- SPECIAL PROCESSING
+Ext.NewCall(skillCrawlingInfestation, "OBSCO_Lua_Skill_CrawlingInfestation", "(GUIDSTRING)_Character, (GUIDSTRING)_Target")
 Ext.NewCall(skillSinisterStrike, "OBSCO_Lua_Skill_SinisterStrike", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle")

@@ -10,7 +10,7 @@ IsGameLevel("OdinSCO_Test", 1)
 THEN
 //CharacterAddSkill(_Character, "");
 CharacterAddSkill(_Character, "Shout_OdinSCO_Debug_AddCombo");
-CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish");
+// CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish");
 
 CharacterAddSkill(_Character, "Jump_CloakAndDagger");
 
@@ -34,19 +34,20 @@ CharacterAddSkill(_Character, "Target_GagOrder");
 CharacterAddSkill(_Character, "Target_KneeBreaker");
 CharacterAddSkill(_Character, "Target_OdinSCO_CrawlingInfestation");
 CharacterAddSkill(_Character, "Target_OdinSCO_FindersKeepers");
+CharacterAddSkill(_Character, "Target_OdinSCO_Misfire");
 CharacterAddSkill(_Character, "Target_OdinSCO_SinisterStrike");
 CharacterAddSkill(_Character, "Target_SerratedEdge");
 CharacterAddSkill(_Character, "Target_SleepingArms");
 CharacterAddSkill(_Character, "Target_TerrifyingCruelty");
 
-IF
-ObjectTurnStarted(_Character)
-AND
-NRD_CharacterGetStatInt((CHARACTERGUID)_Character, "CurrentAP", _AP)
-AND
-NRD_IntegerToString(_AP, _APString)
-THEN
-NRD_DebugLog(_APString);
+// IF
+// ObjectTurnStarted(_Character)
+// AND
+// NRD_CharacterGetStatInt((CHARACTERGUID)_Character, "CurrentAP", _AP)
+// AND
+// NRD_IntegerToString(_AP, _APString)
+// THEN
+// NRD_DebugLog(_APString);
 
 EXITSECTION
 

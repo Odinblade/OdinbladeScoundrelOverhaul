@@ -12,99 +12,7 @@
         <field name="MaxForkCount" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="ForkLevels" type="IntegerStatObjectFieldDefinition" value="2" />
         <field name="ForkChance" type="IntegerStatObjectFieldDefinition" value="100" />
-        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Throwing Knife [COMBO_3]" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="ThrowingKnife" />
-        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
-        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="SkillTier" />
-        <field name="Requirement" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="SkillRequirement" />
-        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="2" />
-        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="1" />
-        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="85" />
-        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="CanBackstab" />
-        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="8" />
-        <field name="DeathType" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="Death Type" />
-        <field name="ExplodeRadius" type="IntegerStatObjectFieldDefinition" value="0" />
-        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="ForceTarget" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="NonSelf" />
-        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="ProjectileCount" type="IntegerStatObjectFieldDefinition" value="1" />
-        <field name="ProjectileDelay" type="IntegerStatObjectFieldDefinition" value="0" />
-        <field name="Template" type="StringStatObjectFieldDefinition" value="716d243a-5f5b-40ce-aa7e-3369c1c4deca" />
-        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_ThrowingKnife" />
-        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="|Throwing Knife|" />
-        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Throw a knife at the opponent, dealing [1] damage. Can backstab!|" />
-        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage" />
-        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_start" />
-        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_weapon_01_loop" />
-        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Void_Prepare_Weapon_Hand_01:Dummy_R_HandFX,Dummy_L_HandFX;RS3_FX_Skills_Void_Prepare_Weapon_Root_01,Detach" />
-        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="skill_attack_power_01_cast" />
-        <field name="CastAnimationCheck" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="CastCheckType" />
-        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
-        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Void_Cast_Weapon_Hand_01:Dummy_CastFX:cast" />
-        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 1" />
-        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
-        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
-        <field name="ProjectileTerrainOffset" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="OverrideMinAP" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
-      </fields>
-    </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="Chloroform" />
-        <field name="ForGameMaster" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="Ability" type="EnumerationStatObjectFieldDefinition" value="3" enumeration_type_name="SkillAbility" />
-        <field name="Tier" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="SkillTier" />
-        <field name="ActionPoints" type="IntegerStatObjectFieldDefinition" value="1" />
-        <field name="Cooldown" type="IntegerStatObjectFieldDefinition" value="3" />
-        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="100" />
-        <field name="Damage Range" type="IntegerStatObjectFieldDefinition" value="10" />
-        <field name="DamageType" type="EnumerationStatObjectFieldDefinition" value="4" enumeration_type_name="Damage Type" />
-        <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="SLEEPING,100,1" />
-        <field name="TargetRadius" type="IntegerStatObjectFieldDefinition" value="13" />
-        <field name="ExplodeRadius" type="IntegerStatObjectFieldDefinition" value="0" />
-        <field name="CanTargetCharacters" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="CanTargetItems" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="CanTargetTerrain" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="ForceTarget" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="TargetConditions" type="StringStatObjectFieldDefinition" value="Character" />
-        <field name="UseCharacterStats" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="UseWeaponDamage" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="UseWeaponProperties" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="ProjectileCount" type="IntegerStatObjectFieldDefinition" value="1" />
-        <field name="ProjectileDelay" type="IntegerStatObjectFieldDefinition" value="0" />
-        <field name="Template" type="StringStatObjectFieldDefinition" value="93f5bc0a-50e1-4481-94d2-ed9a0148d257" />
-        <field name="IgnoreVisionBlock" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="Icon" type="StringStatObjectFieldDefinition" value="Skill_Rogue_Chloroform" />
-        <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="|Chloroform|" />
-        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="|Destroy [1] and then set Sleeping|" />
-        <field name="StatsDescription" type="TranslatedStringStatObjectFieldDefinition" value="Range: [2]" />
-        <field name="StatsDescriptionParams" type="StringStatObjectFieldDefinition" value="Damage;TargetRadius" />
-        <field name="PrepareAnimationInit" type="StringStatObjectFieldDefinition" value="skill_prepare_throw_arc_01_start" />
-        <field name="PrepareAnimationLoop" type="StringStatObjectFieldDefinition" value="skill_prepare_throw_arc_01_loop" />
-        <field name="PrepareEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Water_Prepare_Throw_Arc_Hand_01:Dummy_R_HandFX;RS3_FX_Skills_Water_Prepare_Throw_Arc_Root_01,Detach" />
-        <field name="CastAnimation" type="StringStatObjectFieldDefinition" value="0;skill_cast_throw_arc_03_cast;5;skill_cast_throw_arc_02_cast;9;skill_cast_throw_arc_01_cast" />
-        <field name="CastAnimationCheck" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="CastCheckType" />
-        <field name="CastTextEvent" type="StringStatObjectFieldDefinition" value="cast" />
-        <field name="CastEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Water_Cast_Throw_Arc_Hand_01:Dummy_R_HandFX" />
-        <field name="PreviewEffect" type="StringStatObjectFieldDefinition" value="RS3_FX_Skills_Water_Impact_Throw_Arc_Root_01" />
-        <field name="MemorizationRequirements" type="StringStatObjectFieldDefinition" value="RogueLore 1" />
-        <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="1" />
-        <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
-        <field name="ProjectileTerrainOffset" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="OverrideMinAP" type="EnumerationStatObjectFieldDefinition" value="0" enumeration_type_name="YesNo" />
-        <field name="Stealth" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
-        <field name="CycleConditions" type="StringStatObjectFieldDefinition" value="Enemy;!Dead" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="75" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -115,7 +23,7 @@
         <field name="IsEnemySkill" type="EnumerationStatObjectFieldDefinition" value="1" enumeration_type_name="YesNo" />
         <field name="Memory Cost" type="IntegerStatObjectFieldDefinition" value="0" />
         <field name="Magic Cost" type="IntegerStatObjectFieldDefinition" value="0" />
-        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="80" />
+        <field name="Damage Multiplier" type="IntegerStatObjectFieldDefinition" value="85" />
         <field name="SkillProperties" type="StringStatObjectFieldDefinition" value="SLEEPING,100,2" />
       </fields>
     </stat_object>

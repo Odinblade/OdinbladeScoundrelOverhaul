@@ -36,13 +36,6 @@
                             <attribute id="Version" value="302055428" type="4" />
                         </node>
                         <node id="ModuleShortDesc">
-                            <attribute id="Folder" value="OdinbladeShadowstepClass_465f4a48-941e-4bd9-8437-e120c1f32356" type="30" />
-                            <attribute id="MD5" value="" type="23" />
-                            <attribute id="Name" value="Odinblade&apos;s Umbra Class: Definitive Edition" type="22" />
-                            <attribute id="UUID" value="c22c52be-7a44-1f58-f058-3b359421db05" type="22" />
-                            <attribute id="Version" value="302120960" type="4" />
-                        </node>
-                        <node id="ModuleShortDesc">
                             <attribute id="Folder" value="OdinbladeHuntsmanOverhaul_7db12ae8-0e96-4050-adb2-06c906897b70" type="30" />
                             <attribute id="MD5" value="" type="23" />
                             <attribute id="Name" value="Odinblade&apos;s Huntsman Class Overhaul" type="22" />
@@ -76,7 +69,7 @@
                     <attribute id="Tags" value="" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="0dc94eaa-688d-4a90-b43b-1a1fb2392f84" type="22" />
-                    <attribute id="Version" value="16777216" type="4" />
+                    <attribute id="Version" value="33554432" type="4" />
                     <children>
                         <node id="PublishVersion">
                             <attribute id="Version" value="909321303" type="4" />

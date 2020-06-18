@@ -278,25 +278,5 @@ DB_ARX_Barracks_2ndFloor_Archives_SurfaceTypes 2
 DB_ARX_Pipes_SurfaceTransformations 2
 DB_RC_WH_AmbushersOne 2
 DB_GLO_ExperienceAgent 1OpenMessageBoxChoice 3
-DB_ApplyPreset 2DialogGetInvolvedNPC 2IsSwitch 1HasLineOfSight 3
-CharacterCanReactToCrime 3
-CrimeIsAnyNPCGoingToReact 7
-ObjectFlagSet 1
-DialogRemoveActorFromDialog 3
-DB_UnregisterForUserIDChanged 1
-DB_OdinbladeUmbra_Reset 2
-ItemIsDestructible 2
-TeleportTo 6
-DB_MysterPrefixed 2
-DB_Shapeshifting_FaceRipper_TagToFaceType 2
-SonyRealtimeMultiplayerEvent 2
-DB_GLO_LVHub_PlayerChests_InitialAssignment 1
-DialogAddActor 2
-ShowNotification 2
-DB_JournalIgnoreReservedChanged 1
-CharacterLaunchIteratorAroundObject 3
-DB_IgnoreReservedChanged 1
-DB_ApplyPreset 2
-DB_UnregisterForUserIDChanged 1
-DB_LeaderLib_ModApi_RegisterPreset 4
+DB_ApplyPreset 2DialogGetInvolvedNPC 2IsSwitch 1DB_LeaderLib_ModApi_RegisterPreset 4
 DB_OBHUN_GrenadeSkill 2

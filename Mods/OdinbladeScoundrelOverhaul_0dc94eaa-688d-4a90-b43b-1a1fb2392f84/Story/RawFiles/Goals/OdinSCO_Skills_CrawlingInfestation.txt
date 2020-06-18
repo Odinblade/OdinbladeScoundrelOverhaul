@@ -1,0 +1,60 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterStatusApplied(_Target, "OdinSCO_CRAWLINGINFESTATION", _Owner)
+THEN
+DB_OBSCO_CrawlingInfestation(_Target, _Owner);
+
+//Safely remove the status if the target has already received it from another player
+IF
+CharacterStatusApplied(_Target, "OdinSCO_CRAWLINGINFESTATION", _Owner)
+AND
+NOT DB_OBSCO_CrawlingInfestation(_Target, _Owner)
+AND
+DB_OBSCO_CrawlingInfestation(_Target, _OtherOwner)
+THEN
+NOT DB_OBSCO_CrawlingInfestation(_Target, _OtherOwner);
+RemoveStatus(_Target, "OdinSCO_CRAWLINGINFESTATION");
+
+IF
+CharacterStatusApplied(_Target, "OdinSCO_CRAWLINGINFESTATION", _Owner)
+AND
+DB_OBSCO_CrawlingInfestation(_Target, _Owner)
+THEN
+OBSCO_Lua_Skill_CrawlingInfestation(_Owner, _Target);
+
+IF
+CharacterStatusRemoved(_Target, "OdinSCO_CRAWLINGINFESTATION", _)
+AND
+DB_OBSCO_CrawlingInfestation(_Target, _Owner)
+THEN
+NOT DB_OBSCO_CrawlingInfestation(_Target, _Owner);
+OBSCO_CrawlingInfestation(_Target, (CHARACTERGUID)_Owner);
+
+PROC
+OBSCO_CrawlingInfestation((CHARACTERGUID)_Target, (CHARACTERGUID)_Owner)
+AND
+GetPosition(_Target, _X, _Y, _Z)
+AND
+CharacterGetLevel(_Owner, _Level)
+AND
+NRD_Summon(_Owner, "bcfc2619-d8b5-4fa5-b0a7-20e37a5eccc4", _X, _Y, _Z, 18.0, _Level, 1, 1, _Summon)
+AND
+RealSum(_Y, 1.0, _YOffset)
+THEN
+NRD_ProjectilePrepareLaunch();
+NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_CrawlingInfestation_Damage");
+NRD_ProjectileSetVector3("SourcePosition", _X, _YOffset, _Z);
+NRD_ProjectileSetVector3("TargetPosition", _X, _Y, _Z);
+NRD_ProjectileSetGuidString("Caster", _Owner);
+NRD_ProjectileSetGuidString("Target", _Target);
+NRD_ProjectileLaunch();
+PlayEffect(_Summon, "");
+// NRD_DebugLog("Finito");
+CharacterStatusText((CHARACTERGUID)_Owner, "LEMONS!!!");
+EXITSECTION
+
+ENDEXITSECTION

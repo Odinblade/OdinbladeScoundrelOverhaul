@@ -40,6 +40,17 @@ THEN
 CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
 
 IF
+SkillAdded(_Character, _SkillId, _Learned)
+AND
+CharacterHasSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 0)
+AND
+OBSCO_LUA_IsScoundrelSkill(_SkillId, _Result)
+AND
+_Result == 1
+THEN
+CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
+
+IF
 SkillDeactivated(_Character, _SkillId)
 AND
 CharacterHasSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1)
@@ -48,7 +59,6 @@ OBSCO_LUA_HasScoundrelSkills(_Character, _Result)
 AND
 _Result == 0
 THEN
-// CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
 CharacterRemoveSkill(_Character, "Shout_OdinSCO_DeadlyFlourish");
 EXITSECTION
 
