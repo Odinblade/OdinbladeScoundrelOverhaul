@@ -12,6 +12,7 @@
         <field name="StatsId" type="StringStatObjectFieldDefinition" value="Stats_OdinSCOCombo_1" />
         <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_OdinSCOCombo" />
         <field name="StackPriority" type="IntegerStatObjectFieldDefinition" value="1" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Stacks up to 3 times." />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -25,6 +26,7 @@
         <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_OdinSCOCombo" />
         <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Combo II" />
         <field name="StackPriority" type="IntegerStatObjectFieldDefinition" value="2" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Stacks up to 3 times." />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -38,6 +40,7 @@
         <field name="StackId" type="StringStatObjectFieldDefinition" value="Stack_OdinSCOCombo" />
         <field name="DisplayName" type="TranslatedStringStatObjectFieldDefinition" value="Combo III" />
         <field name="StackPriority" type="IntegerStatObjectFieldDefinition" value="3" />
+        <field name="Description" type="TranslatedStringStatObjectFieldDefinition" value="Stacks up to 3 times. &lt;br&gt;&lt;br&gt;Activate the &lt;font color='#639594'&gt;Deadly Flourish&lt;/font&gt; skill to enhance your next &lt;font color='#639594'&gt;Scoundrel&lt;/font&gt; skill." />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
