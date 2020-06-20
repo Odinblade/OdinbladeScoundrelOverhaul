@@ -35,9 +35,9 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_SmokeGrenade" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_ShadowSlash" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
-        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="68984f13-9e02-43eb-a95f-8cd339dfcebc" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="d220d531-3516-43b3-95fd-16d48f55055e" />
         <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="ActPart" />
         <field name="Value" type="IntegerStatObjectFieldDefinition" value="250" />
         <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
