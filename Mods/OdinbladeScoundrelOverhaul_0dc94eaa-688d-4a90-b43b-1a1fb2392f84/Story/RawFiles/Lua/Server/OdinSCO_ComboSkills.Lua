@@ -123,13 +123,24 @@ local function skillThrowingKnife(character, target, hithandle)
     end
 end
 
+local function skillShadowSlash(character, target, hithandle)
+    Ext.Print("skillShadowSlash started")
+    local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then  
+        consumeComboPoints(character)
+        multiplyDamage(target, hithandle, 1.2)
+    end
+    if didHit == 1 then
+        incrementComboPoints(character, 1)
+    end
+end
+
 local function skillSinisterStrike(character, target, hithandle)
     Ext.Print("skillSinisterStrike started")
     local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
         consumeComboPoints(character)
         local damageType = NRD_StatusGetString(target, hithandle, "DamageType")
-        Ext.Print("skillSinisterStrike: damageType - "..damageType)
 
         for k,type in pairs(OdinScoundrelOverhaul.ElementalDamageBonus) do
             if k == damageType then
@@ -230,7 +241,6 @@ local function skillSerratedEdge(character, target, hithandle)
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
         consumeComboPoints(character)
         if GetStatusTurns(target, "BLEEDING") ~= nil then
-            Ext.Print("skillSerratedEdge: BLEEDING boost")
             multiplyDamage(target, hithandle, 1.25)
         end
     end
@@ -377,7 +387,7 @@ end
 
 -- Initiate region
 local function skillOnHit(character, target, hithandle, skillId)
-    Ext.Print(skillId)
+    -- Ext.Print(skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnHit[skillId]
     if func~= nil then
         func(character, target, hithandle)
@@ -385,7 +395,7 @@ local function skillOnHit(character, target, hithandle, skillId)
 end
 
 local function skillOnPrepareHit(character, target, damage, hithandle, skillId)
-    Ext.Print(skillId)
+    -- Ext.Print(skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnPrepareHit[skillId]
     if func~= nil then
         func(character, target, damage, hithandle)
@@ -393,13 +403,12 @@ local function skillOnPrepareHit(character, target, damage, hithandle, skillId)
 end
 
 local function skillAtPos(character, x, y, z, skillId)
-    Ext.Print(skillId)
+    -- Ext.Print(skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.AtPos[skillId]
     if func~= nil then
         func(character, x, y, z)
     end
 end
-
 
 OdinScoundrelOverhaul.ComboSkills.OnHit = {
     MultiStrike_OdinSCO_ShadowStep = skillShadowStep,
@@ -407,6 +416,7 @@ OdinScoundrelOverhaul.ComboSkills.OnHit = {
     Projectile_Chloroform = skillChloroform,
     Projectile_FanOfKnives = skillFanOfKnives,
     Projectile_ThrowingKnife = skillThrowingKnife,
+    Shout_OdinSCO_ShadowSlash = skillShadowSlash,
     Target_CorruptedBlade = skillCorruptedBlade,
     Target_Fatality = skillFatality,
     Target_GagOrder = skillGagOrder,

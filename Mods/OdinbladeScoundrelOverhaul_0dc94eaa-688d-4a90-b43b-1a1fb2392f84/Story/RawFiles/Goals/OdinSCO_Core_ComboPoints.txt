@@ -55,8 +55,11 @@ ProcObjectTimerFinished((CHARACTERGUID)_Character, "ODINSCO_FLICKER_DEADLYFLOURI
 AND
 DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot)
 THEN
+NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: TRIGGERED");
 NRD_SkillBarSetSkill(_Character, _Slot, "Shout_OdinSCO_DeadlyFlourish");
+NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: SkillBarSetSkill finished");
 NRD_SkillSetCooldown(_Character, "Shout_OdinSCO_DeadlyFlourish", 0.0);
+NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: SkillSetCooldown finished");
 NOT DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot);
 //END_REGION
 

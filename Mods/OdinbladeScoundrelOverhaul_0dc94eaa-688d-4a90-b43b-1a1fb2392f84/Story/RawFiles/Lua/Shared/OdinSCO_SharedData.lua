@@ -67,6 +67,9 @@ OdinScoundrelOverhaul = {
         Shout_OdinSCO_PlayOfTheGame = {
             SkillCustomDescription = "Generates up to 2 Combo points."
         },
+        Shout_OdinSCO_ShadowSlash = {
+            SkillCustomDescription = "Generates 1 Combo point."
+        },
         Target_CorruptedBlade = {
             SkillCustomDescription = "Generates 1 Combo point."
         },
@@ -106,6 +109,7 @@ OdinScoundrelOverhaul = {
         Projectile_ThrowingKnife = "Projectile_ThrowingKnife",
         Shout_Adrenaline = "Shout_Adrenaline",
         Shout_OdinSCO_PlayOfTheGame = "Shout_OdinSCO_PlayOfTheGame",
+        Shout_OdinSCO_ShadowSlash = "Shout_OdinSCO_ShadowSlash",
         Shout_OdinSCO_SlipIntoShadows = "Shout_OdinSCO_SlipIntoShadows",
         Target_CorruptedBlade = "Target_CorruptedBlade",
         Target_DaggersDrawn = "Target_DaggersDrawn",

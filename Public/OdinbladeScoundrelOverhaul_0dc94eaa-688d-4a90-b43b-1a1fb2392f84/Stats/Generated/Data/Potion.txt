@@ -49,5 +49,5 @@ new entry "Stats_OdinSCO_PlayOfTheGame_Combo"
 type "Potion"
 data "Act" "1"
 data "Act part" "0"
-data "DamageBoost" "25"
+data "DamageBoost" "35"
 

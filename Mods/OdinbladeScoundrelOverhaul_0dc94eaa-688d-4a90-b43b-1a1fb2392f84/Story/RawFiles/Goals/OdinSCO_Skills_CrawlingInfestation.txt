@@ -53,8 +53,6 @@ NRD_ProjectileSetGuidString("Caster", _Owner);
 NRD_ProjectileSetGuidString("Target", _Target);
 NRD_ProjectileLaunch();
 PlayEffect(_Summon, "");
-// NRD_DebugLog("Finito");
-CharacterStatusText((CHARACTERGUID)_Owner, "LEMONS!!!");
 EXITSECTION
 
 ENDEXITSECTION

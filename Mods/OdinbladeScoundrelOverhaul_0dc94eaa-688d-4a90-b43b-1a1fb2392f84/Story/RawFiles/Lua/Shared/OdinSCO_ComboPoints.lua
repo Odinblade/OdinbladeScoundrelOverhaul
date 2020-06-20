@@ -11,15 +11,25 @@ OdinScoundrelOverhaul.ActivatedComboPoints = {
 }
 
 local function refreshDeadlyFlourish(character)
+    Ext.Print("refreshDeadlyFlourish: STARTED")
     local slot = NRD_SkillBarFindSkill(character, "Shout_OdinSCO_DeadlyFlourish")
+    Ext.Print("refreshDeadlyFlourish: SkillBarFindSkill finished")
     NRD_SkillBarClear(character, slot)
+    Ext.Print("refreshDeadlyFlourish: SkillBarClear finished")
     Osi.DB_OBSCO_Flicker_DeadlyFlourish(character, slot)
     NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 0.0)
+    Ext.Print("refreshDeadlyFlourish: SkillSetCooldown finished")
     Osi.ProcObjectTimer(character, "ODINSCO_FLICKER_DEADLYFLOURISH", 1)
 end
 
 function incrementComboPoints(character, points)
     Ext.Print("incrementComboPoints")
+    local entry = Osi.DB_IsPlayer(character)
+    if entry ~= nil and #entry > 0 then
+        Ext.Print("incrementComboPoints: player character detected")
+    end
+    -- local cdEntries = Osi.DB_OdinSCO_SkillCooldown:Get(character, rightSkill, nil)
+                -- if #cdEntries > 0 then
     if IsSkillActive(character, "Shout_OdinSCO_DeadlyFlourish") then
         local newAmount = getComboPoints(character) + points
         if newAmount == 1 then
@@ -151,34 +161,34 @@ end
 --     end
 -- end
 
-function checkAddedSkill(character, skillId)
-    Ext.Print("Check added skill entered")
+-- function checkAddedSkill(character, skillId)
+--     Ext.Print("Check added skill entered")
 
-    if NRD_SkillGetInt(character, skillId, "IsLearned") == 0 then
-        Ext.Print("I think dis is a weapon skill: "..skillId)
-    end
+--     if NRD_SkillGetInt(character, skillId, "IsLearned") == 0 then
+--         Ext.Print("I think dis is a weapon skill: "..skillId)
+--     end
 
-    if NRD_SkillGetInt(character, skillId, "ZeroMemory") == 1 then
-        Ext.Print("ZERO MEM")
-    end
+--     if NRD_SkillGetInt(character, skillId, "ZeroMemory") == 1 then
+--         Ext.Print("ZERO MEM")
+--     end
 
 
-    local comboSkillMatch = OdinScoundrelOverhaul.ComboSkills[skillId]
-    if comboSkillMatch ~= nil then
-        for tier, skill in pairs(comboSkillMatch) do
-            if CharacterHasSkill(character, skill) == 1 then
-                Ext.Print("aaaah")
-                local skillIsLearned = NRD_SkillGetInt(character, skill, "IsLearned")
-                if skillIsLearned == 1 then
-                    Ext.Print("abc")
-                    CharacterRemoveSkill(character, skillId)
-                end
-            end
-        end
-    end
-end
+--     local comboSkillMatch = OdinScoundrelOverhaul.ComboSkills[skillId]
+--     if comboSkillMatch ~= nil then
+--         for tier, skill in pairs(comboSkillMatch) do
+--             if CharacterHasSkill(character, skill) == 1 then
+--                 Ext.Print("aaaah")
+--                 local skillIsLearned = NRD_SkillGetInt(character, skill, "IsLearned")
+--                 if skillIsLearned == 1 then
+--                     Ext.Print("abc")
+--                     CharacterRemoveSkill(character, skillId)
+--                 end
+--             end
+--         end
+--     end
+-- end
 
 Ext.NewCall(incrementComboPoints, "OBSCO_LUA_IncrementComboPoints", "(CHARACTERGUID)_Character, (INTEGER)_PointsToAdd");
 Ext.NewCall(activateComboPoints, "OBSCO_LUA_ActivateComboPoints", "(CHARACTERGUID)_Character");
 Ext.NewCall(consumeComboPoints, "OBSCO_LUA_ConsumeComboPoints", "(CHARACTERGUID)_Character");
-Ext.NewCall(checkAddedSkill, "OBSCO_LUA_CheckAddedSkill", "(CHARACTERGUID)_Character, (STRING)_SkillId");
+-- Ext.NewCall(checkAddedSkill, "OBSCO_LUA_CheckAddedSkill", "(CHARACTERGUID)_Character, (STRING)_SkillId");
