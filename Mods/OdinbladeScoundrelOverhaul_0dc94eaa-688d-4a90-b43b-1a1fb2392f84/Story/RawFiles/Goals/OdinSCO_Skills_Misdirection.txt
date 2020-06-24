@@ -1,0 +1,116 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+// Space-out so that the player finishes their cast animation
+IF
+CharacterUsedSkillAtPosition(_Caster, _X, _Y, _Z, "Target_OdinSCO_Misdirection", _, _)
+THEN
+ApplyStatus(_Caster, "OdinNECRO_DEBUG_AP_ADD", 0.0);
+DB_OBSCO_Misdirection_Prep(_Caster, _X, _Y, _Z);
+OBSCO_CleanupMisdirection(_Caster);
+ProcObjectTimer(_Caster, "OdinSCO_MISDIRECTION_WINDUP", 1150);
+
+// Create a clone and apply the Misdirection status
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Caster, "OdinSCO_MISDIRECTION_WINDUP")
+AND
+DB_OBSCO_Misdirection_Prep(_Caster, _X, _Y, _Z)
+AND
+TemporaryCharacterCreateAtPosition(_X, _Y, _Z, "dfca8fb0-3320-40c1-9c28-7a62454579bf", 0, _Clone)
+AND
+CharacterGetLevel(_Caster, _Level)
+AND
+GetPosition(_Caster, _nX, _nY, _nZ)
+THEN
+NOT DB_OBSCO_Misdirection_Prep(_Caster, _X, _Y, _Z);
+PlayEffect(_Clone, "OdinSCO_Impact_01");
+PlayEffectAtPosition("RS3_FX_Skills_Void_Netherswap_Reappear_01", _X, _Y, _Z);
+SetTag(_Clone, "AI_PREFERRED_TARGET");
+ApplyStatus(_Clone, "OdinSCO_MISDIRECTION", 12.0, 1, _Caster);
+CharacterLevelUpTo(_Clone, _Level);
+DB_OBSCO_Misdirection(_Caster, _Clone, _nX, _nY, _nZ);
+CharacterTransformAppearanceTo(_Clone, _Caster, 1, 1);
+ProcObjectTimer(_Caster, "OdinSCO_MISDIRECTION_JUMP", 750);
+ProcObjectTimer(_Caster, "OdinSCO_MISDIRECTION_SWITCH", 2250);
+
+// Perform the check to see if the caster needs to swap place with the clone
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Caster, "OdinSCO_MISDIRECTION_JUMP")
+AND
+DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
+AND
+HasActiveStatus(_Caster, "OdinSCO_USE_COMBO_3", 1)
+AND
+GetPosition(_Clone, _cX, _cY, _cZ)
+THEN
+CharacterUseSkillAtPosition(_Caster, "Jump_OdinNECRO_Translocate_Jump", _cX, _cY, _cZ, 1, 1);
+PlayEffectAtPosition("OdinSCO_Impact_01", _cX, _cY, _cZ);
+PlayEffectAtPosition("RS3_FX_Skills_Void_Netherswap_Reappear_01", _cX, _cY, _cZ);
+SetOnStage(_Clone, 0);
+ProcObjectTimer(_Caster, "OdinSCO_MISDIRECTION_REMOVE_TEMP_AP", 875);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Caster, "OdinSCO_MISDIRECTION_REMOVE_TEMP_AP")
+THEN
+ApplyStatus(_Caster, "OdinNECRO_DEBUG_AP_REMOVE", 0.0);
+
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Caster, "OdinSCO_MISDIRECTION_JUMP")
+AND
+DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
+AND
+HasActiveStatus(_Caster, "OdinSCO_USE_COMBO_3", 0)
+THEN
+ApplyStatus(_Caster, "OdinNECRO_DEBUG_AP_REMOVE", 1.0);
+
+// Perform the check to see if the caster needs to swap place with the clone
+PROC
+ProcObjectTimerFinished((CHARACTERGUID)_Caster, "OdinSCO_MISDIRECTION_SWITCH")
+AND
+DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
+THEN
+OBSCO_Lua_Skill_Misdirection(_Caster, _Clone, _X, _Y, _Z);
+
+// Clone cleanup
+IF
+CharacterStatusRemoved(_Clone, "OdinSCO_MISDIRECTION", _)
+AND
+DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
+AND
+GetPosition(_Clone, _cX, _cY, _cZ)
+THEN
+NOT DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z);
+PlayEffectAtPosition("OdinSCO_Impact_01", _cX, _cY, _cZ);
+PlayEffectAtPosition("RS3_FX_Skills_Void_Netherswap_Reappear_01", _cX, _cY, _cZ);
+SetOnStage(_Clone, 0);
+RemoveTemporaryCharacter(_Clone);
+
+PROC
+OBSCO_CleanupMisdirection((CHARACTERGUID)_Caster)
+AND
+DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
+THEN
+RemoveStatus(_Clone, "OdinSCO_MISDIRECTION");
+
+// // When combat ends, destroy all Decoys
+// IF
+// ObjectLeftCombat((CHARACTERGUID)_Caster, _)
+// AND
+// DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
+// AND
+// HasActiveStatus(_Clone, "OdinSCO_MISDIRECTION", 1)
+// THEN
+// RemoveStatus(_Clone, "OdinSCO_MISDIRECTION");
+
+// If the caster dies, destroy any active Decoys they have
+IF
+CharacterDied(_Caster)
+AND
+DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
+THEN
+RemoveStatus(_Clone, "OdinSCO_MISDIRECTION");
+EXITSECTION
+
+ENDEXITSECTION

@@ -53,7 +53,7 @@
       <fields>
         <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_Misfire" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
-        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="13" enumeration_type_name="ActPart" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="ActPart" />
         <field name="Value" type="IntegerStatObjectFieldDefinition" value="250" />
         <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
         <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 2" />
@@ -265,7 +265,7 @@
         <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="16" enumeration_type_name="ActPart" />
         <field name="Value" type="IntegerStatObjectFieldDefinition" value="1600" />
         <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
-        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 5" />
+        <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 3; Summoning 2" />
         <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogueLate" />
         <field name="MinAmount" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />

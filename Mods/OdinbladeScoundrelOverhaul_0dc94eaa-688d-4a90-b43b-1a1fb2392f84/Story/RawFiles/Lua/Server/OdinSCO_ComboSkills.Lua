@@ -133,6 +133,8 @@ local function skillShadowSlash(character, target, hithandle)
     if didHit == 1 then
         incrementComboPoints(character, 1)
     end
+    Osi.ProcObjectTimerCancel(character, "OdinSCO_COMBO_INVIS_CLEANUP")
+    Osi.ProcObjectTimer(character, "OdinSCO_COMBO_INVIS_CLEANUP", 900)
 end
 
 local function skillSinisterStrike(character, target, hithandle)
@@ -171,7 +173,6 @@ local function skillCorruptedBlade(character, target, hithandle)
     local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
         consumeComboPoints(character)
-        Osi.OBSCO_QueueStatusApply(target, "DISEASED", character, 12.0, 0, 10)
         Osi.OBSCO_QueueStatusApply(target, "POISONED", character, 12.0, 0, 10)
     end
     if didHit == 1 then
@@ -189,6 +190,8 @@ local function skillFatality(character, target, hithandle)
     if didHit == 1 then
         incrementComboPoints(character, 1)
     end
+    Osi.ProcObjectTimerCancel(character, "OdinSCO_COMBO_INVIS_CLEANUP")
+    Osi.ProcObjectTimer(character, "OdinSCO_COMBO_INVIS_CLEANUP", 900)
 end
 
 -- local function skillFatality_Prep(character, target, damage, hithandle)
@@ -246,6 +249,23 @@ local function skillSerratedEdge(character, target, hithandle)
     end
     if didHit == 1 then
         incrementComboPoints(character, 1)
+    end
+end
+
+local function skillMisdirection(character, target, x, y, z)
+    Ext.Print("skillMisdirection started")
+    -- local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+        consumeComboPoints(character)
+
+        TeleportToPosition(target, x, y, z, "", 0, 1)
+        SetOnStage(target, 1)
+
+        PlayEffect(target, "OdinSCO_Impact_01");
+        PlayEffect(target, "RS3_FX_Skills_Void_Netherswap_Reappear_01");
+        
+        PlayEffect(character, "OdinSCO_Impact_01");
+        PlayEffect(character, "RS3_FX_Skills_Void_Netherswap_Reappear_01");
     end
 end
 
@@ -326,6 +346,7 @@ local function skillFirecracker(character, x, y, z)
         consumeComboPoints(character)
 
         local ox, oy, oz = GetPosition(character)
+        Ext.Print("Projectile Launched for Firecracker!")
         NRD_ProjectilePrepareLaunch();
         NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_Firecracker_Combo");
         NRD_ProjectileSetVector3("SourcePosition", ox, oy+1, oz);
@@ -371,7 +392,7 @@ local function skillPlayOfTheGame(character, x, y, z)
         consumeComboPoints(character)
         ApplyStatus(character, "OdinSCO_PLAYOFTHEGAME_COMBO", 6.0, 0, character)
     else
-        ApplyStatus(character, "OdinSCO_PLAYOFTHEGAME", 6.0, 0, character)
+        -- ApplyStatus(character, "OdinSCO_PLAYOFTHEGAME", 6.0, 0, character)
         incrementComboPoints(character, 2)
     end
 end
@@ -423,14 +444,11 @@ OdinScoundrelOverhaul.ComboSkills.OnHit = {
     Target_KneeBreaker = skillKneeBreaker,
     Target_SerratedEdge = skillSerratedEdge,
     Target_SleepingArms = skillSleepingArms,
-    -- Target_OdinSCO_CrawlingInfestation = skillCrawlingInfestation,
     Target_OdinSCO_SinisterStrike = skillSinisterStrike,
     Target_TerrifyingCruelty = skillTerrifyingCruelty
-    -- Target_OdinSCO_SinisterStrike = skillSinisterStrike
 }
 
 OdinScoundrelOverhaul.ComboSkills.OnPrepareHit = {
-    -- Target_Fatality = skillFatality_Prep,
     Target_GagOrder = skillGagOrder_Prep,
     Target_OdinSCO_SinisterStrike = skillSinisterStrike_Prep,
     Target_TerrifyingCruelty = skillTerrifyingCruelty_Prep
@@ -454,4 +472,5 @@ Ext.NewCall(skillAtPos, "OBSCO_LUA_Skill_AtPos", "(GUIDSTRING)_Character, (REAL)
 
 -- SPECIAL PROCESSING
 Ext.NewCall(skillCrawlingInfestation, "OBSCO_Lua_Skill_CrawlingInfestation", "(GUIDSTRING)_Character, (GUIDSTRING)_Target")
+Ext.NewCall(skillMisdirection, "OBSCO_Lua_Skill_Misdirection", "(GUIDSTRING)_Caster, (GUIDSTRING)_Clone, (REAL)_X, (REAL)_Y, (REAL)_Z")
 Ext.NewCall(skillSinisterStrike, "OBSCO_Lua_Skill_SinisterStrike", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle")

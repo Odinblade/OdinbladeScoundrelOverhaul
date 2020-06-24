@@ -21,9 +21,24 @@ OBSCO_LUA_IncrementComboPoints(_Character, 1);
 
 //REGION Statuses and tags
 IF
+ObjectEnteredCombat(_Character, _CombatID)
+AND
+NOT DB_OBSCO_TrackCombat(_CombatID, _Character)
+THEN
+DB_OBSCO_TrackCombat(_CombatID, _Character);
+OBSCO_LUA_EnterCombatComboPoints((CHARACTERGUID)_Character);
+
+IF
 ObjectLeftCombat(_Character, _)
 THEN
 OBSCO_CleanupCombo(_Character);
+
+IF
+CombatEnded(_CombatID)
+AND
+DB_OBSCO_TrackCombat(_CombatID, _Character)
+THEN
+NOT DB_OBSCO_TrackCombat(_CombatID, _Character);
 
 PROC
 OBSCO_CleanupCombo((GUIDSTRING)_Character)
@@ -52,15 +67,15 @@ OBSCO_LUA_ActivateComboPoints(_Character);
 
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Character, "ODINSCO_FLICKER_DEADLYFLOURISH")
-AND
-DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot)
+// AND
+// DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot)
 THEN
 NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: TRIGGERED");
-NRD_SkillBarSetSkill(_Character, _Slot, "Shout_OdinSCO_DeadlyFlourish");
-NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: SkillBarSetSkill finished");
+// NRD_SkillBarSetSkill(_Character, _Slot, "Shout_OdinSCO_DeadlyFlourish");
+// NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: SkillBarSetSkill finished");
 NRD_SkillSetCooldown(_Character, "Shout_OdinSCO_DeadlyFlourish", 0.0);
 NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: SkillSetCooldown finished");
-NOT DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot);
+// NOT DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot);
 //END_REGION
 
 //REGION Apply activated combo bonuses
@@ -86,24 +101,23 @@ NOT DB_OBSCO_Flicker_DeadlyFlourish(_Character, _Slot);
 
 IF
 NRD_OnHit(_Target, _Character, _, _HitHandle)
-// AND
-// IsTagged(_Character, "ODINSCO_COMBO_READY", 1)
+AND
+DB_IsPlayer((CHARACTERGUID)_Character)
 AND
 NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
 AND
 OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
 THEN
-NRD_DebugLog("DebugFrog");
 OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _SkillId);
 
 // If the skill does not have a target, process via position
 IF
 CharacterUsedSkillAtPosition(_Character, _X, _Y, _Z, _SkillId, _, _)
-// AND
-// IsTagged(_Character, "ODINSCO_COMBO_READY", 1)
+AND
+DB_IsPlayer(_Character)
 THEN
 DB_OBSCO_AtPos_Launch(_Character, _X, _Y, _Z, _SkillId);
-ProcObjectTimer(_Character, "OdinSCO_AtPos_Launch", 1200);
+ProcObjectTimer(_Character, "OdinSCO_AtPos_Launch", 1150);
 
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_AtPos_Launch")

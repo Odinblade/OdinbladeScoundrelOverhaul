@@ -8,10 +8,10 @@ StartLevel "1"
 object category "I_SKILLBOOK_Rogue_OdinSCO_Firecracker",1,0,0,0,0,0,0,0
 new subtable "1,1"
 StartLevel "4"
-object category "I_SKILLBOOK_Rogue_OdinSCO_SmokeGrenade",1,0,0,0,0,0,0,0
+object category "I_SKILLBOOK_Rogue_OdinSCO_ShadowSlash",1,0,0,0,0,0,0,0
 new subtable "1,1"
 StartLevel "4"
-object category "I_SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows",1,0,0,0,0,0,0,0
+object category "I_SKILLBOOK_Rogue_OdinSCO_Misfire",1,0,0,0,0,0,0,0
 new subtable "1,1"
 StartLevel "4"
 object category "I_SKILLBOOK_Rogue_OdinSCO_PlayOfTheGame",1,0,0,0,0,0,0,0
@@ -26,7 +26,7 @@ StartLevel "13"
 object category "I_SKILLBOOK_Rogue_OdinSCO_ShadowStep",1,0,0,0,0,0,0,0
 new subtable "1,1"
 StartLevel "13"
-object category "I_SKILLBOOK_Rogue_OdinSCO_Misfire",1,0,0,0,0,0,0,0
+object category "I_SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows",1,0,0,0,0,0,0,0
 new subtable "1,1"
 StartLevel "16"
 object category "I_SKILLBOOK_Rogue_OdinSCO_CrawlingInfestation",1,0,0,0,0,0,0,0

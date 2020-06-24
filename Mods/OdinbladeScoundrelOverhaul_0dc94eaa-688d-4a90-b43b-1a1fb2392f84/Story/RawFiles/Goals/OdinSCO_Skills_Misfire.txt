@@ -4,7 +4,7 @@ INITSECTION
 
 KBSECTION
 IF
-CharacterUsedSkillOnTarget(_Character, _Target, "Target_OdinSCO_Misfire", _, _)
+CharacterUsedSkillOnTarget(_Character, _Target, "Projectile_OdinSCO_Misfire", _, _)
 AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN
@@ -23,7 +23,7 @@ GetPosition(_Target, _X, _Y, _Z)
 AND
 StringConcatenate("MISFIRE: Fumbled ", _SkillId, _DebugString)
 THEN
-CharacterStatusText(_Target, "Spell <font color='#4197e2'>Fumbled</font>!");
+CharacterStatusText(_Target, "Spell <font color='#7F00FF'>Fumbled</font>!");
 CharacterUseSkill(_Target, "Shout_OdinSCO_Misfire_Proc", _Target, 1, 1, 1);
 RemoveStatus(_Target, "OdinSCO_MISFIRE");
 NRD_SkillSetCooldown(_Target, _SkillId, 6.0);

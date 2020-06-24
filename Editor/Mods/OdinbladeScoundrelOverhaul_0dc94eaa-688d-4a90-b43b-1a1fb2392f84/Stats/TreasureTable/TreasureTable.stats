@@ -25,7 +25,7 @@
         <field name="Name" type="NameStatObjectFieldDefinition" value="ST_OdinHUN_NewSpells_substat_1" />
         <field name="StartLevel" type="IntegerStatObjectFieldDefinition" value="4" />
         <field name="DropCount" type="StringStatObjectFieldDefinition" value="1,1" />
-        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_SmokeGrenade" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_ShadowSlash" />
         <field name="Frequency" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="ST_OdinSCO_NewSpells" />
       </fields>
@@ -35,7 +35,7 @@
         <field name="Name" type="NameStatObjectFieldDefinition" value="ST_OdinHUN_NewSpells_substat_2" />
         <field name="StartLevel" type="IntegerStatObjectFieldDefinition" value="4" />
         <field name="DropCount" type="StringStatObjectFieldDefinition" value="1,1" />
-        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_Misfire" />
         <field name="Frequency" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="ST_OdinSCO_NewSpells" />
       </fields>
@@ -85,7 +85,7 @@
         <field name="Name" type="NameStatObjectFieldDefinition" value="ST_OdinHUN_NewSpells_substat_8" />
         <field name="StartLevel" type="IntegerStatObjectFieldDefinition" value="13" />
         <field name="DropCount" type="StringStatObjectFieldDefinition" value="1,1" />
-        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_Misfire" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows" />
         <field name="Frequency" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="ST_OdinSCO_NewSpells" />
       </fields>

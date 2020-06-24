@@ -21,6 +21,7 @@ CharacterAddSkill(_Character, "Projectile_Chloroform");
 CharacterAddSkill(_Character, "Projectile_FanOfKnives");
 CharacterAddSkill(_Character, "Projectile_LaunchBomber");
 CharacterAddSkill(_Character, "Projectile_OdinSCO_Firecracker");
+CharacterAddSkill(_Character, "Projectile_OdinSCO_Misfire");
 CharacterAddSkill(_Character, "Projectile_ThrowingKnife");
 
 CharacterAddSkill(_Character, "Shout_Adrenaline");
@@ -35,7 +36,7 @@ CharacterAddSkill(_Character, "Target_GagOrder");
 CharacterAddSkill(_Character, "Target_KneeBreaker");
 CharacterAddSkill(_Character, "Target_OdinSCO_CrawlingInfestation");
 CharacterAddSkill(_Character, "Target_OdinSCO_FindersKeepers");
-CharacterAddSkill(_Character, "Target_OdinSCO_Misfire");
+CharacterAddSkill(_Character, "Target_OdinSCO_Misdirection");
 CharacterAddSkill(_Character, "Target_OdinSCO_SinisterStrike");
 CharacterAddSkill(_Character, "Target_SerratedEdge");
 CharacterAddSkill(_Character, "Target_SleepingArms");

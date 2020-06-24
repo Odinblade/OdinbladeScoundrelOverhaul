@@ -13,36 +13,45 @@ OdinScoundrelOverhaul.ActivatedComboPoints = {
 local function refreshDeadlyFlourish(character)
     Ext.Print("refreshDeadlyFlourish: STARTED")
     local slot = NRD_SkillBarFindSkill(character, "Shout_OdinSCO_DeadlyFlourish")
-    Ext.Print("refreshDeadlyFlourish: SkillBarFindSkill finished")
-    NRD_SkillBarClear(character, slot)
-    Ext.Print("refreshDeadlyFlourish: SkillBarClear finished")
-    Osi.DB_OBSCO_Flicker_DeadlyFlourish(character, slot)
-    NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 0.0)
-    Ext.Print("refreshDeadlyFlourish: SkillSetCooldown finished")
-    Osi.ProcObjectTimer(character, "ODINSCO_FLICKER_DEADLYFLOURISH", 1)
+    if slot ~= nil then
+        Ext.Print("refreshDeadlyFlourish: SkillBarFindSkill finished")
+        -- NRD_SkillBarClear(character, slot)
+        -- Ext.Print("refreshDeadlyFlourish: SkillBarClear finished")
+        -- Osi.DB_OBSCO_Flicker_DeadlyFlourish(character, slot)
+        NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 6.0)
+        Ext.Print("refreshDeadlyFlourish: SkillSetCooldown finished")
+        Osi.ProcObjectTimer(character, "ODINSCO_FLICKER_DEADLYFLOURISH", 25)
+    end
 end
 
 function incrementComboPoints(character, points)
     Ext.Print("incrementComboPoints")
-    local entry = Osi.DB_IsPlayer(character)
-    if entry ~= nil and #entry > 0 then
-        Ext.Print("incrementComboPoints: player character detected")
-    end
-    -- local cdEntries = Osi.DB_OdinSCO_SkillCooldown:Get(character, rightSkill, nil)
-                -- if #cdEntries > 0 then
-    if IsSkillActive(character, "Shout_OdinSCO_DeadlyFlourish") then
-        local newAmount = getComboPoints(character) + points
-        if newAmount == 1 then
-            ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
-        elseif newAmount == 2 then
-            ApplyStatus(character, "OdinSCO_COMBO_2", -1.0, 1, character)
-        elseif newAmount >= 3 then
-            newAmount = 3
-            if HasActiveStatus(character, "OdinSCO_COMBO_3") == 0 then
-                ApplyStatus(character, "OdinSCO_COMBO_3", -1.0, 1, character)
-                SetTag(character, "ODINSCO_COMBO_READY")
-                refreshDeadlyFlourish(character)
+    if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 and CharacterIsInCombat(character) == 1 then
+        if IsSkillActive(character, "Shout_OdinSCO_DeadlyFlourish") then
+            local newAmount = getComboPoints(character) + points
+            if newAmount == 1 then
+                ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
+            elseif newAmount == 2 then
+                ApplyStatus(character, "OdinSCO_COMBO_2", -1.0, 1, character)
+            elseif newAmount >= 3 then
+                newAmount = 3
+                if HasActiveStatus(character, "OdinSCO_COMBO_3") == 0 then
+                    ApplyStatus(character, "OdinSCO_COMBO_3", -1.0, 1, character)
+                    SetTag(character, "ODINSCO_COMBO_READY")
+                    refreshDeadlyFlourish(character) --TOOD: Try removing this - might work as intended outside of the engine?
+                end
             end
+        end
+    end
+end
+
+local function enterCombatComboBonus(character)
+    if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 then
+        local scoundrelPoints = CharacterGetAbility(character, "RogueLore")
+        if scoundrelPoints >= 5 and scoundrelPoints < 10 then
+            incrementComboPoints(character, 1)
+        elseif scoundrelPoints >= 10 then
+            incrementComboPoints(character, 2)
         end
     end
 end
@@ -119,7 +128,7 @@ function consumeComboPoints(character)
     RemoveStatus(character, "OdinSCO_USE_COMBO_1")
 
     ClearTag(character, "ODINSCO_COMBO_READY")
-    refreshDeadlyFlourish(character)
+    refreshDeadlyFlourish(character) --TOOD: Try removing this - might work as intended outside of the engine?
 end
 
 -- function consumeComboPoints(character, activatedComboPoints, comboToAdd)
@@ -191,4 +200,5 @@ end
 Ext.NewCall(incrementComboPoints, "OBSCO_LUA_IncrementComboPoints", "(CHARACTERGUID)_Character, (INTEGER)_PointsToAdd");
 Ext.NewCall(activateComboPoints, "OBSCO_LUA_ActivateComboPoints", "(CHARACTERGUID)_Character");
 Ext.NewCall(consumeComboPoints, "OBSCO_LUA_ConsumeComboPoints", "(CHARACTERGUID)_Character");
+Ext.NewCall(enterCombatComboBonus, "OBSCO_LUA_EnterCombatComboPoints", "(CHARACTERGUID)_Character");
 -- Ext.NewCall(checkAddedSkill, "OBSCO_LUA_CheckAddedSkill", "(CHARACTERGUID)_Character, (STRING)_SkillId");

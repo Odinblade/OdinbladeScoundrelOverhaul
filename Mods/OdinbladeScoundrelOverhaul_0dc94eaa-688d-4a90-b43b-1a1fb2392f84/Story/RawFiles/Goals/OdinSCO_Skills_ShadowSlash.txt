@@ -9,6 +9,13 @@ AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN
 ApplyStatus(_Character, "INVISIBLE", 6.0, 0, _Character);
+
+PROC
+ProcObjectTimerFinished(_Character, "OdinSCO_COMBO_INVIS_CLEANUP")
+AND
+HasActiveStatus(_Character, "INVISIBLE", 1)
+THEN
+RemoveStatus(_Character, "INVISIBLE");
 EXITSECTION
 
 ENDEXITSECTION

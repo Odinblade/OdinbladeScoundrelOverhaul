@@ -49,6 +49,48 @@
                             <attribute id="UUID" value="8700ba4e-7d4b-40ca-a23f-b43816794957" type="22" />
                             <attribute id="Version" value="269025281" type="4" />
                         </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="OdinbladeHydrosophist_21c6b7c4-ce7d-48fb-8265-5504211bb8df" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Odinblade&apos;s Hydrosophist Class Overhaul" type="22" />
+                            <attribute id="UUID" value="02ca48b9-e4ef-a8e4-91d7-0b9df70bb595" type="22" />
+                            <attribute id="Version" value="302252032" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="OdinbladeAerotheurgeOverhaul_961ae59d-2964-46dd-9762-073697915dc2" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Odinblade&apos;s Aerotheurge Class Overhaul" type="22" />
+                            <attribute id="UUID" value="961ae59d-2964-46dd-9762-073697915dc2" type="22" />
+                            <attribute id="Version" value="285474816" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="OdinbladePyromancer_f39a389a-3c2c-4efc-80a0-7af829071c63" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Odinblade&apos;s Pyrokinetic Class Overhaul" type="22" />
+                            <attribute id="UUID" value="aab53301-4f38-1d49-91f7-28dfa468084b" type="22" />
+                            <attribute id="Version" value="318898177" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="OdinbladeGeomancerOverhaul_ffb501cc-ab6d-46de-be89-732c9e289f3e" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Odinblade&apos;s Geomancer Class Overhaul" type="22" />
+                            <attribute id="UUID" value="ffb501cc-ab6d-46de-be89-732c9e289f3e" type="22" />
+                            <attribute id="Version" value="268763136" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="OdinbladeShadowstepClass_465f4a48-941e-4bd9-8437-e120c1f32356" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Odinblade&apos;s Umbra Class: Definitive Edition" type="22" />
+                            <attribute id="UUID" value="c22c52be-7a44-1f58-f058-3b359421db05" type="22" />
+                            <attribute id="Version" value="302120960" type="4" />
+                        </node>
+                        <node id="ModuleShortDesc">
+                            <attribute id="Folder" value="OdinbladeSpectreClass_a8aa3beb-796b-4dce-b661-755a55ed23a7" type="30" />
+                            <attribute id="MD5" value="" type="23" />
+                            <attribute id="Name" value="Odinblade&apos;s Spectre Class: Definitive Edition" type="22" />
+                            <attribute id="UUID" value="e4a5c8ca-7f04-23ab-8115-18161eb702bf" type="22" />
+                            <attribute id="Version" value="285474816" type="4" />
+                        </node>
                     </children>
                 </node>
                 <node id="ModuleInfo">
@@ -69,7 +111,7 @@
                     <attribute id="Tags" value="" type="30" />
                     <attribute id="Type" value="Add-on" type="22" />
                     <attribute id="UUID" value="0dc94eaa-688d-4a90-b43b-1a1fb2392f84" type="22" />
-                    <attribute id="Version" value="67108864" type="4" />
+                    <attribute id="Version" value="83951616" type="4" />
                     <children>
                         <node id="PublishVersion">
                             <attribute id="Version" value="909321303" type="4" />
