@@ -42,10 +42,10 @@
     </stat_object>
     <stat_object is_substat="true">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="ST_OdinHUN_NewSpells_substat_3" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="ST_OdinHUN_NewSpells_substat_8" />
         <field name="StartLevel" type="IntegerStatObjectFieldDefinition" value="4" />
         <field name="DropCount" type="StringStatObjectFieldDefinition" value="1,1" />
-        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_PlayOfTheGame" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows" />
         <field name="Frequency" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="ST_OdinSCO_NewSpells" />
       </fields>
@@ -82,10 +82,10 @@
     </stat_object>
     <stat_object is_substat="true">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="ST_OdinHUN_NewSpells_substat_8" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="ST_OdinHUN_NewSpells_substat_3" />
         <field name="StartLevel" type="IntegerStatObjectFieldDefinition" value="13" />
         <field name="DropCount" type="StringStatObjectFieldDefinition" value="1,1" />
-        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows" />
+        <field name="ObjectCategory" type="StringStatObjectFieldDefinition" value="I_SKILLBOOK_Rogue_OdinSCO_Outmaneuver" />
         <field name="Frequency" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="ST_OdinSCO_NewSpells" />
       </fields>

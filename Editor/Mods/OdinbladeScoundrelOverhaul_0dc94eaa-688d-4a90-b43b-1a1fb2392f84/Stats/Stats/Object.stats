@@ -67,9 +67,9 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_PlayOfTheGame" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
-        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="e358dc12-bde1-4c76-b02a-056804c194ef" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="46448ed9-8c4a-43a6-9eb9-b97ff5e0a27c" />
         <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="ActPart" />
         <field name="Value" type="IntegerStatObjectFieldDefinition" value="250" />
         <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
@@ -227,10 +227,9 @@
     </stat_object>
     <stat_object is_substat="false">
       <fields>
-        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_SlipIntoShadows" />
+        <field name="Name" type="NameStatObjectFieldDefinition" value="SKILLBOOK_Rogue_OdinSCO_Outmaneuver" />
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="_Skillbooks" />
-        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="46448ed9-8c4a-43a6-9eb9-b97ff5e0a27c" />
-        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="5" enumeration_type_name="ActPart" />
+        <field name="Act part" type="EnumerationStatObjectFieldDefinition" value="13" enumeration_type_name="ActPart" />
         <field name="Value" type="IntegerStatObjectFieldDefinition" value="1400" />
         <field name="ComboCategory" type="StringStatObjectFieldDefinition" value="SkillbookRogue" />
         <field name="Requirements" type="StringStatObjectFieldDefinition" value="RogueLore 4" />
@@ -239,6 +238,7 @@
         <field name="MaxAmount" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="Priority" type="IntegerStatObjectFieldDefinition" value="1" />
         <field name="MinLevel" type="IntegerStatObjectFieldDefinition" value="13" />
+        <field name="RootTemplate" type="RootTemplateStatObjectFieldDefinition" value="e358dc12-bde1-4c76-b02a-056804c194ef" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">

@@ -25,7 +25,7 @@ CharacterAddSkill(_Character, "Projectile_OdinSCO_Misfire");
 CharacterAddSkill(_Character, "Projectile_ThrowingKnife");
 
 CharacterAddSkill(_Character, "Shout_Adrenaline");
-CharacterAddSkill(_Character, "Shout_OdinSCO_PlayOfTheGame");
+CharacterAddSkill(_Character, "Shout_OdinSCO_Outmaneuver");
 CharacterAddSkill(_Character, "Shout_OdinSCO_ShadowSlash");
 CharacterAddSkill(_Character, "Shout_OdinSCO_SlipIntoShadows");
 

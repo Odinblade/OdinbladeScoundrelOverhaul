@@ -4,7 +4,13 @@ INITSECTION
 
 KBSECTION
 IF
-CharacterUsedSkill(_Character, "Target_GagOrder", _, _)
+CharacterUsedSkill(_Character, _ProtoSkillId, _, _)
+AND
+OBSCO_LUA_GetSkillEntryName(_ProtoSkillId, _RawSkillId)
+AND
+OBSCO_LUA_Skill_GetPrepareParentSkill(_RawSkillId, _SkillId)
+AND
+_SkillId == "Target_GagOrder"
 THEN
 ApplyStatus(_Character, "OdinSCO_PREPHIT_GAGORDER", 6.0, 1, _Character);
 

@@ -5,8 +5,6 @@ function OverrideStats()
     local total_changes = 0
     local total_stats = 0
     local debug_print = false
-    local description = ""
-    Ext.Print("Life is a lemon")
 
     for statname,overrides in pairs(OdinScoundrelOverhaul.StatOverrides) do
         for property,value in pairs(overrides) do

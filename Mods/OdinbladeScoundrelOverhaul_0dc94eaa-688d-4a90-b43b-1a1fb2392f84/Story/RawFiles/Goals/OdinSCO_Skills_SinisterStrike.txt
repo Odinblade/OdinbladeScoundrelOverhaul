@@ -3,27 +3,16 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
-// IF
-// NRD_OnHit(_Target, _Character, _, _HitHandle)
-// AND
-// NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
-// AND
-// OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
-// AND
-// _SkillId == "Target_OdinSCO_SinisterStrike"
-// THEN
-// OBSCO_Lua_Skill_SinisterStrike(_Character, _Target, _HitHandle);
-
-// PROC
-// ProcObjectTimerFinished((CHARACTERGUID)_Character, "ODINSCO_REFRESH_CD_SINISTERSTRIKE")
-// THEN
-// NRD_SkillSetCooldown(_Character, "Target_OdinSCO_SinisterStrike", 6.0);
-
 IF
-CharacterUsedSkill(_Character, "Target_OdinSCO_SinisterStrike", _, _)
+CharacterUsedSkill(_Character, _ProtoSkillId, _, _)
+AND
+OBSCO_LUA_GetSkillEntryName(_ProtoSkillId, _RawSkillId)
+AND
+OBSCO_LUA_Skill_GetPrepareParentSkill(_RawSkillId, _SkillId)
+AND
+_SkillId == "Target_OdinSCO_SinisterStrike"
 THEN
 ApplyStatus(_Character, "OdinSCO_PREPHIT_SINISTERSTRIKE", 6.0, 1, _Character);
-
 IF
 NRD_OnPrepareHit(_Target, _Character, _Damage, _HitHandle)
 AND

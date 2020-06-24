@@ -109,6 +109,7 @@ OdinScoundrelOverhaul = {
         Projectile_OdinSCO_Misfire = "Projectile_OdinSCO_Misfire",
         Projectile_ThrowingKnife = "Projectile_ThrowingKnife",
         Shout_Adrenaline = "Shout_Adrenaline",
+        Shout_OdinSCO_Outmaneuver = "Shout_OdinSCO_Outmaneuver",
         Shout_OdinSCO_PlayOfTheGame = "Shout_OdinSCO_PlayOfTheGame",
         Shout_OdinSCO_ShadowSlash = "Shout_OdinSCO_ShadowSlash",
         Shout_OdinSCO_SlipIntoShadows = "Shout_OdinSCO_SlipIntoShadows",

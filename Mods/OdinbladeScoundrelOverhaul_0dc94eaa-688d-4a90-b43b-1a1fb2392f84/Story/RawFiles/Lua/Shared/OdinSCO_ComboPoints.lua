@@ -11,21 +11,14 @@ OdinScoundrelOverhaul.ActivatedComboPoints = {
 }
 
 local function refreshDeadlyFlourish(character)
-    Ext.Print("refreshDeadlyFlourish: STARTED")
     local slot = NRD_SkillBarFindSkill(character, "Shout_OdinSCO_DeadlyFlourish")
     if slot ~= nil then
-        Ext.Print("refreshDeadlyFlourish: SkillBarFindSkill finished")
-        -- NRD_SkillBarClear(character, slot)
-        -- Ext.Print("refreshDeadlyFlourish: SkillBarClear finished")
-        -- Osi.DB_OBSCO_Flicker_DeadlyFlourish(character, slot)
         NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 6.0)
-        Ext.Print("refreshDeadlyFlourish: SkillSetCooldown finished")
         Osi.ProcObjectTimer(character, "ODINSCO_FLICKER_DEADLYFLOURISH", 25)
     end
 end
 
 function incrementComboPoints(character, points)
-    Ext.Print("incrementComboPoints")
     if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 and CharacterIsInCombat(character) == 1 then
         if IsSkillActive(character, "Shout_OdinSCO_DeadlyFlourish") then
             local newAmount = getComboPoints(character) + points

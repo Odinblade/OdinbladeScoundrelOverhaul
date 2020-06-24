@@ -101,8 +101,8 @@ NRD_DebugLog("ODINSCO_FLICKER_DEADLYFLOURISH timer: SkillSetCooldown finished");
 
 IF
 NRD_OnHit(_Target, _Character, _, _HitHandle)
-AND
-DB_IsPlayer((CHARACTERGUID)_Character)
+// AND
+// DB_IsPlayer((CHARACTERGUID)_Character)
 AND
 NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
 AND
@@ -110,11 +110,27 @@ OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
 THEN
 OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _SkillId);
 
+// IF
+// CharacterUsedSkill(_Character, _ProtoSkillId, _, _)
+// AND
+// OBSCO_LUA_GetSkillEntryName(_ProtoSkillId, _SkillId)
+// AND
+// OBSCO_LUA_Skill_IsSkillScoundrelPrepare(_SkillId, 1)
+// THEN
+// ApplyStatus(_Character, "OdinSCO_PREPAREHIT", 6.0, 1, _Character);
+
+// IF
+// NRD_OnPrepareHit(_Target, _Character, _Damage, _HitHandle)
+// AND
+// HasActiveStatus(_Character, "OdinSCO_PREPAREHIT", 1)
+// THEN
+// OBSCO_LUA_Skill_OnPrepareHit(_Character, _Target, _Damage, _HitHandle, "Target_TerrifyingCruelty");
+
 // If the skill does not have a target, process via position
 IF
 CharacterUsedSkillAtPosition(_Character, _X, _Y, _Z, _SkillId, _, _)
-AND
-DB_IsPlayer(_Character)
+// AND
+// DB_IsPlayer(_Character)
 THEN
 DB_OBSCO_AtPos_Launch(_Character, _X, _Y, _Z, _SkillId);
 ProcObjectTimer(_Character, "OdinSCO_AtPos_Launch", 1150);

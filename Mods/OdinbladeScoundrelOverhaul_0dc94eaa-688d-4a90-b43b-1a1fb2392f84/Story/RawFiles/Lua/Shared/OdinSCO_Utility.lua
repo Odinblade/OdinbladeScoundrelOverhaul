@@ -26,6 +26,20 @@ local function isScoundrelSkill(inSkillId)
     return result
 end
 
+local function getPrepareParentSkill(skillId)
+    local func = OdinScoundrelOverhaul.ComboSkills.OnPrepareHit[skillId]
+    if func ~= nil then
+        return skillId
+    else
+        local using = Ext.StatGetAttribute(skillId, "Using")
+        if using ~= nil then
+            return using
+        end
+    end
+    return ""
+end
+
 Ext.NewQuery(getSkillEntryName, "OBSCO_LUA_GetSkillEntryName", "[in](STRING)_ProtoId, [out](STRING)_SkillId")
 Ext.NewQuery(hasScoundrelSkills, "OBSCO_LUA_HasScoundrelSkills", "[in](CHARACTERGUID)_Character, [out](INTEGER)_Result");
 Ext.NewQuery(isScoundrelSkill, "OBSCO_LUA_IsScoundrelSkill", "[in](STRING)_SkillId, [out](INTEGER)_Result");
+Ext.NewQuery(getPrepareParentSkill, "OBSCO_LUA_Skill_GetPrepareParentSkill", "[in](STRING)_SkillId, [out](STRING)_ParentSkillId");

@@ -164,8 +164,8 @@ end
 
 local function skillSinisterStrike_Prep(character, target, damage, hithandle)
     Ext.Print("skillSinisterStrike_Prep started")
-    convertHitToElementalDamage(target, damage, hithandle)
     RemoveStatus(character, "OdinSCO_PREPHIT_SINISTERSTRIKE")
+    convertHitToElementalDamage(target, damage, hithandle)
 end
 
 local function skillCorruptedBlade(character, target, hithandle)
@@ -194,15 +194,6 @@ local function skillFatality(character, target, hithandle)
     Osi.ProcObjectTimer(character, "OdinSCO_COMBO_INVIS_CLEANUP", 900)
 end
 
--- local function skillFatality_Prep(character, target, damage, hithandle)
---     Ext.Print("skillFatality_Prep started")
---     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
---         consumeComboPoints(character)
---         Osi.OBSCO_QueueStatusApply(character, "INVISIBLE", character, 6.0, 0)
---     end
---     RemoveStatus(character, "OdinSCO_PREPHIT_FATALITY")
--- end
-
 local function skillGagOrder(character, target, hithandle)
     Ext.Print("skillGagOrder started")
     local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
@@ -219,8 +210,8 @@ end
 
 local function skillGagOrder_Prep(character, target, damage, hithandle)
     Ext.Print("skillGagOrder_Prep started")
-    convertHitToElementalDamage(target, damage, hithandle)
     RemoveStatus(character, "OdinSCO_PREPHIT_GAGORDER")
+    convertHitToElementalDamage(target, damage, hithandle)
 end
 
 
@@ -307,8 +298,8 @@ end
 
 local function skillTerrifyingCruelty_Prep(character, target, damage, hithandle)
     Ext.Print("skillTerrifyingCruelty_Prep started")
-    convertHitToElementalDamage(target, damage, hithandle)
     RemoveStatus(character, "OdinSCO_PREPHIT_TERRIFYINGCRUELTY")
+    convertHitToElementalDamage(target, damage, hithandle)  
 end
 
 local function skillCloakAndDagger(character, x, y, z)
@@ -412,11 +403,20 @@ local function skillOnHit(character, target, hithandle, skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnHit[skillId]
     if func~= nil then
         func(character, target, hithandle)
+    else
+        Ext.Print("Checking using field...")
+        local using = Ext.StatGetAttribute(skillId, "Using")
+        if using ~= nil then
+            Ext.Print("Using: "..using)
+            func = OdinScoundrelOverhaul.ComboSkills.OnHit[using]
+            if func~= nil then
+                func(character, target, hithandle)
+            end
+        end
     end
 end
 
 local function skillOnPrepareHit(character, target, damage, hithandle, skillId)
-    -- Ext.Print(skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnPrepareHit[skillId]
     if func~= nil then
         func(character, target, damage, hithandle)
@@ -469,6 +469,8 @@ OdinScoundrelOverhaul.ComboSkills.AtPos = {
 Ext.NewCall(skillOnHit, "OBSCO_LUA_Skill_OnHit", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle, (STRING)_SkillId")
 Ext.NewCall(skillOnPrepareHit, "OBSCO_LUA_Skill_OnPrepareHit", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER)_Damage, (INTEGER64)_HitHandle, (STRING)_SkillId")
 Ext.NewCall(skillAtPos, "OBSCO_LUA_Skill_AtPos", "(GUIDSTRING)_Character, (REAL)_X, (REAL)_Y, (REAL)_Z, (STRING)_SkillId")
+-- Ext.NewCall(isSkillScoundrelPrepare, "OBSCO_LUA_Skill_IsSkillScoundrelPrepare", "(STRING)_SkillId")
+
 
 -- SPECIAL PROCESSING
 Ext.NewCall(skillCrawlingInfestation, "OBSCO_Lua_Skill_CrawlingInfestation", "(GUIDSTRING)_Character, (GUIDSTRING)_Target")
