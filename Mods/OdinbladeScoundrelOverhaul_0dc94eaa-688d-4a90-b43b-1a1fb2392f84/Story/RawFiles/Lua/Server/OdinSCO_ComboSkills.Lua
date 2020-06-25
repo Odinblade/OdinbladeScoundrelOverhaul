@@ -29,6 +29,15 @@ end
 -- SOME RULES
 -- Each skill MUST call consumeComboPoints in one way or another.
 
+local function skillOutmaneuver_Proc(character, target, hithandle)
+    Ext.Print("skillOutmaneuver_Proc started")
+    if HasActiveStatus(character, "OdinSCO_OUTMANEUVER_COMBO") == 1 then
+        multiplyDamage(target, hithandle, 1.3)
+        RemoveStatus(character, "OdinSCO_OUTMANEUVER_COMBO")
+        Ext.Print("skillOutmaneuver_Proc Boosted Damage")
+    end
+end
+
 local function skillShadowStep(character, target, hithandle)
     Ext.Print("skillShadowStep started")
     local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
@@ -377,6 +386,14 @@ local function skillAdrenaline(character, x, y, z)
     incrementComboPoints(character, 1)
 end
 
+local function skillOutmaneuver(character, x, y, z)
+    Ext.Print("skillOutmaneuver started")
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then 
+        consumeComboPoints(character)
+        ApplyStatus(character, "OdinSCO_OUTMANEUVER_COMBO", 6.0, 1, character)
+    end
+end
+
 local function skillPlayOfTheGame(character, x, y, z)
     Ext.Print("skillPlayOfTheGame started")
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
@@ -403,8 +420,8 @@ local function skillOnHit(character, target, hithandle, skillId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnHit[skillId]
     if func~= nil then
         func(character, target, hithandle)
-    else
-        Ext.Print("Checking using field...")
+    elseif skillId ~= '' then
+        Ext.Print(skillId.." Checking using field...")
         local using = Ext.StatGetAttribute(skillId, "Using")
         if using ~= nil then
             Ext.Print("Using: "..using)
@@ -432,6 +449,7 @@ local function skillAtPos(character, x, y, z, skillId)
 end
 
 OdinScoundrelOverhaul.ComboSkills.OnHit = {
+    MultiStrike_OdinSCO_Outmaneuver_Proc = skillOutmaneuver_Proc,
     MultiStrike_OdinSCO_ShadowStep = skillShadowStep,
     MultiStrike_Vault = skillVault,
     Projectile_Chloroform = skillChloroform,
@@ -460,16 +478,16 @@ OdinScoundrelOverhaul.ComboSkills.AtPos = {
     Projectile_OdinSCO_Firecracker = skillFirecracker,
     Target_OdinSCO_FindersKeepers = skillFindersKeepers,
     Shout_Adrenaline = skillAdrenaline,
+    Shout_OdinSCO_Outmaneuver = skillOutmaneuver,
     Shout_OdinSCO_PlayOfTheGame = skillPlayOfTheGame,
     Shout_OdinSCO_SlipIntoShadows = skillSlipIntoShadows
 }
 
--- Ext.RegisterListener("BeforeCharacterApplyDamage", BeforeCharacterApplyDamage)
-
 Ext.NewCall(skillOnHit, "OBSCO_LUA_Skill_OnHit", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle, (STRING)_SkillId")
 Ext.NewCall(skillOnPrepareHit, "OBSCO_LUA_Skill_OnPrepareHit", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER)_Damage, (INTEGER64)_HitHandle, (STRING)_SkillId")
 Ext.NewCall(skillAtPos, "OBSCO_LUA_Skill_AtPos", "(GUIDSTRING)_Character, (REAL)_X, (REAL)_Y, (REAL)_Z, (STRING)_SkillId")
--- Ext.NewCall(isSkillScoundrelPrepare, "OBSCO_LUA_Skill_IsSkillScoundrelPrepare", "(STRING)_SkillId")
+
+-- Ext.NewCall(multiplyDamage, "OBSCO_LUA_MultiplyDamage", "(GUIDSTRING)_Target, (INTEGER64)_HitHandle, (REAL)_Multiplier");
 
 
 -- SPECIAL PROCESSING
