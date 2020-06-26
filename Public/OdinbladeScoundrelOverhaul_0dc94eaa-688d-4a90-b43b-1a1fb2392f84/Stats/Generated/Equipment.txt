@@ -1,0 +1,58 @@
+new equipment "OdinSCO_Class_Nightcloak_Preview"
+add equipmentgroup
+add equipment entry "ARM_OdinSCO_Nightcloak_Helmet"
+add equipmentgroup
+add equipment entry "ARM_OdinSCO_Nightcloak_UpperBody"
+add equipmentgroup
+add equipment entry "ARM_OdinSCO_Nightcloak_LowerBody"
+add equipmentgroup
+add equipment entry "ARM_OdinSCO_Nightcloak_Gloves"
+add equipmentgroup
+add equipment entry "ARM_OdinSCO_Nightcloak_Boots"
+add equipmentgroup
+add equipment entry "WPN_Rogue_Dagger_Humans"
+add equipmentgroup
+add equipment entry "WPN_Rogue_Dagger_Humans"
+
+new equipment "OdinSCO_Class_Nightcloak_Start"
+add equipmentgroup
+add equipment entry "ARM_Purge_UpperBody"
+add equipmentgroup
+add equipment entry "ARM_Purge_LowerBody"
+add equipmentgroup
+add equipment entry "WPN_CraftedDagger"
+add equipmentgroup
+add equipment entry "POTION_Minor_Healing_Potion"
+add equipmentgroup
+add equipment entry "GRN_Grenade_SmokeBomb_A"
+add equipmentgroup
+add equipment entry "WPN_CraftedDagger"
+add equipmentgroup
+add equipment entry "SCROLL_Resurrect"
+add equipmentgroup
+add equipment entry "CONT_Backpack_A_SourceHunter"
+
+new equipment "OdinSCO_Class_Nightcloak_Start_Undead"
+add equipmentgroup
+add equipment entry "ARM_Purge_UpperBody"
+add equipmentgroup
+add equipment entry "ARM_Purge_LowerBody"
+add equipmentgroup
+add equipment entry "ARM_Purge_Helmet"
+add equipmentgroup
+add equipment entry "ARM_Purge_Boots"
+add equipmentgroup
+add equipment entry "ARM_Purge_Gloves"
+add equipmentgroup
+add equipment entry "WPN_CraftedDagger"
+add equipmentgroup
+add equipment entry "CON_Potion_Poison_A"
+add equipmentgroup
+add equipment entry "GRN_Grenade_SmokeBomb_A"
+add equipmentgroup
+add equipment entry "WPN_CraftedDagger"
+add equipmentgroup
+add equipment entry "SCROLL_Resurrect"
+add equipmentgroup
+add equipment entry "CONT_Backpack_A_SourceHunter"
+

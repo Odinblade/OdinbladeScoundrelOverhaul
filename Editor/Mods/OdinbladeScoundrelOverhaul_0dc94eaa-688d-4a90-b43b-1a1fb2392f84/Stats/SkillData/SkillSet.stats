@@ -14,5 +14,25 @@
         <field name="Using" type="BaseClassStatObjectFieldDefinition" value="Summon_OdinSCO_SkitteringCrawler" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinSCO_Class_Nightcloak" />
+        <field name="Skills" type="StatReferenceStatObjectFieldDefinition" stat_name="Target_OdinSCO_SinisterStrike" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="true">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinHUN_Class_Tracker_substat_0" />
+        <field name="Skills" type="StatReferenceStatObjectFieldDefinition" stat_name="MultiStrike_Vault" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="OdinSCO_Class_Nightcloak" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="true">
+      <fields>
+        <field name="Name" type="NameStatObjectFieldDefinition" value="OdinHUN_Class_Tracker_substat_1" />
+        <field name="Skills" type="StatReferenceStatObjectFieldDefinition" stat_name="Shout_ChameleonSkin" />
+        <field name="Using" type="BaseClassStatObjectFieldDefinition" value="OdinSCO_Class_Nightcloak" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>

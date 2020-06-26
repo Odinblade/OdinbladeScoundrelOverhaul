@@ -1,3 +1,7 @@
 new skillset "Summon_OdinSCO_SkitteringCrawler"
 add skill "Jump_BonePileBurrow"
 add skill "Projectile_EnemyPoisonDart"
+new skillset "OdinSCO_Class_Nightcloak"
+add skill "Target_OdinSCO_SinisterStrike"
+add skill "MultiStrike_Vault"
+add skill "Shout_ChameleonSkin"

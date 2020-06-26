@@ -1,0 +1,21 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+CharacterUsedSkill(_Character, "Target_DaggersDrawn", _, _)
+AND
+HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
+THEN
+ApplyStatus(_Character, "OdinSCO_PRECISION", 6.0, 1, _Character);
+
+IF
+CharacterStatusApplied(_Character, "BLINDED", _)
+AND
+HasActiveStatus(_Character, "OdinSCO_PRECISION", 1)
+THEN
+RemoveStatus(_Character, "OdinSCO_PRECISION");
+EXITSECTION
+
+ENDEXITSECTION

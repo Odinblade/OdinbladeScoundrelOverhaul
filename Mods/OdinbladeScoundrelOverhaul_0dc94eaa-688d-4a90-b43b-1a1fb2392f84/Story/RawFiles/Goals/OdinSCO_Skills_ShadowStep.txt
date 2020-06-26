@@ -42,10 +42,13 @@ PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_SHADOWSTEP_RETURN")
 AND
 DB_OBSCO_ShadowStep(_Character, _X, _Y, _Z)
+AND
+GetPosition(_Character, _nX, _nY, _nZ)
 THEN
 NOT DB_OBSCO_ShadowStep(_Character, _X, _Y, _Z);
-TeleportToPosition(_Character, _X, _Y, _Z, "", 0);
-//PlayEffect at position here!
+TeleportToPosition(_Character, _X, _Y, _Z, "", 0, 1);
+PlayEffectAtPosition("OdinSCO_Impact_04", _X, _Y, _Z);
+PlayEffectAtPosition("OdinSCO_Impact_04", _nX, _nY, _nZ);
 EXITSECTION
 
 ENDEXITSECTION

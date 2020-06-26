@@ -1,0 +1,2 @@
+new itemcolor "OdinSCO_01","FF163838","FF0B1515","FF639594"
+

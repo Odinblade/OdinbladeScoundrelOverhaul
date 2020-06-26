@@ -58,3 +58,8 @@ data "Act part" "0"
 data "DodgeBoost" "75"
 data "AccuracyBoost" "25"
 
+new entry "Stats_OdinSCO_Precision"
+type "Potion"
+data "Act" "1"
+data "Act part" "0"
+data "AccuracyBoost" "50"
