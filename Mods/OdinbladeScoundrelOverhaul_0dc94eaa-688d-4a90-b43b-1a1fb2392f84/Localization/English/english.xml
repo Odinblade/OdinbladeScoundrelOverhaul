@@ -16,4 +16,97 @@
 	<content contentuid="h31d2a547g005bg4ee3g8d2ag47720bd4fa1a">Gain &lt;font color=&apos;#40b606&apos;&gt;2 AP&lt;/font&gt; immediately, but lose &lt;font color=&apos;#C80030&apos;&gt;2 AP&lt;/font&gt; next turn. At the end of your current turn, become &lt;font color=&apos;#c7a758&apos;&gt;Slowed&lt;/font&gt; for 1 turn regardless of &lt;font color=&apos;#188ede&apos;&gt;Magic Armour&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Lose only &lt;font color=&apos;#C80030&apos;&gt;1 AP&lt;/font&gt; next turn instead and no longer become &lt;font color=&apos;#c7a758&apos;&gt;Slowed&lt;/font&gt;.</content>
 	<content contentuid="h67dce9acg0dc7g4d92gb7d8gc8e7a34250ef">Whirl into a barrage of 5 stabs, each dealing [1]. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Before damage is dealt, gain &lt;font color=&apos;#40b606&apos;&gt;[2]% Accuracy&lt;/font&gt; for 1 turn.</content>
 	<content contentuid="hd181eaecgd5d0g4910gb0b8g41c72494c371">Explosion</content>
+	<content contentuid="h022a149cg5799g4245gb5e9g883f01ed04d1">Smoke Bomb</content>
+	<content contentuid="h06b95e92g6153g478fgaedcg5805159d83a9">Watch your back, traveler...</content>
+	<content contentuid="h07f17762g9d3fg4d19g9b8bge55be5f449e1">I would like to trade.</content>
+	<content contentuid="h0c5c8a9fg9481g48abga89cga443677e5528">Combo II</content>
+	<content contentuid="h112fcfafg21c2g4fa3ga3c0gf3b0a19ef2e2">Whirling Slash Skillbook</content>
+	<content contentuid="h15c8af86g683dg4874ga6cdgd0f93805b59c">Slip Into Shadows Skillbook</content>
+	<content contentuid="h16de10a1ga1f6g4e8ag900eg858b88d429c3">Sabotage an &lt;font color=&apos;#aa3938&apos;&gt;enemy&lt;/font&gt; target without &lt;font color=&apos;#188ede&apos;&gt;Magic Armour&lt;/font&gt;, causing them to &lt;font color=&apos;#7F00FF&apos;&gt;Fumble&lt;/font&gt; their next spell cast. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Deals [1] upon triggering this effect.</content>
+	<content contentuid="h16e4fe71gf396g4da9g8a49g7c31c4453c63">Debug: Add Combo</content>
+	<content contentuid="h1aa12734ga055g43adgbf24g41dd75254930">Play of the Game</content>
+	<content contentuid="h1ea620baga9b7g4961ga750g7ae676004848">Crawling Infestation Skillbook</content>
+	<content contentuid="h1f0b6cb7gd994g4389gbb15gfe0b19814e57">Outmaneuver Skillbook</content>
+	<content contentuid="h1feba9acg625cg4727g940fgb4a5e3b29e23">Misfire Skillbook</content>
+	<content contentuid="h2033fb9cgad9ag493dg97b2g5ef9edb5b740">Become &lt;font color=&apos;#639594&apos;&gt;Invisible&lt;/font&gt; until the end of the current turn. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Gain &lt;font color=&apos;#dbdbdb&apos;&gt;Hasted&lt;/font&gt; for 1 turn.</content>
+	<content contentuid="h2416a7b8g4713g4c93ga425g3f241542bab5">The target will &lt;font color=&apos;#7F00FF&apos;&gt;Fumble&lt;/font&gt; their next skill after paying it&apos;s costs. The skill is put on a short cooldown afterwards.</content>
+	<content contentuid="h259ef500g6e79g4addg9be0gddf9955fe2db">Combo II</content>
+	<content contentuid="h26ebde16gf3a0g4b6fg9ccdg134b4820f286">Stacks up to 3 times.</content>
+	<content contentuid="h29bfc83bg7d49g4eedg8e46g65b412988bb0">Combo III</content>
+	<content contentuid="h2d60b809g250dg48b3g9c89g1c4f60c460ea">Firecracker</content>
+	<content contentuid="h2e45f589gb785g4546ga63fg3dedbe54a827">Activated: Combo III</content>
+	<content contentuid="h2e683545g98a3g4a53gac95gec25a969f86f">Range: [2]</content>
+	<content contentuid="h31430312gc285g4bacg86edg820db95cace2">Combo I</content>
+	<content contentuid="h31b5f3c9ge25fg4aa6g8264g4344064cd7b3">Crawling Infestation</content>
+	<content contentuid="h329ee855g89f6g4d97gad78gf2ecd34dc8ce">Firecracker Skillbook</content>
+	<content contentuid="h3e1eef93gaebbg47e0g9473g8c91dd284eaa">Stacks up to 3 times.</content>
+	<content contentuid="h41e3c78cg866cg49c5gbe88g6a583cd29312">Gain &lt;font color=&apos;#40b606&apos;&gt;[1]% Dodge Chance&lt;/font&gt; and &lt;font color=&apos;#40b606&apos;&gt;[2]% Accuracy&lt;/font&gt; for 1 turn. &lt;br&gt;&lt;br&gt;The first time you successfully dodge an &lt;font color=&apos;#aa3938&apos;&gt;enemy&lt;/font&gt; attack with this effect, blink behind them and strike with your &lt;font color=&apos;#FFFFFF&apos;&gt;Melee Weapon&lt;/font&gt;, dealing [3]. The status then expires. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Increases the damage dealt by &lt;font color=&apos;#40b606&apos;&gt;30%&lt;/font&gt;.</content>
+	<content contentuid="h42dbb733g941fg4325gb6e3g91c1b574a007">Add +1 Combo point</content>
+	<content contentuid="h43d4ed73g2370g4bb8gac4cg101d0e1468e2">Misfire</content>
+	<content contentuid="h46cc36c9ge662g41abgbcc0ge0b03cc4e980">Strike the target, dealing [1] converted into damage of a random &lt;font color=&apos;#c80030&apos;&gt;element&lt;/font&gt;. Deals &lt;font color=&apos;#40b606&apos;&gt;+20% damage&lt;/font&gt; if used from &lt;font color=&apos;#639594&apos;&gt;Invisibility&lt;/font&gt; or whilst &lt;font color=&apos;#639594&apos;&gt;Sneaking&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Reduces this skill&apos;s cooldown by 1 and sets either &lt;font color=&apos;#7D71D9&apos;&gt;Shocked&lt;/font&gt;, &lt;font color=&apos;#c7a758&apos;&gt;Slowed&lt;/font&gt;, &lt;font color=&apos;#FE6E27&apos;&gt;Burning&lt;/font&gt;, &lt;font color=&apos;#65C900&apos;&gt;Poisoned&lt;/font&gt;, or &lt;font color=&apos;#cfecff&apos;&gt;Chilled&lt;/font&gt; for 1 turn based on the skill&apos;s damage type.</content>
+	<content contentuid="h47859db4g695fg4054gadeegbb3fa5cc9b24">Skittering Crawler</content>
+	<content contentuid="h4988628dg3338g4c15gbf50g5140aba380bb">Sinister Strike</content>
+	<content contentuid="h4a5c29a0gda19g47f6g87edg092710d7eaab">This unit is a &lt;font color=&apos;#7F00FF&apos;&gt;Decoy&lt;/font&gt; of another character.</content>
+	<content contentuid="h4b4365fcg52a8g439agb708gc45f4f4a8c5f">Upon dodging an &lt;font color=&apos;#aa3938&apos;&gt;enemy&lt;/font&gt; attack, blink behind them and backstab. This status then expires.</content>
+	<content contentuid="h4bce7d38g02d4g4044g9e68ge31d9ce59b7d">Outmaneuver</content>
+	<content contentuid="h51e2f746gda6bg4614ga739g0cb207bd5ac4">Precision</content>
+	<content contentuid="h55f5ec03gdde8g42e2g9a92g4c3c6e756935">Finders Keepers</content>
+	<content contentuid="h586037d7g62c0g432cg96degd2542a6a4367">Highly flammable and prone to unsettling rattling noises, the less time this arrowhead spends in your backpack, the better.</content>
+	<content contentuid="h58910111g4636g40edgb1b9gcc5e94211815">Steal &lt;font color=&apos;#40b606&apos;&gt;[1] AP&lt;/font&gt; from a target without &lt;font color=&apos;#a8a8a8&apos;&gt;Physical Armour&lt;/font&gt;, causing them to begin their next turn with &lt;font color=&apos;#C80030&apos;&gt;[2] AP&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Reduces this skill&apos;s cooldown by 5.</content>
+	<content contentuid="h58af391dg5200g4ddagb694g39065dbd7ba9">Combo I</content>
+	<content contentuid="h59e85f66gff00g49edgbbb3gab02efa71910">Cruelty</content>
+	<content contentuid="h5a9ac96dg881dg4788g9017g26b739ddbf8d"> </content>
+	<content contentuid="h668a12ffg3ddeg4ad2g9ab8g72351a52541d">Deadly Flourish</content>
+	<content contentuid="h67641fe2g3acbg451ega04fgfdb09dbc1bdf">Range: [2]</content>
+	<content contentuid="h6a789aebgba5fg44ebgb314g1b2cac1b3bfa">Lina, the Deft</content>
+	<content contentuid="h6d98d2d1gc4ffg468fgb0d4g9807c9078a41">Range: [2]</content>
+	<content contentuid="h70948666g9b8cg4a9cg99e9g98d6df7c41ed">Finders Keepers</content>
+	<content contentuid="h722d694eg3222g4d11g8bbfg7b8781580deb">Activated: Combo I</content>
+	<content contentuid="h772b3308ge1ffg4c10g9926g8a63180b4c01">Debug Transform</content>
+	<content contentuid="h7a0d3ac0g64b0g4c85g84eeg5281b0ab4b5f">Struggle</content>
+	<content contentuid="h7f296adega231g4b25gac8dg68fbffcca579">Play of the Game</content>
+	<content contentuid="h899bbdedg0ec1g45c1g8c69g8a5a2b576209">Misdirection</content>
+	<content contentuid="h8d30037bgabccg4f66g8ea0ga6009298b6d9">Strike nearby &lt;font color=&apos;#aa3938&apos;&gt;enemies&lt;/font&gt;, dealing [1] and applying &lt;font color=&apos;#c80030&apos;&gt;Bleeding&lt;/font&gt;. Deals &lt;font color=&apos;#40b606&apos;&gt;+20% damage&lt;/font&gt; if used from &lt;font color=&apos;#639594&apos;&gt;Invisibility&lt;/font&gt; or whilst &lt;font color=&apos;#639594&apos;&gt;Sneaking&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Become &lt;font color=&apos;#639594&apos;&gt;Invisible&lt;/font&gt; before damage is dealt.</content>
+	<content contentuid="h907bf393g078eg44f8g8fffgb45f7e2d3c35">Expend your &lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt; points to enhance your next &lt;font color=&apos;#639594&apos;&gt;Scoundrel&lt;/font&gt; skill. &lt;br&gt;&lt;br&gt;From &lt;font color=&apos;#639594&apos;&gt;5 Scoundrel&lt;/font&gt;, you begin combat with &lt;font color=&apos;#C9AA58&apos;&gt;Combo I&lt;/font&gt;. From &lt;font color=&apos;#639594&apos;&gt;10 Scoundrel&lt;/font&gt;, you instead begin combat with &lt;font color=&apos;#C9AA58&apos;&gt;Combo II&lt;/font&gt;.</content>
+	<content contentuid="h91fa65a4gdf6bg4a01ga5eegbaa6c1d46fc5">Adrenaline Combo</content>
+	<content contentuid="h935f4cd4g44dag4e86g8b31g7ffe1c2ecfe0">Precision</content>
+	<content contentuid="h9379e342g0fccg47f0gacc7g104da0e58065">Hurl a smoke grenade, dealing [1] to all characters and creating a &lt;font color=&apos;#639594&apos;&gt;Smoke Cloud&lt;/font&gt;. &lt;font size=&apos;16&apos;&gt;&lt;br&gt;---------------------------------------------------------------------&lt;br&gt;&lt;font color=&apos;#ff00a8&apos;&gt;Way of the Umbra&lt;/font&gt; switches this skill to &lt;font color=&apos;#c80030&apos;&gt;Null Zone&lt;/font&gt;, a &lt;font color=&apos;#c80030&apos;&gt;Chaos&lt;/font&gt; skill which creates a shadowy portal.&lt;br&gt;---------------------------------------------------------------------&lt;br&gt;&lt;/font&gt;</content>
+	<content contentuid="h93cc0c38ge923g46b1ga13bgacb9b089ab25">Misfire</content>
+	<content contentuid="h96d1ca18gf5a6g4e29gb54bgcd86b7c24c89">Crawling Infestation</content>
+	<content contentuid="h98f0d1f2g7380g431eg9674gde1e3772beca">Misdirection</content>
+	<content contentuid="h9bb1ff03g7c4eg4442gae00g35501f4c3009">Sabotage an enemy target, causing them to fumble their next spell cast. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Deals [1] upon triggering this effect.</content>
+	<content contentuid="h9e613850g0498g47c2g8a4eg64d1fc1ccbe8">*Take my leave*</content>
+	<content contentuid="h9e75e796gc12fg4a41gb810g6e0d442e1824">Play of the Game</content>
+	<content contentuid="ha01feabbg41fdg45c8gb310gf3665401319c">Misfire</content>
+	<content contentuid="ha124704agc5c3g472eg918dg97ba90c12bce">Misfire</content>
+	<content contentuid="ha2b9a082g1302g4a36g93f9gb427e204885e">Combo 3</content>
+	<content contentuid="ha6388c3cg9af5g4993gb8c9ga9dc2d1f169a">Shadow Step Skillbook</content>
+	<content contentuid="haf4505dbg93e1g4618g81f1g4c67fa4d6342">Sinister Strike Skillbook</content>
+	<content contentuid="hb7466eecgf514g49bdgbdf4gfc00a0f38de6">Whirling Slash</content>
+	<content contentuid="hb7f514degd741g4019gb680g7269b7c779f5">&lt;font color=&apos;#FFFFFF&apos;&gt;a skill, but&lt;/font&gt; &lt;font color=&apos;#7F00FF&apos;&gt;Fumbled&lt;/font&gt;&lt;font color=&apos;#FFFFFF&apos;&gt; it!&lt;/font&gt;</content>
+	<content contentuid="hb95c25abga203g48e6gaf43g132f33c1306d">Backstab up to [1] targets, dealing [2] before blinking back to your original position. Deals &lt;font color=&apos;#40b606&apos;&gt;+20% damage&lt;/font&gt; if used from &lt;font color=&apos;#639594&apos;&gt;Invisibility&lt;/font&gt; or whilst &lt;font color=&apos;#639594&apos;&gt;Sneaking&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Become &lt;font color=&apos;#639594&apos;&gt;Invisible&lt;/font&gt; for 1 turn after using this skill.</content>
+	<content contentuid="hbb716392g0d89g4bebg9b7cgebdefc87d833">Crawling Infestation</content>
+	<content contentuid="hbc647a19gc66fg4c32g923eg8292af70c493">Outmaneuver</content>
+	<content contentuid="hbd52c1d5g57a6g441cgb95ag6579562eab20"></content>
+	<content contentuid="hbf320a79g1a96g4ec5g89c8g270b94f7fecf">Misdirection Skillbook</content>
+	<content contentuid="hc16ce1a8gc354g4071g93a2g68f7f71b42c5">Plant a volatile egg on your target. &lt;br&gt;&lt;br&gt;When the target dies or the status expires, a &lt;font color=&apos;#7F25D4&apos;&gt;Totemic&lt;/font&gt; &lt;font color=&apos;#639594&apos;&gt;Skittering Crawler&lt;/font&gt; will burst from them, dealing [1] and joining you in battle for 3 turns. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: The egg hatches instantly.</content>
+	<content contentuid="hca988affg14f4g441bgadebg9e014e6546bb">Finders Keepers</content>
+	<content contentuid="hcae588d4gdbabg4d14g8326g482dbe201d63">Misdirection</content>
+	<content contentuid="hcd20b723gb3c8g4e44g8a00g8d3dbded852e">Toss a &lt;font color=&apos;#FE6E27&apos;&gt;Firecracker&lt;/font&gt;, making &lt;font color=&apos;#aa3938&apos;&gt;enemies&lt;/font&gt; within the 2m radius turn to face it. Ignites &lt;font color=&apos;#9a6a46&apos;&gt;Ground Surfaces&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Deals [1] and &lt;font color=&apos;#639594&apos;&gt;Blinds&lt;/font&gt; hit &lt;font color=&apos;#aa3938&apos;&gt;enemies&lt;/font&gt; for 1 turn.</content>
+	<content contentuid="hce17dcfcg1b62g4e0cg971ag728664e409d8">Stance swap</content>
+	<content contentuid="hcf97a6e7ga0ebg4fe3ga4dcg393c9c87423f">Skillbooks</content>
+	<content contentuid="hd066decbg313bg451cg902fgb4c4e9ba39ae">Slip Into Shadows</content>
+	<content contentuid="hd07e7795ge1fdg4d1cgb7fbgf3d26cf31b7a">Activated: Combo II</content>
+	<content contentuid="hd44f87fbgbb64g40f1ga513g8369e4282c0d">Combo III</content>
+	<content contentuid="hd7028286g9798g4701g89dcgc3b4873c26e2">Cruelty</content>
+	<content contentuid="hdc6d66edg63c6g45d5g9888g344a0ae80559">Can be cast while invisible or sneaking. Range: [1]</content>
+	<content contentuid="hdfee0daag7134g4dc9gb462g3c05740e2290">Scoundrel skills are skills for rogues and thieves. High Finesse improves these skills.</content>
+	<content contentuid="he6334b44gb08bg4be1ga0c8g28083d2d967e">Finders Keepers Skillbook</content>
+	<content contentuid="he7d6e832g8218g45a3g8b0fg6dae304e63c7">Deploy a &lt;font color=&apos;#7F00FF&apos;&gt;Decoy&lt;/font&gt;, lasting 2 turns. The &lt;font color=&apos;#7F00FF&apos;&gt;Decoy&lt;/font&gt; can attack, but is fragile. &lt;font color=&apos;#aa3938&apos;&gt;Enemies&lt;/font&gt; are more likely to target the &lt;font color=&apos;#7F00FF&apos;&gt;Decoy&lt;/font&gt;. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: After placing a &lt;font color=&apos;#7F00FF&apos;&gt;Decoy&lt;/font&gt;, switch places with it.</content>
+	<content contentuid="hebf9b3e5gb9c3g4ac7g8c86gcf38fbd94a74">Outmaneuver</content>
+	<content contentuid="hec6e17e3gdca7g4c43ga0b2gee8696eafaea">Struggle</content>
+	<content contentuid="hf06d3349ga578g4eb5gb70fg2d01f9c2b550">Shadow Step</content>
+	<content contentuid="hf0d8dd9egd832g4b34gb01eg0bec7131431f">Stacks up to 3 times. &lt;br&gt;&lt;br&gt;Activate the &lt;font color=&apos;#639594&apos;&gt;Deadly Flourish&lt;/font&gt; skill to enhance your next &lt;font color=&apos;#639594&apos;&gt;Scoundrel&lt;/font&gt; skill.</content>
+	<content contentuid="hf1685ad8g0d81g40e7gb7ffge1a4fb387dca">Generate up to 2 &lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt; points. &lt;br&gt;&lt;br&gt;&lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt;: Gain a &lt;font color=&apos;#40B606&apos;&gt;25% Damage Boost&lt;/font&gt; until the end of the turn, but you do not generate &lt;font color=&apos;#C9AA58&apos;&gt;Combo&lt;/font&gt; from this skill.</content>
+	<content contentuid="hf4143c39gb0d8g4a04g8e23gf6f3dc4c5278">I&apos;ve got more than a fair share of tricks up my sleeve. Perhaps you could tempt me to part ways with some of them, albeit temporarily, of course...</content>
 </contentList>
