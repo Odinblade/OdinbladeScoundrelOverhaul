@@ -94,16 +94,6 @@ DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
 THEN
 RemoveStatus(_Clone, "OdinSCO_MISDIRECTION");
 
-// // When combat ends, destroy all Decoys
-// IF
-// ObjectLeftCombat((CHARACTERGUID)_Caster, _)
-// AND
-// DB_OBSCO_Misdirection(_Caster, _Clone, _X, _Y, _Z)
-// AND
-// HasActiveStatus(_Clone, "OdinSCO_MISDIRECTION", 1)
-// THEN
-// RemoveStatus(_Clone, "OdinSCO_MISDIRECTION");
-
 // If the caster dies, destroy any active Decoys they have
 IF
 CharacterDied(_Caster)

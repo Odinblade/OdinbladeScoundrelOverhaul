@@ -34,6 +34,7 @@ THEN
 NOT DB_OBSCO_CrawlingInfestation(_Target, _Owner);
 OBSCO_CrawlingInfestation(_Target, (CHARACTERGUID)_Owner);
 
+//Summon the Skittering Crawler
 PROC
 OBSCO_CrawlingInfestation((CHARACTERGUID)_Target, (CHARACTERGUID)_Owner)
 AND

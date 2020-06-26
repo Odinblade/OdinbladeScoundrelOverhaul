@@ -3,14 +3,15 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
+//Character used the non-Combo version of Adrenaline
 IF
 CharacterUsedSkill(_Character, "Shout_Adrenaline", _, _)
 AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 0)
 THEN
-NRD_DebugLog("Applied APPLY_ADRENALINE status");
 ApplyStatus(_Character, "OdinSCO_APPLY_ADRENALINE", 6.0);
 
+//Slow the character if they used the non-Combo version of Adrenaline
 IF
 ObjectTurnEnded(_Character)
 AND

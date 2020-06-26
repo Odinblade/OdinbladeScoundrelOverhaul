@@ -19,6 +19,7 @@ DB_IsPlayer(_Player)
 THEN
 OBSCO_HandleDeadlyFlourish();
 
+//If a character has any recognised Scoundrel skills, give them Deadly Flourish and notify
 PROC
 OBSCO_HandleDeadlyFlourish()
 AND
@@ -30,6 +31,7 @@ OBSCO_LUA_HasScoundrelSkills(_Character, 1)
 THEN
 CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
 
+//If a character activates their first Scoundrel skill, give them Deadly Flourish and notify
 IF
 SkillActivated(_Character, _SkillId)
 AND
@@ -41,6 +43,7 @@ OBSCO_LUA_HasScoundrelSkills(_Character, 1)
 THEN
 CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
 
+//If a character learns their first Scoundrel skill, give them Deadly Flourish and notify
 IF
 SkillAdded(_Character, _SkillId, _Learned)
 AND
@@ -52,6 +55,7 @@ OBSCO_LUA_IsScoundrelSkill(_SkillId, 1)
 THEN
 CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", 1);
 
+//If a character removes their last active Scoundrel skill, remove Deadly Flourish
 IF
 SkillDeactivated(_Character, _SkillId)
 AND

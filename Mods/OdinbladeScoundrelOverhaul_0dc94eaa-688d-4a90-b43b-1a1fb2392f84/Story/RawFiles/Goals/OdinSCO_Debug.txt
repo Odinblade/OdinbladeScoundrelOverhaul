@@ -8,8 +8,7 @@ CharacterUsedItem(_Character, b4ad7427-a854-4329-a8ff-b6126c93a3bc)
 AND
 IsGameLevel("OdinSCO_Test", 1)
 THEN
-//CharacterAddSkill(_Character, "");
-CharacterAddSkill(_Character, "Shout_OdinSCO_Debug_AddCombo");
+// CharacterAddSkill(_Character, "Shout_OdinSCO_Debug_AddCombo");
 // CharacterAddSkill(_Character, "Shout_OdinSCO_DeadlyFlourish");
 
 CharacterAddSkill(_Character, "Jump_CloakAndDagger");
@@ -42,15 +41,12 @@ CharacterAddSkill(_Character, "Target_SerratedEdge");
 CharacterAddSkill(_Character, "Target_SleepingArms");
 CharacterAddSkill(_Character, "Target_TerrifyingCruelty");
 
-// IF
-// ObjectTurnStarted(_Character)
-// AND
-// NRD_CharacterGetStatInt((CHARACTERGUID)_Character, "CurrentAP", _AP)
-// AND
-// NRD_IntegerToString(_AP, _APString)
-// THEN
-// NRD_DebugLog(_APString);
-
+//REGION Add Combo points
+IF
+CharacterUsedSkill(_Character, "Shout_OdinSCO_Debug_AddCombo", _, _)
+THEN
+OBSCO_LUA_IncrementComboPoints(_Character, 1);
+//END_REGION
 EXITSECTION
 
 ENDEXITSECTION

@@ -10,6 +10,7 @@ HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN
 DB_OBSCO_Misfire(_Character, _Target);
 
+//Prevent the skill cast and put it on a 1-turn CD
 IF
 NRD_OnActionStateEnter(_Target, "PrepareSkill")
 AND
@@ -27,9 +28,9 @@ CharacterStatusText(_Target, "Spell <font color='#7F00FF'>Fumbled</font>!");
 CharacterUseSkill(_Target, "Shout_OdinSCO_Misfire_Proc", _Target, 1, 1, 1);
 RemoveStatus(_Target, "OdinSCO_MISFIRE");
 NRD_SkillSetCooldown(_Target, _SkillId, 6.0);
-NRD_DebugLog(_DebugString);
 OBSCO_Misfire(_Target);
 
+//Perform the damage effect on Fumble
 PROC
 OBSCO_Misfire((CHARACTERGUID)_Target)
 AND

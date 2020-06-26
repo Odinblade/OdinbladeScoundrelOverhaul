@@ -9,6 +9,7 @@ THEN
 DB_OBSCO_Firecracker_Init(_Character, _X, _Y, _Z);
 ProcObjectTimer(_Character, "OdinSCO_FIRECRACKER_SPAWN", 1150);
 
+//Creates a temporary object so that characters have something to look at
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Caster, "OdinSCO_FIRECRACKER_SPAWN")
 AND
@@ -19,14 +20,13 @@ THEN
 DB_OBSCO_Firecracker(_Caster, _Firecracker);
 ProcObjectTimer(_Firecracker, "OdinSCO_FIRECRACKER_CLEANUP", 2000);
 NOT DB_OBSCO_Firecracker_Init(_Caster, _X, _Y, _Z);
-NRD_DebugLog("Lemon zest1");
 
+//Make the target look at the Firecracker impact
 IF
 CharacterStatusApplied(_Enemy, "OdinSCO_APPLY_FIRECRACKER", _Owner)
 AND
 DB_OBSCO_Firecracker((CHARACTERGUID)_Owner, (ITEMGUID)_Firecracker)
 THEN
-NRD_DebugLog("Lemon zest2");
 CharacterLookAt(_Enemy, _Firecracker);
 RemoveStatus(_Enemy, "OdinSCO_APPLY_FIRECRACKER");
 
