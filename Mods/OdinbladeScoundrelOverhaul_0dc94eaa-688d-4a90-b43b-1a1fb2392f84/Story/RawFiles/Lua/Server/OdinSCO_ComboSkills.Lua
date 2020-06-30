@@ -25,7 +25,6 @@ local function skillOutmaneuver_Proc(character, target, hithandle)
     if HasActiveStatus(character, "OdinSCO_OUTMANEUVER_COMBO") == 1 then
         multiplyDamage(target, hithandle, 1.3)
         RemoveStatus(character, "OdinSCO_OUTMANEUVER_COMBO")
-        Ext.Print("skillOutmaneuver_Proc Boosted Damage")
     end
 end
 
@@ -116,12 +115,15 @@ end
 
 local function skillShadowSlash(character, target, hithandle)
     local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
+    if didHit == 1 then
+        Osi.ProcObjectTimerCancel(character, "OdinSCO_INCREMENT_COMBO_DELAYED")
+        Osi.ProcObjectTimer(character, "OdinSCO_INCREMENT_COMBO_DELAYED", 1250)
+    end
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then  
         consumeComboPoints(character)
-        multiplyDamage(target, hithandle, 1.2)
     end
-    if didHit == 1 then
-        incrementComboPoints(character, 1)
+    if HasActiveStatus(character, "OdinSCO_APPLY_SHADOWSLASH_BONUS") == 1 then
+        multiplyDamage(target, hithandle, 1.2)
     end
     Osi.ProcObjectTimerCancel(character, "OdinSCO_COMBO_INVIS_CLEANUP")
     Osi.ProcObjectTimer(character, "OdinSCO_COMBO_INVIS_CLEANUP", 900)
@@ -204,7 +206,7 @@ local function skillKneeBreaker(character, target, hithandle)
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
         consumeComboPoints(character)
         if didHit == 1 then
-            Osi.OBSCO_QueueDamageOnMoveApply(target, "DAMAGE_ON_MOVE", character, 12.0, 0.375)
+            Osi.OBSCO_QueueDamageOnMoveApply(target, "DAMAGE_ON_MOVE", character, 12.0, 0.525)
         end
     end
     if didHit == 1 then
@@ -296,12 +298,7 @@ local function skillLaunchBomber(character, x, y, z)
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
         consumeComboPoints(character)
 
-        local newCD = NRD_SkillGetCooldown(character, "Projectile_LaunchBomber") - 18.0
-        if newCD > 0.0 then
-            Osi.OBSCO_QueueCooldownOverride(character, "Projectile_LaunchBomber", newCD)
-        else
-            Osi.OBSCO_QueueCooldownOverride(character, "Projectile_LaunchBomber", 0.0)
-        end
+        Osi.OBSCO_QueueCooldownOverride(character, "Projectile_LaunchBomber", 0.0)
     end
 end
 
@@ -310,10 +307,9 @@ local function skillFirecracker(character, x, y, z)
         consumeComboPoints(character)
 
         local ox, oy, oz = GetPosition(character)
-        Ext.Print("Projectile Launched for Firecracker!")
         NRD_ProjectilePrepareLaunch();
         NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_Firecracker_Combo");
-        NRD_ProjectileSetVector3("SourcePosition", ox, oy+1, oz);
+        NRD_ProjectileSetVector3("SourcePosition", x, y+1, z);
         NRD_ProjectileSetVector3("TargetPosition", x, y, z);
         NRD_ProjectileSetGuidString("Caster", character);
         NRD_ProjectileLaunch();
@@ -324,7 +320,7 @@ local function skillFindersKeepers(character, x, y, z)
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
         consumeComboPoints(character)
 
-        local newCD = NRD_SkillGetCooldown(character, "Target_OdinSCO_FindersKeepers") - 30.0
+        local newCD = NRD_SkillGetCooldown(character, "Target_OdinSCO_FindersKeepers") - 18.0
         if newCD > 0.0 then
             Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_FindersKeepers", newCD)
         else
@@ -414,7 +410,6 @@ OdinScoundrelOverhaul.ComboSkills.AtPos = {
     Jump_CloakAndDagger = skillCloakAndDagger,
     Projectile_LaunchBomber = skillLaunchBomber,
     Projectile_OdinSCO_Firecracker = skillFirecracker,
-    Target_OdinSCO_FindersKeepers = skillFindersKeepers,
     Shout_Adrenaline = skillAdrenaline,
     Shout_OdinSCO_Outmaneuver = skillOutmaneuver,
     Shout_OdinSCO_SlipIntoShadows = skillSlipIntoShadows
@@ -428,3 +423,4 @@ Ext.NewCall(skillAtPos, "OBSCO_LUA_Skill_AtPos", "(GUIDSTRING)_Character, (REAL)
 Ext.NewCall(skillCrawlingInfestation, "OBSCO_Lua_Skill_CrawlingInfestation", "(GUIDSTRING)_Character, (GUIDSTRING)_Target")
 Ext.NewCall(skillMisdirection, "OBSCO_Lua_Skill_Misdirection", "(GUIDSTRING)_Caster, (GUIDSTRING)_Clone, (REAL)_X, (REAL)_Y, (REAL)_Z")
 Ext.NewCall(skillSinisterStrike, "OBSCO_Lua_Skill_SinisterStrike", "(GUIDSTRING)_Character, (GUIDSTRING)_Target, (INTEGER64)_HitHandle")
+Ext.NewCall(skillFindersKeepers, "OBSCO_Lua_Skill_FindersKeepers", "(GUIDSTRING)_Character")

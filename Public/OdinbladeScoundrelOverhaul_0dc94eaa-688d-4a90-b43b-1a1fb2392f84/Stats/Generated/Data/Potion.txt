@@ -15,7 +15,7 @@ new entry "Stats_OdinSCO_Adrenaline_Combo"
 type "Potion"
 data "Act" "1"
 data "Act part" "0"
-data "APRecovery" "2"
+data "APRecovery" "1"
 data "Duration" "2"
 
 new entry "Stats_OdinSCO_Struggle"

@@ -67,7 +67,7 @@ IF
 CharacterUsedSkillAtPosition(_Character, _X, _Y, _Z, _SkillId, _, _)
 THEN
 DB_OBSCO_AtPos_Launch(_Character, _X, _Y, _Z, _SkillId);
-ProcObjectTimer(_Character, "OdinSCO_AtPos_Launch", 1150);
+ProcObjectTimer(_Character, "OdinSCO_AtPos_Launch", 1225);
 
 //Trigger the Skill_AtPos function in Lua
 PROC

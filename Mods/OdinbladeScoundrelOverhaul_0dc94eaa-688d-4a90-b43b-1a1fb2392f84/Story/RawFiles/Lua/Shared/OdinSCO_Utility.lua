@@ -39,7 +39,14 @@ local function getPrepareParentSkill(skillId)
     return ""
 end
 
+local function isStealthed(character)
+    if HasActiveStatus(character, "INVISIBLE") == 1 or HasActiveStatus(character, "SNEAKING") == 1 then
+        return 1
+    end
+end
+
 Ext.NewQuery(getSkillEntryName, "OBSCO_LUA_GetSkillEntryName", "[in](STRING)_ProtoId, [out](STRING)_SkillId")
 Ext.NewQuery(hasScoundrelSkills, "OBSCO_LUA_HasScoundrelSkills", "[in](CHARACTERGUID)_Character, [out](INTEGER)_Result");
 Ext.NewQuery(isScoundrelSkill, "OBSCO_LUA_IsScoundrelSkill", "[in](STRING)_SkillId, [out](INTEGER)_Result");
 Ext.NewQuery(getPrepareParentSkill, "OBSCO_LUA_Skill_GetPrepareParentSkill", "[in](STRING)_SkillId, [out](STRING)_ParentSkillId");
+Ext.NewQuery(isStealthed, "OBSCO_LUA_IsStealthed", "[in](CHARACTERGUID)_Character, [out](INTEGER)_Result");

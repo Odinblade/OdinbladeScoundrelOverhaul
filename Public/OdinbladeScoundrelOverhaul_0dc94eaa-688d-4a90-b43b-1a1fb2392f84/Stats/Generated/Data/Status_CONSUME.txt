@@ -185,6 +185,12 @@ data "StatusType" "CONSUME"
 data "ForGameMaster" "No"
 data "InitiateCombat" "No"
 
+new entry "OdinSCO_APPLY_SHADOWSLASH_BONUS"
+type "StatusData"
+data "StatusType" "CONSUME"
+data "ForGameMaster" "No"
+data "InitiateCombat" "No"
+
 new entry "OdinSCO_APPLY_ADRENALINE"
 type "StatusData"
 data "StatusType" "CONSUME"

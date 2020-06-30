@@ -3,15 +3,10 @@ SubGoalCombiner SGC_AND
 INITSECTION
 
 KBSECTION
-// IF
-// CharacterUsedSkill(_Character, "Target_OdinSCO_FindersKeepers", _, _)
-// THEN
-// ApplyStatus(_Character, "OdinSCO_FINDERSKEEPERS", 6.0, 1, _Character);
-
-// IF
-// CharacterUsedSkill(_Character, "Target_OdinSCO_EnemyFindersKeepers", _, _)
-// THEN
-// ApplyStatus(_Character, "OdinSCO_FINDERSKEEPERS", 6.0, 1, _Character);
+IF
+CharacterUsedSkill(_Character, "Target_OdinSCO_FindersKeepers", _, _)
+THEN
+OBSCO_Lua_Skill_FindersKeepers(_Character);
 EXITSECTION
 
 ENDEXITSECTION
