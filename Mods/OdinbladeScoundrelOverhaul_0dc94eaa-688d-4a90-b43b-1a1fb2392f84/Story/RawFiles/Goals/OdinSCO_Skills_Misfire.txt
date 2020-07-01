@@ -8,6 +8,7 @@ CharacterUsedSkillOnTarget(_Character, _Target, "Projectile_OdinSCO_Misfire", _,
 AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN
+OBSCO_LUA_ConsumeComboPoints(_Character);
 DB_OBSCO_Misfire(_Character, _Target);
 
 //Prevent the skill cast and put it on a 1-turn CD

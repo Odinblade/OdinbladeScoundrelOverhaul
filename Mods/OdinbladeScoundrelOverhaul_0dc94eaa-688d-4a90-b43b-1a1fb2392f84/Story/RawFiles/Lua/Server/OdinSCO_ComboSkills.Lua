@@ -284,13 +284,6 @@ local function skillCloakAndDagger(character, x, y, z)
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
         consumeComboPoints(character)
         ApplyStatus(character, "INVISIBLE", 6.0, 0, character)
-
-        local newCD = NRD_SkillGetCooldown(character, "Jump_CloakAndDagger") - 12.0
-        if newCD > 0.0 then
-            Osi.OBSCO_QueueCooldownOverride(character, "Jump_CloakAndDagger", newCD)
-        else
-            Osi.OBSCO_QueueCooldownOverride(character, "Jump_CloakAndDagger", 0.0)
-        end
     end
 end
 
@@ -349,7 +342,6 @@ local function skillSlipIntoShadows(character, x, y, z)
         consumeComboPoints(character)
         ApplyStatus(character, "HASTED", 6.0, 0, character)
     end
-    incrementComboPoints(character, 1)
 end
 
 -- Initiate region
