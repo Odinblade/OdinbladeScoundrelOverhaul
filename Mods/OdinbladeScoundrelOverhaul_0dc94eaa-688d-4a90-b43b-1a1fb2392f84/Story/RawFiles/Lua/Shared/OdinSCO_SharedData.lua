@@ -104,5 +104,12 @@ OdinScoundrelOverhaul = {
         Target_SerratedEdge = "Target_SerratedEdge",
         Target_SleepingArms = "Target_SleepingArms",
         Target_TerrifyingCruelty = "Target_TerrifyingCruelty"
+    },
+    ResistanceParams = {
+        AirResistance = "Air",
+        EarthResistance = "Earth",
+        FireResistance = "Fire",
+        PoisonResistance = "Poison",
+        WaterResistance = "Water"
     }
 }

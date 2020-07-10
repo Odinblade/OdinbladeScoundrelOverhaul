@@ -1,0 +1,127 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+// DB_OBSCO_RiggedDice("OdinSCO_RD_Air", "OdinSCO_RIGGEDDICE_AIR");
+// DB_OBSCO_RiggedDice("OdinSCO_RD_Earth", "OdinSCO_RIGGEDDICE_EARTH");
+// DB_OBSCO_RiggedDice("OdinSCO_RD_Fire", "OdinSCO_RIGGEDDICE_FIRE");
+// DB_OBSCO_RiggedDice("OdinSCO_RD_Poison", "OdinSCO_RIGGEDDICE_POISON");
+// DB_OBSCO_RiggedDice("OdinSCO_RD_Water", "OdinSCO_RIGGEDDICE_WATER");
+
+// DB_OBSCO_RiggedDice_Skill("Target_OdinSCO_SinisterStrike");
+// DB_OBSCO_RiggedDice_Skill("Target_GagOrder");
+// DB_OBSCO_RiggedDice_Skill("Target_TerrifyingCruelty");
+
+KBSECTION
+// IF
+// CharacterUsedSkillAtPosition(_Character, _X, _Y, _Z, "Shout_OdinSCO_RiggedDice", _, _)
+// AND
+// StartDialog_Internal("OdinSCO_RiggedDice", 1, _Character, NULL_00000000-0000-0000-0000-000000000000, NULL_00000000-0000-0000-0000-000000000000, NULL_00000000-0000-0000-0000-000000000000, NULL_00000000-0000-0000-0000-000000000000, NULL_00000000-0000-0000-0000-000000000000, _)
+// AND
+// PlayLoopEffect(_Character, "OdinSCO_Prepare_07", "Dummy_Root", _FxHandle)
+// THEN
+// PROC_GLO_CharacterAnimationStart(_Character, "skill_prepare_air_01_loop", 1, 1);
+// DB_OBSCO_RiggedDice_Prepare(_Character, _FxHandle);
+
+// IF
+// ObjectFlagSet(_Flag, _Character, _)
+// AND
+// DB_OBSCO_RiggedDice(_Flag, _Status)
+// AND
+// DB_OBSCO_RiggedDice_Prepare((CHARACTERGUID)_Character, _FxHandle)
+// THEN
+// StopLoopEffect(_FxHandle);
+// CharacterSetAnimationOverride((CHARACTERGUID)_Character, "");
+// // PlayAnimation(_Character, "skill_cast_shout_01_cast");
+// // PROC_GLO_CharacterAnimationStart((CHARACTERGUID)_Character, "skill_cast_shout_01_cast", 0, 0);
+// ApplyStatus(_Character, _Status, -1.0, 1, _Character);
+// ObjectClearFlag(_Character, _Flag);
+
+// IF
+// ObjectFlagSet("OdinSCO_RD_Random", _Character, _)
+// AND
+// DB_OBSCO_RiggedDice(_Flag, _Status)
+// AND
+// DB_OBSCO_RiggedDice_Prepare((CHARACTERGUID)_Character, _FxHandle)
+// THEN
+// StopLoopEffect(_FxHandle);
+// CharacterSetAnimationOverride((CHARACTERGUID)_Character, "");
+// // PlayAnimation(_Character, "skill_cast_shout_01_cast");
+// // PROC_GLO_CharacterAnimationStart((CHARACTERGUID)_Character, "skill_cast_shout_01_cast", 0, 0);
+// RemoveStatus(_Character, _Status);
+// ObjectClearFlag(_Character, "OdinSCO_RD_Random");
+
+// //REGION Grant the skill
+// //If a character has a Scoundrel skill, give them the Deadly Flourish skill on start
+// IF
+// GameStarted(_, _)
+// AND
+// DB_IsPlayer(_Player)
+// THEN
+// OBSCO_HandleRiggedDice();
+
+// //If a savegame character has a Scoundrel skill, ensure they have the Deadly Flourish skill on load
+// IF
+// SavegameLoaded(_, _, _, _)
+// AND
+// DB_IsPlayer(_Player)
+// THEN
+// OBSCO_HandleRiggedDice();
+
+// //If a character has any recognised Scoundrel skills, give them Deadly Flourish and notify
+// PROC
+// OBSCO_HandleRiggedDice()
+// AND
+// DB_IsPlayer(_Character)
+// AND
+// DB_OBSCO_RiggedDice_Skill(_SkillId)
+// AND
+// CharacterHasSkill(_Character, _SkillId, 1)
+// AND
+// CharacterHasSkill(_Character, "Shout_OdinSCO_RiggedDice", 0)
+// THEN
+// CharacterAddSkill(_Character, "Shout_OdinSCO_RiggedDice", 1);
+
+// //If a character activates their first Scoundrel skill, give them Deadly Flourish and notify
+// IF
+// SkillActivated(_Character, _SkillId)
+// AND
+// DB_IsPlayer(_Character)
+// AND
+// DB_OBSCO_RiggedDice_Skill(_SkillId)
+// AND
+// CharacterHasSkill(_Character, "Shout_OdinSCO_RiggedDice", 0)
+// THEN
+// CharacterAddSkill(_Character, "Shout_OdinSCO_RiggedDice", 1);
+
+// //If a character learns their first Scoundrel skill, give them Deadly Flourish and notify
+// IF
+// SkillAdded(_Character, _SkillId, _Learned)
+// AND
+// DB_IsPlayer(_Character)
+// AND
+// DB_OBSCO_RiggedDice_Skill(_SkillId)
+// AND
+// CharacterHasSkill(_Character, "Shout_OdinSCO_RiggedDice", 0)
+// THEN
+// CharacterAddSkill(_Character, "Shout_OdinSCO_RiggedDice", 1);
+
+// //If a character removes their last active Scoundrel skill, remove Deadly Flourish
+// IF
+// SkillDeactivated(_Character, _SkillId)
+// AND
+// DB_OBSCO_RiggedDice_Skill(_SkillId)
+// AND
+// CharacterHasSkill(_Character, "Shout_OdinSCO_RiggedDice", 1)
+// AND
+// OBSCO_LUA_HasScoundrelSkills_RiggedDice(_Character, 0)
+// THEN
+// CharacterRemoveSkill(_Character, "Shout_OdinSCO_RiggedDice");
+// RemoveStatus(_Character, "OdinSCO_RIGGEDDICE_AIR");
+// RemoveStatus(_Character, "OdinSCO_RIGGEDDICE_EARTH");
+// RemoveStatus(_Character, "OdinSCO_RIGGEDDICE_FIRE");
+// RemoveStatus(_Character, "OdinSCO_RIGGEDDICE_POISON");
+// RemoveStatus(_Character, "OdinSCO_RIGGEDDICE_WATER");
+// //END_REGION
+EXITSECTION
+
+ENDEXITSECTION

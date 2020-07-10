@@ -45,7 +45,7 @@ HasActiveStatus(_Caster, "OdinSCO_USE_COMBO_3", 1)
 AND
 GetPosition(_Clone, _cX, _cY, _cZ)
 THEN
-CharacterUseSkillAtPosition(_Caster, "Jump_OdinNECRO_Translocate_Jump", _cX, _cY, _cZ, 1, 1);
+CharacterUseSkillAtPosition(_Caster, "Jump_OdinSCO_Misdirection_Jump", _cX, _cY, _cZ, 1, 1);
 PlayEffectAtPosition("OdinSCO_Impact_01", _cX, _cY, _cZ);
 PlayEffectAtPosition("RS3_FX_Skills_Void_Netherswap_Reappear_01", _cX, _cY, _cZ);
 SetOnStage(_Clone, 0);

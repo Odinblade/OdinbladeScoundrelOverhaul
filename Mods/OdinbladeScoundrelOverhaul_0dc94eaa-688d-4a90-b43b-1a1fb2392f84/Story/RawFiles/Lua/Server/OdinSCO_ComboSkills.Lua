@@ -12,20 +12,27 @@ local function multiplyDamage(target, hithandle, multiplier)
     end
 end
 
-local function convertHitToElementalDamage(target, damage, hithandle)
-    local newType = OdinScoundrelOverhaul.ElementalDamageTypes[math.random(#OdinScoundrelOverhaul.ElementalDamageTypes)]
-        if damage ~= 0 then
-            NRD_HitClearAllDamage(hithandle)
-            NRD_HitAddDamage(hithandle, newType, damage)
-        end
-    return newType
-end
+local function convertHitToElementalDamage(character, target, damage, hithandle)
 
-local function skillOutmaneuver_Proc(character, target, hithandle)
-    if HasActiveStatus(character, "OdinSCO_OUTMANEUVER_COMBO") == 1 then
-        multiplyDamage(target, hithandle, 1.3)
-        RemoveStatus(character, "OdinSCO_OUTMANEUVER_COMBO")
+    local newDamageType = OdinScoundrelOverhaul.ElementalDamageTypes[math.random(#OdinScoundrelOverhaul.ElementalDamageTypes)]
+    local newResistance = NRD_CharacterGetComputedStat(target, newDamageType.."Resistance", 0)
+
+    for resistanceType, damageType in pairs(OdinScoundrelOverhaul.ResistanceParams) do
+        local resistanceStat = NRD_CharacterGetComputedStat(target, resistanceType, 0)
+        if resistanceStat < newResistance then
+            newDamageType = damageType
+            newResistance = resistanceStat
+        elseif resistanceStat == newResistance then
+            local result = math.random(100)
+            if result < 50 then
+                newDamageType = damageType
+                newResistance = resistanceStat
+            end
+        end
     end
+    NRD_HitClearAllDamage(hithandle)
+    NRD_HitAddDamage(hithandle, newDamageType, damage)
+    return newDamageType
 end
 
 local function skillShadowStep(character, target, hithandle)
@@ -155,7 +162,7 @@ end
 
 local function skillSinisterStrike_Prep(character, target, damage, hithandle)
     RemoveStatus(character, "OdinSCO_PREPHIT_SINISTERSTRIKE")
-    convertHitToElementalDamage(target, damage, hithandle)
+    convertHitToElementalDamage(character, target, damage, hithandle)
 end
 
 local function skillCorruptedBlade(character, target, hithandle)
@@ -197,7 +204,7 @@ end
 
 local function skillGagOrder_Prep(character, target, damage, hithandle)
     RemoveStatus(character, "OdinSCO_PREPHIT_GAGORDER")
-    convertHitToElementalDamage(target, damage, hithandle)
+    convertHitToElementalDamage(character, target, damage, hithandle)
 end
 
 
@@ -277,7 +284,7 @@ end
 
 local function skillTerrifyingCruelty_Prep(character, target, damage, hithandle)
     RemoveStatus(character, "OdinSCO_PREPHIT_TERRIFYINGCRUELTY")
-    convertHitToElementalDamage(target, damage, hithandle)  
+    convertHitToElementalDamage(character, target, damage, hithandle)
 end
 
 local function skillCloakAndDagger(character, x, y, z)
@@ -375,7 +382,6 @@ local function skillAtPos(character, x, y, z, skillId)
 end
 
 OdinScoundrelOverhaul.ComboSkills.OnHit = {
-    MultiStrike_OdinSCO_Outmaneuver_Proc = skillOutmaneuver_Proc,
     MultiStrike_OdinSCO_ShadowStep = skillShadowStep,
     MultiStrike_Vault = skillVault,
     Projectile_Chloroform = skillChloroform,

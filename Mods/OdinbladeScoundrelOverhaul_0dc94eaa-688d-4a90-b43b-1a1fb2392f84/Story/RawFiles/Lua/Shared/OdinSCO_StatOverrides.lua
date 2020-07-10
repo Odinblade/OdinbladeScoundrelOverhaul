@@ -9,7 +9,7 @@ function OverrideStats()
     for statname,overrides in pairs(OdinScoundrelOverhaul.StatOverrides) do
         for property,value in pairs(overrides) do
             if debug_print then Ext.Print("[OdinSCO:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
-            if property == "SkillCustomDescription" then 
+            if property == "SkillCustomDescription" or property == "SkillCustomDescription_Extra" then 
                 Ext.StatAddCustomDescription(statname, "SkillProperties", value) 
                 if debug_print then Ext.Print("[OdinSCO:Bootstrap.lua] Custom description set: " .. statname .. " (".. property ..") = \"".. value .."\"") end
             else 

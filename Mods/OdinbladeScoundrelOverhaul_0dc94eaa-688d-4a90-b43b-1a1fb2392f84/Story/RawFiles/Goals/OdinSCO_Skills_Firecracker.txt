@@ -35,6 +35,8 @@ IF
 CharacterStatusApplied(_Enemy, "OdinSCO_APPLY_FIRECRACKER", _Owner)
 AND
 DB_OBSCO_Firecracker((CHARACTERGUID)_Owner, (ITEMGUID)_Firecracker)
+AND
+CharacterIsIncapacitated(_Enemy, 0)
 THEN
 CharacterLookAt(_Enemy, _Firecracker);
 RemoveStatus(_Enemy, "OdinSCO_APPLY_FIRECRACKER");

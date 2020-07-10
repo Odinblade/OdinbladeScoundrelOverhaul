@@ -20,19 +20,16 @@ end
 
 function incrementComboPoints(character, points)
     if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 and CharacterIsInCombat(character) == 1 then
-        if IsSkillActive(character, "Shout_OdinSCO_DeadlyFlourish") then
-            local newAmount = getComboPoints(character) + points
-            if newAmount == 1 and HasActiveStatus(character, "OdinSCO_COMBO_1") == 0 then
-                ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
-            elseif newAmount == 2 and HasActiveStatus(character, "OdinSCO_COMBO_2") == 0 then
-                ApplyStatus(character, "OdinSCO_COMBO_2", -1.0, 1, character)
-            elseif newAmount >= 3 and HasActiveStatus(character, "OdinSCO_COMBO_3") == 0 then
-                newAmount = 3
-                if HasActiveStatus(character, "OdinSCO_COMBO_3") == 0 then
-                    ApplyStatus(character, "OdinSCO_COMBO_3", -1.0, 1, character)
-                    SetTag(character, "ODINSCO_COMBO_READY")
-                    refreshDeadlyFlourish(character)
-                end
+        local newAmount = getComboPoints(character) + points
+        if newAmount == 1 then
+            ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
+        elseif newAmount == 2 then
+            ApplyStatus(character, "OdinSCO_COMBO_2", -1.0, 1, character)
+        elseif newAmount >= 3 then
+            if HasActiveStatus(character, "OdinSCO_COMBO_3") == 0 then
+                ApplyStatus(character, "OdinSCO_COMBO_3", -1.0, 1, character)
+                SetTag(character, "ODINSCO_COMBO_READY")
+                refreshDeadlyFlourish(character)
             end
         end
     end
