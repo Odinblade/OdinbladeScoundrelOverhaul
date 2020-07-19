@@ -1,5 +1,5 @@
 -- Credit: LaughingLeader
-local function getSkillEntryName(skill)
+function getSkillEntryName(skill)
     local skillId = string.gsub(skill, "_%-?%d+$", "")
     return skillId
 end

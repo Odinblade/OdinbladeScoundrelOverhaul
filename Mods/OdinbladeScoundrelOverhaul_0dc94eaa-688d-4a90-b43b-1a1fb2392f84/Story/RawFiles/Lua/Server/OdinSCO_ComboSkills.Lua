@@ -1,5 +1,6 @@
 Ext.Require("Shared/OdinSCO_SharedData.lua")
 Ext.Require("Shared/OdinSCO_ComboPoints.lua")
+Ext.Require("Shared/OdinSCO_Utility.lua")
 
 local function multiplyDamage(target, hithandle, multiplier)
     for k,type in pairs(OdinScoundrelOverhaul.DamageTypes) do
@@ -352,7 +353,8 @@ local function skillSlipIntoShadows(character, x, y, z)
 end
 
 -- Initiate region
-local function skillOnHit(character, target, hithandle, skillId)
+local function skillOnHit(character, target, hithandle, protoId)
+    local skillId = getSkillEntryName(protoId)
     local func = OdinScoundrelOverhaul.ComboSkills.OnHit[skillId]
     if func~= nil then
         func(character, target, hithandle)

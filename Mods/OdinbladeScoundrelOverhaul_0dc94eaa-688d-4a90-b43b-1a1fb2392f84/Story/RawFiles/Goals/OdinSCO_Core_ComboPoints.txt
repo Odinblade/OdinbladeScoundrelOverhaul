@@ -57,10 +57,8 @@ IF
 NRD_OnHit(_Target, _Character, _, _HitHandle)
 AND
 NRD_StatusGetString(_Target, _HitHandle, "SkillId", _ProtoId)
-AND
-OBSCO_LUA_GetSkillEntryName(_ProtoId, _SkillId)
 THEN
-OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _SkillId);
+OBSCO_LUA_Skill_OnHit(_Character, _Target, _HitHandle, _ProtoId);
 
 // If the skill does not have a target, process via position
 IF
