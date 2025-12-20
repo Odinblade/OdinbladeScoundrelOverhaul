@@ -9,13 +9,21 @@ OBSCO_Init_DBs()
 THEN
 //EnemySkills
 DB_OBCORE_EnemySkill_Pair_Level("Target_EnemyCorruptedBlade", "Target_OdinSCO_EnemyFindersKeepers", 4);
-DB_OBCORE_EnemySkill_Pair_Level("Shout_EnemyChameleonSkin", "MultiStrike_OdinSCO_EnemyShadowStep", 6);
-DB_OBCORE_EnemySkill_Pair_Level("MultiStrike_EnemyVault", "Shout_OdinSCO_EnemyOutmaneuver", 9);
+DB_OBCORE_EnemySkill_Pair_Level("Target_EnemySleepingArms", "Target_OdinSCO_EnemyFindersKeepers", 4);
 DB_OBCORE_EnemySkill_Pair("Target_EnemyCorruptedBlade_Gheist", "Target_OdinSCO_EnemyFindersKeepers");
 DB_OBCORE_EnemySkill_Pair("Target_EnemyKneeBreaker", "Target_OdinSCO_EnemyFindersKeepers");
-DB_OBCORE_EnemySkill_Pair("Target_EnemyChloroform", "Projectile_OdinSCO_EnemyMisfire");
-DB_OBCORE_EnemySkill_Pair("Target_EnemyGagOrder", "Projectile_OdinSCO_EnemyMisfire");
+
+DB_OBCORE_EnemySkill_Pair_Level("Shout_EnemyChameleonSkin", "MultiStrike_OdinSCO_EnemyShadowStep", 4);
+
+DB_OBCORE_EnemySkill_Pair_Level("MultiStrike_EnemyVault", "Shout_OdinSCO_EnemyOutmaneuver", 9);
+
+DB_OBCORE_EnemySkill_Pair("Target_EnemySleepingArms", "Projectile_OdinSCO_EnemyMisfire");
+DB_OBCORE_EnemySkill_Pair("Target_EnemySabotage", "Projectile_OdinSCO_EnemyMisfire");
+DB_OBCORE_EnemySkill_Pair_Level("Projectile_EnemyThrowingKnife", "Projectile_OdinSCO_EnemyMisfire", 6);
+
 DB_OBCORE_EnemySkill_Pair("Projectile_EnemyThrowingKnife", "Shout_OdinSCO_EnemyShadowSlash");
+DB_OBCORE_EnemySkill_Pair("Target_EnemySerratedEdge", "Shout_OdinSCO_EnemyShadowSlash");
+
 DB_OBCORE_EnemySkill_Pair("Projectile_EnemyThrowingKnife", "Target_OdinSCO_EnemySinisterStrike");
 DB_OBCORE_EnemySkill_Pair("Shout_EnemyChameleonSkin", "Target_OdinSCO_EnemySinisterStrike");
 
