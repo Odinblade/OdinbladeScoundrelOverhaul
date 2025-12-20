@@ -1,10 +1,14 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+DB_OBSCO_Fatality_Skill("Target_Fatality");
+DB_OBSCO_Fatality_Skill("Target_EnemyFatality");
 
 KBSECTION
 IF
-CharacterUsedSkill(_Character, "Target_Fatality", _, _)
+CharacterUsedSkill(_Character, _SkillId, _, _)
+AND
+DB_OBSCO_Fatality_Skill(_SkillId)
 AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN

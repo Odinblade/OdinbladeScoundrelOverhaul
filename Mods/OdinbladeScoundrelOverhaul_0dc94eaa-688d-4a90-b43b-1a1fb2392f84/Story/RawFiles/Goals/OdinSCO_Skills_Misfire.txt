@@ -1,10 +1,14 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+DB_OBSCO_Misfire_Skill("Projectile_OdinSCO_Misfire");
+DB_OBSCO_Misfire_Skill("Projectile_OdinSCO_EnemyMisfire");
 
 KBSECTION
 IF
-CharacterUsedSkillOnTarget(_Character, _Target, "Projectile_OdinSCO_Misfire", _, _)
+CharacterUsedSkillOnTarget(_Character, _Target, _SkillId, _, _)
+AND
+DB_OBSCO_Misfire_Skill(_SkillId)
 AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN

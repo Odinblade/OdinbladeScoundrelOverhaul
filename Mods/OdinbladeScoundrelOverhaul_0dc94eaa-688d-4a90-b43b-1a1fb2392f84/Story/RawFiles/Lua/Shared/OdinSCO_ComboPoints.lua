@@ -19,7 +19,7 @@ local function refreshDeadlyFlourish(character)
 end
 
 function incrementComboPoints(character, points)
-    if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 and CharacterIsInCombat(character) == 1 then
+    if (CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 or CharacterHasSkill(character, "Shout_OdinSCO_EnemyDeadlyFlourish") == 1) and CharacterIsInCombat(character) == 1 then
         local newAmount = getComboPoints(character) + points
         if newAmount == 1 then
             ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
@@ -36,7 +36,7 @@ function incrementComboPoints(character, points)
 end
 
 local function enterCombatComboBonus(character)
-    if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 then
+    if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 or CharacterHasSkill(character, "Shout_OdinSCO_EnemyDeadlyFlourish") == 1 then
         local scoundrelPoints = CharacterGetAbility(character, "RogueLore")
         if scoundrelPoints >= 5 and scoundrelPoints < 10 then
             incrementComboPoints(character, 1)

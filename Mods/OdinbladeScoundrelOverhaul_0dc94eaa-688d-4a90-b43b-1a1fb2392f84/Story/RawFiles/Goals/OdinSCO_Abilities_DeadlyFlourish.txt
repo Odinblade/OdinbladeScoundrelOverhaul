@@ -64,6 +64,16 @@ AND
 OBSCO_LUA_HasScoundrelSkills(_Character, 0)
 THEN
 CharacterRemoveSkill(_Character, "Shout_OdinSCO_DeadlyFlourish");
+
+// Enemy skill
+IF
+ObjectEnteredCombat((CHARACTERGUID)_Character,_)
+AND
+NOT DB_IsPlayer(_Character)
+AND
+OBSCO_LUA_HasScoundrelSkills(_Character, 1)
+THEN
+CharacterAddSkill(_Character, "Shout_OdinSCO_EnemyDeadlyFlourish", 1);
 EXITSECTION
 
 ENDEXITSECTION

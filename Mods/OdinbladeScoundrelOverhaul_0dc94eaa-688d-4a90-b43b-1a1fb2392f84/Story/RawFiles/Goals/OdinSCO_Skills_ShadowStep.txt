@@ -1,17 +1,23 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+DB_OBSCO_ShadowStep_Skill("MultiStrike_OdinSCO_ShadowStep");
+DB_OBSCO_ShadowStep_Skill("MultiStrike_OdinSCO_EnemyShadowStep");
 
 KBSECTION
 IF
-CharacterUsedSkill(_Character, "MultiStrike_OdinSCO_ShadowStep", _, _)
+CharacterUsedSkill(_Character, _SkillId, _, _)
+AND
+DB_OBSCO_ShadowStep_Skill(_SkillId)
 AND
 GetPosition(_Character, _X, _Y, _Z)
 THEN
 DB_OBSCO_ShadowStep(_Character, _X, _Y, _Z);
 
 IF
-CharacterUsedSkill(_Character, "MultiStrike_OdinSCO_ShadowStep", _, _)
+CharacterUsedSkill(_Character, _SkillId, _, _)
+AND
+DB_OBSCO_ShadowStep_Skill(_SkillId)
 AND
 HasActiveStatus(_Character, "INVISIBLE", 1)
 AND
@@ -21,7 +27,9 @@ ApplyStatus(_Character, "OdinSCO_APPLY_SHADOWSTEP_BONUS", 6.0);
 ProcObjectTimer(_Character, "OdinSCO_SHADOWSTEP_STEALTH", 1000);
 
 IF
-CharacterUsedSkill(_Character, "MultiStrike_OdinSCO_ShadowStep", _, _)
+CharacterUsedSkill(_Character, _SkillId, _, _)
+AND
+DB_OBSCO_ShadowStep_Skill(_SkillId)
 AND
 HasActiveStatus(_Character, "SNEAKING", 1)
 AND

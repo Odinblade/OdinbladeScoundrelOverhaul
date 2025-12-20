@@ -1,10 +1,14 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+DB_OBSCO_DaggersDrawn_Skill("Target_DaggersDrawn");
+DB_OBSCO_DaggersDrawn_Skill("Target_DaggersDrawn");
 
 KBSECTION
 IF
-CharacterUsedSkill(_Character, "Target_DaggersDrawn", _, _)
+CharacterUsedSkill(_Character, _SkillId, _, _)
+AND
+DB_OBSCO_DaggersDrawn_Skill(_SkillId)
 AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN

@@ -1,10 +1,14 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
+DB_OBSCO_ShadowSlash_Skill("Shout_OdinSCO_ShadowSlash");
+DB_OBSCO_ShadowSlash_Skill("Shout_OdinSCO_EnemyShadowSlash");
 
 KBSECTION
 IF
-CharacterUsedSkill(_Character, "Shout_OdinSCO_ShadowSlash", _, _)
+CharacterUsedSkill(_Character, _SkillId, _, _)
+AND
+DB_OBSCO_ShadowSlash_Skill(_SkillId)
 AND
 HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
 THEN

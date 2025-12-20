@@ -355,6 +355,11 @@ end
 -- Initiate region
 local function skillOnHit(character, target, hithandle, protoId)
     local skillId = getSkillEntryName(protoId)
+    local using = Ext.StatGetAttribute(skillId, "Using")
+    if using ~= nil then
+        skillId = using
+    end
+    
     local func = OdinScoundrelOverhaul.ComboSkills.OnHit[skillId]
     if func~= nil then
         func(character, target, hithandle)
@@ -370,6 +375,11 @@ local function skillOnHit(character, target, hithandle, protoId)
 end
 
 local function skillOnPrepareHit(character, target, damage, hithandle, skillId)
+    local using = Ext.StatGetAttribute(skillId, "Using")
+    if using ~= nil then
+        skillId = using
+    end
+
     local func = OdinScoundrelOverhaul.ComboSkills.OnPrepareHit[skillId]
     if func~= nil then
         func(character, target, damage, hithandle)
@@ -377,6 +387,11 @@ local function skillOnPrepareHit(character, target, damage, hithandle, skillId)
 end
 
 local function skillAtPos(character, x, y, z, skillId)
+    local using = Ext.StatGetAttribute(skillId, "Using")
+    if using ~= nil then
+        skillId = using
+    end
+
     local func = OdinScoundrelOverhaul.ComboSkills.AtPos[skillId]
     if func~= nil then
         func(character, x, y, z)
