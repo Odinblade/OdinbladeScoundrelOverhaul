@@ -13,8 +13,10 @@ AND
 NRD_StatusGetInt(_Character, _HitHandle, "Missed", 1)
 AND
 HasActiveStatus(_Character, "OdinSCO_OUTMANEUVER_COMBO", 0)
+AND
+CharacterIsEnemy((CHARACTERGUID)_Character, (CHARACTERGUID)_Instigator, 1)
 THEN
-CharacterUseSkill((CHARACTERGUID)_Character, "MultiStrike_OdinSCO_Outmaneuver_Proc", _Instigator, 1, 1, 1);
+CharacterUseSkill(_Character, "MultiStrike_OdinSCO_Outmaneuver_Proc", _Instigator, 1, 1, 1);
 
 IF
 NRD_OnHit(_Character, _Instigator, _, _HitHandle)
@@ -24,8 +26,10 @@ AND
 NRD_StatusGetInt(_Character, _HitHandle, "Missed", 1)
 AND
 HasActiveStatus(_Character, "OdinSCO_OUTMANEUVER_COMBO", 1)
+AND
+CharacterIsEnemy((CHARACTERGUID)_Character, (CHARACTERGUID)_Instigator, 1)
 THEN
-CharacterUseSkill((CHARACTERGUID)_Character, "MultiStrike_OdinSCO_Outmaneuver_EmpoweredProc", _Instigator, 1, 1, 1);
+CharacterUseSkill(_Character, "MultiStrike_OdinSCO_Outmaneuver_EmpoweredProc", _Instigator, 1, 1, 1);
 
 IF
 CharacterUsedSkill((CHARACTERGUID)_Character, _SkillId, _, _)
