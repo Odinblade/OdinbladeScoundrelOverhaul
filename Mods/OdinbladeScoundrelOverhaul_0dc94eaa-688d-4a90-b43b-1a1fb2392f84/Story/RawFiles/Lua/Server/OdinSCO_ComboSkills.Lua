@@ -236,7 +236,7 @@ local function skillSerratedEdge(character, target, hithandle)
 end
 
 local function skillMisdirection(character, target, x, y, z)
-    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
+    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
         consumeComboPoints(character)
 
         TeleportToPosition(target, x, y, z, "", 0, 1)
