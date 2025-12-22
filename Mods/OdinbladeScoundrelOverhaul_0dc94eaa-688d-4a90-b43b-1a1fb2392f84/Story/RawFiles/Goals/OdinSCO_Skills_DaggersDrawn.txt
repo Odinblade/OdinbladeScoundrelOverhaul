@@ -2,7 +2,7 @@ Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
 DB_OBSCO_DaggersDrawn_Skill("Target_DaggersDrawn");
-DB_OBSCO_DaggersDrawn_Skill("Target_DaggersDrawn");
+DB_OBSCO_DaggersDrawn_Skill("Target_EnemyDaggersDrawn");
 
 KBSECTION
 IF
