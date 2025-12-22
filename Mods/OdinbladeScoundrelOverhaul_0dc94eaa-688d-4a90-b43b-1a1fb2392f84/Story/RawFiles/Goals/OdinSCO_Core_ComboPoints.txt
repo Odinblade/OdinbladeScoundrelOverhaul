@@ -41,13 +41,6 @@ NRD_SkillSetCooldown(_Character, "Shout_OdinSCO_DeadlyFlourish", 0.0);
 IF
 ObjectLeftCombat(_Character, _)
 THEN
-OBSCO_CleanupCombo(_Character);
-
-PROC
-OBSCO_CleanupCombo((GUIDSTRING)_Character)
-AND
-CharacterHasSkill((CHARACTERGUID)_Character, "Shout_OdinSCO_DeadlyFlourish", 1)
-THEN
 OBSCO_LUA_ConsumeComboPoints((CHARACTERGUID)_Character);
 //END_REGION
 
