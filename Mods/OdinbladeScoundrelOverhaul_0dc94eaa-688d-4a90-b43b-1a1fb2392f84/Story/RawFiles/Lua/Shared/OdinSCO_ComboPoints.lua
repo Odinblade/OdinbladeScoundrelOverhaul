@@ -15,6 +15,10 @@ local function refreshDeadlyFlourish(character)
         return
     end
 
+    if not CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") then
+        return
+    end
+
     local slot = NRD_SkillBarFindSkill(character, "Shout_OdinSCO_DeadlyFlourish")
     if slot ~= nil then
         NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 6.0)
