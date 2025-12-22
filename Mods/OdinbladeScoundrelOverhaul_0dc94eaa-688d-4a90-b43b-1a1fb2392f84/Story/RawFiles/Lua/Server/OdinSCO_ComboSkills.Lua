@@ -87,9 +87,16 @@ local function skillChloroform(character, target, hithandle)
         
         NRD_HitStatusClearAllDamage(target, hithandle)
 
+        local skillId
+        if Ext.Entity.GetCharacter(character).IsPlayer then
+            skillId = "Projectile_OdinSCO_Chloroform_Combo"
+        else
+            skillId = "Projectile_OdinSCO_EnemyChloroform_Combo"
+        end
+
         local x, y, z = GetPosition(target)
         NRD_ProjectilePrepareLaunch();
-        NRD_ProjectileSetString("SkillId", "Projectile_OdinSCO_Chloroform_Combo");
+        NRD_ProjectileSetString("SkillId", skillId);
         NRD_ProjectileSetVector3("SourcePosition", x, y+1, z);
         NRD_ProjectileSetVector3("TargetPosition", x, y, z);
         NRD_ProjectileSetGuidString("Caster", character);
