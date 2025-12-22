@@ -2,6 +2,16 @@ Ext.Require("Shared/OdinSCO_SharedData.lua")
 Ext.Require("Shared/OdinSCO_ComboPoints.lua")
 Ext.Require("Shared/OdinSCO_Utility.lua")
 
+-- Auto use combo on Scoundrel skills for enemies
+--- @param character EsvCharacter
+Ext.Osiris.RegisterListener("CharacterUsedSkill", 4, "before", function (character, skill, skillType, skillElement)
+    if getComboPoints(character) == 3 and
+    Ext.Entity.GetCharacter(character).IsPlayer == false and
+    isScoundrelSkill(skill) then
+        activateComboPoints(character)
+    end
+end)
+
 local function multiplyDamage(target, hithandle, multiplier)
     for k,type in pairs(OdinScoundrelOverhaul.DamageTypes) do
         local damage = NRD_HitStatusGetDamage(target, hithandle, type)

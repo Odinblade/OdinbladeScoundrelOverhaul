@@ -11,6 +11,10 @@ OdinScoundrelOverhaul.ActivatedComboPoints = {
 }
 
 local function refreshDeadlyFlourish(character)
+    if not Ext.Entity.GetCharacter(character).IsPlayer then
+        return
+    end
+
     local slot = NRD_SkillBarFindSkill(character, "Shout_OdinSCO_DeadlyFlourish")
     if slot ~= nil then
         NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 6.0)
@@ -19,7 +23,9 @@ local function refreshDeadlyFlourish(character)
 end
 
 function incrementComboPoints(character, points)
-    if (CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 or CharacterHasSkill(character, "Shout_OdinSCO_EnemyDeadlyFlourish") == 1) and CharacterIsInCombat(character) == 1 then
+    local isPlayer = Ext.Entity.GetCharacter(character).IsPlayer
+    
+    if (CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 or not isPlayer) and CharacterIsInCombat(character) == 1 then
         local newAmount = getComboPoints(character) + points
         if newAmount == 1 then
             ApplyStatus(character, "OdinSCO_COMBO_1", -1.0, 1, character)
@@ -36,7 +42,7 @@ function incrementComboPoints(character, points)
 end
 
 local function enterCombatComboBonus(character)
-    if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 or CharacterHasSkill(character, "Shout_OdinSCO_EnemyDeadlyFlourish") == 1 then
+    if CharacterHasSkill(character, "Shout_OdinSCO_DeadlyFlourish") == 1 or not Ext.Entity.GetCharacter(character).IsPlayer then
         local scoundrelPoints = CharacterGetAbility(character, "RogueLore")
         if scoundrelPoints >= 5 and scoundrelPoints < 10 then
             incrementComboPoints(character, 1)
@@ -46,7 +52,7 @@ local function enterCombatComboBonus(character)
     end
 end
 
-local function activateComboPoints(character)
+function activateComboPoints(character)
     local comboPointsCount = getComboPoints(character)
     local isComboActivated = HasActiveStatus(character, "OdinSCO_USE_COMBO_3")
     if comboPointsCount == 3 and isComboActivated == 0  then

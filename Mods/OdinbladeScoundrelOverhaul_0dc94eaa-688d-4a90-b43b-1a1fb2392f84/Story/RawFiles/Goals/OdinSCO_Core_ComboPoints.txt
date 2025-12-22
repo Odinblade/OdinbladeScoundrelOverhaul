@@ -1,8 +1,6 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-DB_OBSCO_DeadlyFlourish_Skill("Shout_OdinSCO_DeadlyFlourish");
-DB_OBSCO_DeadlyFlourish_Skill("Shout_OdinSCO_EnemyDeadlyFlourish");
 
 KBSECTION
 //REGION Bonus Combo on combat entry
@@ -27,9 +25,7 @@ NOT DB_OBSCO_TrackCombat(_CombatID, _Character);
 //REGION Deadly Flourish
 //When the character uses Deadly Flourish, activate their Combo points
 IF
-CharacterUsedSkill(_Character, _SkillId, _, _)
-AND
-DB_OBSCO_DeadlyFlourish_Skill(_SkillId)
+CharacterUsedSkill(_Character, "Shout_OdinSCO_DeadlyFlourish", _, _)
 THEN
 OBSCO_LUA_ActivateComboPoints(_Character);
 
@@ -50,9 +46,7 @@ OBSCO_CleanupCombo(_Character);
 PROC
 OBSCO_CleanupCombo((GUIDSTRING)_Character)
 AND
-DB_OBSCO_DeadlyFlourish_Skill(_SkillId)
-AND
-CharacterHasSkill((CHARACTERGUID)_Character, _SkillId, 1)
+CharacterHasSkill((CHARACTERGUID)_Character, "Shout_OdinSCO_DeadlyFlourish", 1)
 THEN
 OBSCO_LUA_ConsumeComboPoints((CHARACTERGUID)_Character);
 //END_REGION

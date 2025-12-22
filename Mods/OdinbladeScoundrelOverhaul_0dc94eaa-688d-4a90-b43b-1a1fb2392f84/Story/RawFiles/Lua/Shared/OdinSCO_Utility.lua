@@ -15,10 +15,10 @@ local function hasScoundrelSkills(character)
     return result
 end
 
-local function isScoundrelSkill(inSkillId)
+function isScoundrelSkill(inSkillId)
     local result = 0
     for k, skillId in pairs(OdinScoundrelOverhaul.ScoundrelSkills) do
-        if inSkillId == skillId then
+        if inSkillId == skillId or Ext.StatGetAttribute(inSkillId, "Using") == skillId then
             result = 1
             break
         end
