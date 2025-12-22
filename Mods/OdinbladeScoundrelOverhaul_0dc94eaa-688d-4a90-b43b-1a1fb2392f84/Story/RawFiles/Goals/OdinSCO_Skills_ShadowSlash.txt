@@ -1,58 +1,10 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-DB_OBSCO_ShadowSlash_Skill("Shout_OdinSCO_ShadowSlash");
-DB_OBSCO_ShadowSlash_Skill("Shout_OdinSCO_EnemyShadowSlash");
 
 KBSECTION
-IF
-CharacterUsedSkill(_Character, _SkillId, _, _)
-AND
-DB_OBSCO_ShadowSlash_Skill(_SkillId)
-AND
-HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 1)
-THEN
-ApplyStatus(_Character, "INVISIBLE", 6.0, 0, _Character);
-ApplyStatus(_Character, "OdinSCO_APPLY_SHADOWSLASH_BONUS", 6.0, 1, _Character);
-
-IF
-NRD_OnActionStateEnter(_Character, "PrepareSkill")
-AND
-NRD_ActionStateGetInt(_Character, "IsEntered", 1)
-AND
-NRD_ActionStateGetString(_Character, "SkillId", _SkillId)
-AND
-OBSCO_Lua_GetSkillEntryName(_SkillId, "Shout_OdinSCO_ShadowSlash")
-AND
-OBSCO_LUA_IsStealthed(_Character, 1)
-THEN
-ApplyStatus(_Character, "OdinSCO_APPLY_SHADOWSLASH_BONUS", 6.0, 1, _Character);
-
-IF
-NRD_OnActionStateEnter(_Character, "PrepareSkill")
-AND
-NRD_ActionStateGetInt(_Character, "IsEntered", 1)
-AND
-OBSCO_LUA_IsStealthed(_Character, 0)
-THEN
-RemoveStatus(_Character, "OdinSCO_APPLY_SHADOWSLASH_BONUS");
-
-IF
-NRD_OnActionStateEnter(_Character, "UseSkill")
-AND
-HasActiveStatus(_Character, "OdinSCO_APPLY_SHADOWSLASH_BONUS", 1)
-THEN
-ProcObjectTimer(_Character, "OdinSCO_SHADOWSLASH_CLEANUP", 1250);
-
 PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Character, "OdinSCO_SHADOWSLASH_CLEANUP")
-THEN
-RemoveStatus(_Character, "OdinSCO_APPLY_SHADOWSLASH_BONUS");
-
-PROC
-ProcObjectTimerFinished(_Character, "OdinSCO_COMBO_INVIS_CLEANUP")
-AND
-HasActiveStatus(_Character, "INVISIBLE", 1)
 THEN
 RemoveStatus(_Character, "INVISIBLE");
 RemoveStatus(_Character, "OdinSCO_APPLY_SHADOWSLASH_BONUS");

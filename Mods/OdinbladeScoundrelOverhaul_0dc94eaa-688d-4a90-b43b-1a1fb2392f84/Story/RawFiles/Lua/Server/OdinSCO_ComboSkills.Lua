@@ -5,10 +5,28 @@ Ext.Require("Shared/OdinSCO_Utility.lua")
 -- Auto use combo on Scoundrel skills for enemies
 --- @param character EsvCharacter
 Ext.Osiris.RegisterListener("CharacterUsedSkill", 4, "before", function (character, skill, skillType, skillElement)
-    if getComboPoints(character) == 3 and
-    Ext.Entity.GetCharacter(character).IsPlayer == false and
-    isScoundrelSkill(skill) then
-        activateComboPoints(character)
+    local enforceComboActivate = HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1
+    if getComboPoints(character) == 3 then
+        if Ext.Entity.GetCharacter(character).IsPlayer == false and
+            isScoundrelSkill(skill) then
+                activateComboPoints(character)
+                enforceComboActivate = true
+        end
+    end
+
+    -- Special case for Shadow Slash to apply invisibility and damage bonus
+    if (skill == "Shout_OdinSCO_ShadowSlash" or skill == "Shout_OdinSCO_EnemyShadowSlash") then
+        if enforceComboActivate then
+            consumeComboPoints(character)
+            ApplyStatus(character, "INVISIBLE", 6.0, 1, character)
+            ApplyStatus(character, "OdinSCO_APPLY_SHADOWSLASH_BONUS", 6.0, 1, character)
+            Osi.ProcObjectTimer(character, "OdinSCO_SHADOWSLASH_CLEANUP", 1250)
+        else
+            if HasActiveStatus(character, "INVISIBLE") == 1 or HasActiveStatus(character, "SNEAKING") == 1 then
+                ApplyStatus(character, "OdinSCO_APPLY_SHADOWSLASH_BONUS", 6.0, 1, character)
+                Osi.ProcObjectTimer(character, "OdinSCO_SHADOWSLASH_CLEANUP", 1250)
+            end
+        end
     end
 end)
 
@@ -142,16 +160,15 @@ local function skillShadowSlash(character, target, hithandle)
     local didHit = NRD_StatusGetInt(target, hithandle, "Hit")
     if didHit == 1 then
         Osi.ProcObjectTimerCancel(character, "OdinSCO_INCREMENT_COMBO_DELAYED")
-        Osi.ProcObjectTimer(character, "OdinSCO_INCREMENT_COMBO_DELAYED", 1250)
+        Osi.ProcObjectTimer(character, "OdinSCO_INCREMENT_COMBO_DELAYED", 500)
     end
-    if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then  
-        consumeComboPoints(character)
-    end
+
     if HasActiveStatus(character, "OdinSCO_APPLY_SHADOWSLASH_BONUS") == 1 then
         multiplyDamage(target, hithandle, 1.2)
+
+        Osi.ProcObjectTimerCancel(character, "OdinSCO_SHADOWSLASH_CLEANUP")
+        Osi.ProcObjectTimer(character, "OdinSCO_SHADOWSLASH_CLEANUP", 750)
     end
-    Osi.ProcObjectTimerCancel(character, "OdinSCO_COMBO_INVIS_CLEANUP")
-    Osi.ProcObjectTimer(character, "OdinSCO_COMBO_INVIS_CLEANUP", 900)
 end
 
 local function skillSinisterStrike(character, target, hithandle)
