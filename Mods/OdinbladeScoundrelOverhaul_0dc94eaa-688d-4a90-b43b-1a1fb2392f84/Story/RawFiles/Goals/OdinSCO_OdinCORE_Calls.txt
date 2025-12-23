@@ -1,32 +1,7 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-OBSCO_Init_DBs();
-
-KBSECTION
-PROC
-OBSCO_Init_DBs()
-THEN
-//EnemySkills
-DB_OBCORE_EnemySkill_Pair_Level("Target_EnemyCorruptedBlade", "Target_OdinSCO_EnemyFindersKeepers", 4);
-DB_OBCORE_EnemySkill_Pair_Level("Target_EnemySleepingArms", "Target_OdinSCO_EnemyFindersKeepers", 4);
-DB_OBCORE_EnemySkill_Pair("Target_EnemyCorruptedBlade_Gheist", "Target_OdinSCO_EnemyFindersKeepers");
-DB_OBCORE_EnemySkill_Pair("Target_EnemyKneeBreaker", "Target_OdinSCO_EnemyFindersKeepers");
-
-DB_OBCORE_EnemySkill_Pair_Level("Shout_EnemyChameleonSkin", "MultiStrike_OdinSCO_EnemyShadowStep", 4);
-
-DB_OBCORE_EnemySkill_Pair_Level("MultiStrike_EnemyVault", "Shout_OdinSCO_EnemyOutmaneuver", 9);
-
-DB_OBCORE_EnemySkill_Pair("Target_EnemySleepingArms", "Projectile_OdinSCO_EnemyMisfire");
-DB_OBCORE_EnemySkill_Pair("Target_EnemySabotage", "Projectile_OdinSCO_EnemyMisfire");
-DB_OBCORE_EnemySkill_Pair_Level("Projectile_EnemyThrowingKnife", "Projectile_OdinSCO_EnemyMisfire", 6);
-
-DB_OBCORE_EnemySkill_Pair("Projectile_EnemyThrowingKnife", "Shout_OdinSCO_EnemyShadowSlash");
-DB_OBCORE_EnemySkill_Pair("Target_EnemySerratedEdge", "Shout_OdinSCO_EnemyShadowSlash");
-
-DB_OBCORE_EnemySkill_Pair("Projectile_EnemyThrowingKnife", "Target_OdinSCO_EnemySinisterStrike");
-DB_OBCORE_EnemySkill_Pair("Shout_EnemyChameleonSkin", "Target_OdinSCO_EnemySinisterStrike");
-
+// DB_OBCORE_CustomVendor((GUIDSTRING)_Vendor, (STRING)_Dialog);
 //Vendors
 DB_OBCORE_CustomVendor(OdinSCO_Trader_000_73557e79-8d90-448e-9b82-e97d5c0e835f, "OdinSCO_Vendor"); //Fort Joy - Square
 DB_OBCORE_CustomVendor(OdinSCO_Trader_001_90203b13-6971-4a94-82ce-81e1e9c6e6ae, "OdinSCO_Vendor"); //Fort Joy - Armadia
@@ -41,6 +16,39 @@ DB_OBCORE_CustomVendor(OdinSCO_Trader_000_d7d4c32b-cf9d-4e77-96fc-88e6c999625f, 
 
 //Arx
 DB_OBCORE_CustomVendor(OdinSCO_Trader_000_fbdc3479-e657-427f-ab1f-36b4e63e4b4c, "OdinSCO_Vendor"); //Arx Square
+
+KBSECTION
+IF
+GameStarted(_, _)
+THEN
+PROC_OBSCO_ConfigureEnemySkills();
+
+IF
+SavegameLoaded(_,_,_,_)
+THEN
+PROC_OBSCO_ConfigureEnemySkills();
+
+PROC
+PROC_OBSCO_ConfigureEnemySkills()
+THEN
+PROC_OBCORE_AddEnemySkillEntry("Target_EnemyCorruptedBlade","Target_OdinSCO_EnemyFindersKeepers, 4");
+PROC_OBCORE_AddEnemySkillEntry("Target_EnemySleepingArms", "Target_OdinSCO_EnemyFindersKeepers", 4);
+PROC_OBCORE_AddEnemySkillEntry("Target_EnemyCorruptedBlade_Gheist", "Target_OdinSCO_EnemyFindersKeepers");
+PROC_OBCORE_AddEnemySkillEntry("Target_EnemyKneeBreaker", "Target_OdinSCO_EnemyFindersKeepers");
+
+PROC_OBCORE_AddEnemySkillEntry("Shout_EnemyChameleonSkin", "MultiStrike_OdinSCO_EnemyShadowStep", 4);
+
+PROC_OBCORE_AddEnemySkillEntry("MultiStrike_EnemyVault", "Shout_OdinSCO_EnemyOutmaneuver", 9);
+
+PROC_OBCORE_AddEnemySkillEntry("Target_EnemySleepingArms", "Projectile_OdinSCO_EnemyMisfire");
+PROC_OBCORE_AddEnemySkillEntry("Target_EnemySabotage", "Projectile_OdinSCO_EnemyMisfire");
+PROC_OBCORE_AddEnemySkillEntry("Projectile_EnemyThrowingKnife", "Projectile_OdinSCO_EnemyMisfire", 6);
+
+PROC_OBCORE_AddEnemySkillEntry("Projectile_EnemyThrowingKnife", "Shout_OdinSCO_EnemyShadowSlash");
+PROC_OBCORE_AddEnemySkillEntry("Target_EnemySerratedEdge", "Shout_OdinSCO_EnemyShadowSlash");
+
+PROC_OBCORE_AddEnemySkillEntry("Projectile_EnemyThrowingKnife", "Target_OdinSCO_EnemySinisterStrike");
+PROC_OBCORE_AddEnemySkillEntry("Shout_EnemyChameleonSkin", "Target_OdinSCO_EnemySinisterStrike");
 EXITSECTION
 
 ENDEXITSECTION
