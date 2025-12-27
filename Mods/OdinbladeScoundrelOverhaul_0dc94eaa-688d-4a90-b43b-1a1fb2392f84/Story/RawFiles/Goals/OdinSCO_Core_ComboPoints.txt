@@ -34,6 +34,7 @@ PROC
 ProcObjectTimerFinished((CHARACTERGUID)_Character, "ODINSCO_FLICKER_DEADLYFLOURISH")
 THEN
 NRD_SkillSetCooldown(_Character, "Shout_OdinSCO_DeadlyFlourish", 0.0);
+ApplyStatus(_Character, "OdinCORE_REFRESH_UI", 0.0);
 //END_REGION
 
 //REGION Cleanup Combo

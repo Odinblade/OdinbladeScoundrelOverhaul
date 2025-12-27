@@ -22,7 +22,7 @@ local function refreshDeadlyFlourish(character)
     local slot = NRD_SkillBarFindSkill(character, "Shout_OdinSCO_DeadlyFlourish")
     if slot ~= nil then
         NRD_SkillSetCooldown(character, "Shout_OdinSCO_DeadlyFlourish", 6.0)
-        Osi.ProcObjectTimer(character, "ODINSCO_FLICKER_DEADLYFLOURISH", 25)
+        Osi.ProcObjectTimer(character, "ODINSCO_FLICKER_DEADLYFLOURISH", 100)
     end
 end
 
