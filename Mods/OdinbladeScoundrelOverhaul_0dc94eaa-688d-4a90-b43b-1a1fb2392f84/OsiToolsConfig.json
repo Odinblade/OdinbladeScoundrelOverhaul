@@ -1,5 +1,5 @@
 {
-    "RequiredExtensionVersion": 49,
+    "RequiredExtensionVersion": 60,
     "ModTable": "OdinSCO",
     "FeatureFlags": [
         "OsirisExtensions",
