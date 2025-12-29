@@ -2,20 +2,13 @@ Ext.Require("Shared/OdinSCO_SharedData.lua")
 Ext.Require("Shared/OdinSCO_ComboPoints.lua")
 Ext.Require("Shared/OdinSCO_Utility.lua")
 
--- Auto use combo on Scoundrel skills for enemies
---- @param character EsvCharacter
-Ext.Osiris.RegisterListener("CharacterUsedSkill", 4, "before", function (character, skill, skillType, skillElement)
-    local enforceComboActivate = HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1
-    if getComboPoints(character) == 3 then
-        if Ext.Entity.GetCharacter(character).IsPlayer == false and
-            isScoundrelSkill(skill) then
-                activateComboPoints(character)
-                enforceComboActivate = true
-        end
-    end
-
-    -- Special case for Shadow Slash to apply invisibility and damage bonus
-    if (skill == "Shout_OdinSCO_ShadowSlash" or skill == "Shout_OdinSCO_EnemyShadowSlash") then
+---Special case for Shadow Slash to apply invisibility and damage bonus early enough
+---@param character string
+---@param skill string
+---@param enforceComboActivate boolean
+local function handleCharacterShadowSlashIfNeeded(character, skill, enforceComboActivate)
+    local skillName = getSkillEntryName(skill)
+    if (skillName == "Shout_OdinSCO_ShadowSlash" or skillName == "Shout_OdinSCO_EnemyShadowSlash") then
         if enforceComboActivate then
             consumeComboPoints(character)
             ApplyStatus(character, "INVISIBLE", 6.0, 1, character)
@@ -28,6 +21,23 @@ Ext.Osiris.RegisterListener("CharacterUsedSkill", 4, "before", function (charact
             end
         end
     end
+end
+
+-- Make enemies auto-use Combo on Scoundrel skills
+---@param character string
+---@param skill string
+---@param skillType string
+---@param skillElement string
+Ext.Osiris.RegisterListener("CharacterUsedSkill", 4, "before", function (character, skill, skillType, skillElement)
+    local enforceComboActivate = HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1
+    if getComboPoints(character) == 3 then
+        if Ext.Entity.GetCharacter(character).IsPlayer == false and isScoundrelSkill(skill) == true then
+            activateComboPoints(character)
+            enforceComboActivate = true
+        end
+    end
+
+    handleCharacterShadowSlashIfNeeded(character, skill, enforceComboActivate)
 end)
 
 local function multiplyDamage(target, hithandle, multiplier)

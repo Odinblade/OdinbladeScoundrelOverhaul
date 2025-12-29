@@ -16,10 +16,10 @@ local function hasScoundrelSkills(character)
 end
 
 function isScoundrelSkill(inSkillId)
-    local result = 0
+    local result = false
     for k, skillId in pairs(OdinScoundrelOverhaul.ScoundrelSkills) do
-        if inSkillId == skillId or Ext.StatGetAttribute(inSkillId, "Using") == skillId then
-            result = 1
+        if inSkillId == skillId or Ext.Stats.Get(inSkillId).Using == skillId then
+            result = true
             break
         end
     end
@@ -31,7 +31,7 @@ local function getPrepareParentSkill(skillId)
     if func ~= nil then
         return skillId
     else
-        local using = Ext.StatGetAttribute(skillId, "Using")
+        local using = Ext.Stats.Get(skillId).Using
         if using ~= nil then
             return using
         end
