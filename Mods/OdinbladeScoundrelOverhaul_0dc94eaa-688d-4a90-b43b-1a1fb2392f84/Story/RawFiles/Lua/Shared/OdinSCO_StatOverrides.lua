@@ -8,18 +8,19 @@ function OverrideStats()
 
     for statname,overrides in pairs(OdinScoundrelOverhaul.StatOverrides) do
         for property,value in pairs(overrides) do
-            if debug_print then Ext.Print("[OdinSCO:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
-            if property == "SkillCustomDescription" or property == "SkillCustomDescription_Extra" then 
-                Ext.StatAddCustomDescription(statname, "SkillProperties", value) 
-                if debug_print then Ext.Print("[OdinSCO:Bootstrap.lua] Custom description set: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+            if debug_print then print("[OdinSCO:Bootstrap.lua] Overriding stat: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+            local stat = Ext.Stats.Get(statname)
+            if property == "SkillCustomDescription" or property == "SkillCustomDescription_Extra" then
+                Ext.Stats.AddCustomDescription(statname, "SkillProperties", value)
+                if debug_print then print("[OdinSCO:Bootstrap.lua] Custom description set: " .. statname .. " (".. property ..") = \"".. value .."\"") end
             else 
-                Ext.StatSetAttribute(statname, property, value)
-                if debug_print then Ext.Print("[OdinSCO:Bootstrap.lua] Stat attribute overwritten: " .. statname .. " (".. property ..") = \"".. value .."\"") end
+                Ext.Stats.SetAttribute(statname, property, value)
+                if debug_print then print("[OdinSCO:Bootstrap.lua] Stat attribute overwritten: " .. statname .. " (".. property ..") = \"".. value .."\"") end
             end
             total_changes = total_changes + 1
         end
         total_stats = total_stats + 1
     end
 
-    Ext.Print("[OdinSCO:Bootstrap.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats.")
+    print("[OdinSCO:Bootstrap.lua] Changed ("..tostring(total_changes)..") properties in ("..tostring(total_stats)..") stats.")
 end
