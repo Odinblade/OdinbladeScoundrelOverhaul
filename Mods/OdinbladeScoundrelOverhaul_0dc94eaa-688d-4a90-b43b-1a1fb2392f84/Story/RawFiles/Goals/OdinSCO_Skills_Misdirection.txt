@@ -32,8 +32,24 @@ ApplyStatus(_Clone, "OdinSCO_MISDIRECTION", 12.0, 1, _Caster);
 CharacterLevelUpTo(_Clone, _Level);
 DB_OBSCO_Misdirection(_Caster, _Clone, _nX, _nY, _nZ);
 CharacterTransformAppearanceTo(_Clone, _Caster, 1, 1);
+OBSCO_CloneJoinCombat(_Clone, _Caster);
 ProcObjectTimer(_Caster, "OdinSCO_MISDIRECTION_JUMP", 100);
 ProcObjectTimer(_Caster, "OdinSCO_MISDIRECTION_SWITCH", 125);
+
+PROC
+OBSCO_CloneJoinCombat((GUIDSTRING)_Clone, (GUIDSTRING)_Owner)
+AND
+DB_CombatCharacters((CHARACTERGUID)_Owner, _)
+AND
+GetFaction((GUIDSTRING)_Owner, _Faction)
+AND
+IsInArena((GUIDSTRING)_Owner, _InArena)
+THEN
+SetFaction(_Clone, _Faction); 
+SetCanFight(_Clone, 1);
+SetInArena(_Clone, _InArena);
+SetCanJoinCombat(_Clone, 1);
+EnterCombat(_Owner, _Clone);
 
 // Perform the check to see if the caster needs to swap place with the clone
 PROC
