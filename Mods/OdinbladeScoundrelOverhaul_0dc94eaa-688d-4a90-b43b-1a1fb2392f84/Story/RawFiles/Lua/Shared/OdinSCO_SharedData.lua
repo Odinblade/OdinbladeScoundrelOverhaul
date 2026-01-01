@@ -28,55 +28,22 @@ OdinScoundrelOverhaul = {
         Poison = "POISONED",
         Water = "CHILLED"
     },
-    StatOverrides = {
-        MultiStrike_OdinSCO_ShadowStep = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        MultiStrike_Vault = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Projectile_FanOfKnives = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Projectile_ThrowingKnife = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Shout_Adrenaline = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Shout_OdinSCO_PlayOfTheGame = {
-            SkillCustomDescription = "Generates up to 2 Combo points."
-        },
-        Shout_OdinSCO_ShadowSlash = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_CorruptedBlade = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_Fatality = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_GagOrder = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_KneeBreaker = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_OdinSCO_FindersKeepers = {
-            SkillCustomDescription = "Steal 2 AP from the target."
-        },
-        Target_OdinSCO_SinisterStrike = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_SerratedEdge = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_SleepingArms = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        },
-        Target_TerrifyingCruelty = {
-            SkillCustomDescription = "Generates 1 Combo point."
-        }
+    UISkillProperties = {
+        MultiStrike_OdinSCO_ShadowStep = "Generates 1 Combo point.",
+        MultiStrike_Vault = "Generates 1 Combo point.",
+        Projectile_FanOfKnives = "Generates 1 Combo point.",
+        Projectile_ThrowingKnife = "Generates 1 Combo point.",
+        Shout_Adrenaline = "Generates 1 Combo point.",
+        Shout_OdinSCO_ShadowSlash = "Generates 1 Combo point.",
+        Target_CorruptedBlade = "Generates 1 Combo point.",
+        Target_Fatality = "Generates 1 Combo point.",
+        Target_GagOrder = "Generates 1 Combo point.",
+        Target_KneeBreaker = "Generates 1 Combo point.",
+        Target_OdinSCO_FindersKeepers = "Steal 2 AP from the target.",
+        Target_OdinSCO_SinisterStrike = "Generates 1 Combo point.",
+        Target_SerratedEdge = "Generates 1 Combo point.",
+        Target_SleepingArms = "Generates 1 Combo point.",
+        Target_TerrifyingCruelty = "Generates 1 Combo point."
     },
     ScoundrelSkills = {
         Jump_CloakAndDagger= "Jump_CloakAndDagger",
