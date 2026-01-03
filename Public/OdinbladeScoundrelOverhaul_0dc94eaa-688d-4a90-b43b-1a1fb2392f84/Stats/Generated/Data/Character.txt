@@ -36,5 +36,5 @@ data "EarthResistance" "-50"
 data "WaterResistance" "-50"
 data "AirResistance" "-50"
 data "PoisonResistance" "-50"
+data "Vitality" "30"
 data "Talents" "AttackOfOpportunity;"
-
