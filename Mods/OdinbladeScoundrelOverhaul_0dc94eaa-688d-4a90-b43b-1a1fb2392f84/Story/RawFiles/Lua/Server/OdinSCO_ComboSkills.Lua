@@ -97,11 +97,18 @@ local function skillVault(character,  target, hithandle)
         consumeComboPoints(character)
         multiplyDamage(target, hithandle, 1.25)
 
-        local newCD = NRD_SkillGetCooldown(character, "MultiStrike_Vault") - 6.0
-        if newCD > 0.0 then
-            Osi.OBSCO_QueueCooldownOverride(character, "MultiStrike_Vault", newCD)
+        local skillId
+        if Ext.Entity.GetCharacter(character).IsPlayer then
+            skillId = "MultiStrike_Vault"
         else
-            Osi.OBSCO_QueueCooldownOverride(character, "MultiStrike_Vault", 0.0)
+            skillId = "MultiStrike_EnemyVault"
+        end
+
+        local newCD = NRD_SkillGetCooldown(character, skillId) - 6.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, skillId, newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, skillId, 0.0)
         end
     end
     if didHit == 1 then
@@ -193,11 +200,18 @@ local function skillSinisterStrike(character, target, hithandle)
             end
         end
 
-        local newCD = NRD_SkillGetCooldown(character, "Target_OdinSCO_SinisterStrike") - 6.0
-        if newCD > 0.0 then
-            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_SinisterStrike", newCD)
+        local skillId
+        if Ext.Entity.GetCharacter(character).IsPlayer then
+            skillId = "Target_OdinSCO_SinisterStrike"
         else
-            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_SinisterStrike", 0.0)
+            skillId = "Target_OdinSCO_EnemySinisterStrike"
+        end
+
+        local newCD = NRD_SkillGetCooldown(character, skillId) - 6.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, skillId, newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, skillId, 0.0)
         end
     end
     if didHit == 1 then
@@ -343,7 +357,13 @@ local function skillLaunchBomber(character, x, y, z)
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then
         consumeComboPoints(character)
 
-        Osi.OBSCO_QueueCooldownOverride(character, "Projectile_LaunchBomber", 0.0)
+        local skillId
+        if Ext.Entity.GetCharacter(character).IsPlayer then
+            skillId = "Projectile_LaunchBomber"
+        else
+            skillId = "Projectile_EnemyLaunchBomber"
+        end
+        Osi.OBSCO_QueueCooldownOverride(character, skillId, 0.0)
     end
 end
 
@@ -365,11 +385,18 @@ local function skillFindersKeepers(character, x, y, z)
     if HasActiveStatus(character, "OdinSCO_USE_COMBO_3") == 1 then   
         consumeComboPoints(character)
 
-        local newCD = NRD_SkillGetCooldown(character, "Target_OdinSCO_FindersKeepers") - 18.0
-        if newCD > 0.0 then
-            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_FindersKeepers", newCD)
+        local skillId
+        if Ext.Entity.GetCharacter(character).IsPlayer then
+            skillId = "Target_OdinSCO_FindersKeepers"
         else
-            Osi.OBSCO_QueueCooldownOverride(character, "Target_OdinSCO_FindersKeepers", 0.0)
+            skillId = "Target_OdinSCO_EnemyFindersKeepers"
+        end
+
+        local newCD = NRD_SkillGetCooldown(character, skillId) - 18.0
+        if newCD > 0.0 then
+            Osi.OBSCO_QueueCooldownOverride(character, skillId, newCD)
+        else
+            Osi.OBSCO_QueueCooldownOverride(character, skillId, 0.0)
         end
     end
 end

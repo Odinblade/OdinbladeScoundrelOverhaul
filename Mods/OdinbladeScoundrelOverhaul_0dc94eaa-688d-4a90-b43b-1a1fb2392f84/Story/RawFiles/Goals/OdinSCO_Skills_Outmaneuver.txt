@@ -1,8 +1,6 @@
 Version 1
 SubGoalCombiner SGC_AND
 INITSECTION
-DB_OBSCO_Outmaneuver_Proc_Skill("MultiStrike_OdinSCO_Outmaneuver_Proc");
-DB_OBSCO_Outmaneuver_Proc_Skill("MultiStrike_OdinSCO_Outmaneuver_EmpoweredProc");
 
 KBSECTION
 IF
@@ -32,9 +30,15 @@ THEN
 CharacterUseSkill(_Character, "MultiStrike_OdinSCO_Outmaneuver_EmpoweredProc", _Instigator, 1, 1, 1);
 
 IF
-CharacterUsedSkill((CHARACTERGUID)_Character, _SkillId, _, _)
+CharacterUsedSkill((CHARACTERGUID)_Character, "MultiStrike_OdinSCO_Outmaneuver_Proc", _, _)
 AND
-DB_OBSCO_Outmaneuver_Proc_Skill(_SkillId)
+HasActiveStatus(_Character, "OdinSCO_OUTMANEUVER", 1)
+THEN
+RemoveStatus(_Character, "OdinSCO_OUTMANEUVER");
+RemoveStatus(_Character, "OdinSCO_OUTMANEUVER_COMBO");
+
+IF
+CharacterUsedSkill((CHARACTERGUID)_Character, "MultiStrike_OdinSCO_Outmaneuver_EmpoweredProc", _, _)
 AND
 HasActiveStatus(_Character, "OdinSCO_OUTMANEUVER", 1)
 THEN

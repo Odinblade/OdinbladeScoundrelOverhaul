@@ -11,6 +11,13 @@ HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 0)
 THEN
 ApplyStatus(_Character, "OdinSCO_APPLY_ADRENALINE", 6.0);
 
+IF
+CharacterUsedSkill(_Character, "Shout_EnemyAdrenaline", _, _)
+AND
+HasActiveStatus(_Character, "OdinSCO_USE_COMBO_3", 0)
+THEN
+ApplyStatus(_Character, "OdinSCO_APPLY_ADRENALINE", 6.0);
+
 //Slow the character if they used the non-Combo version of Adrenaline
 IF
 ObjectTurnEnded(_Character)
